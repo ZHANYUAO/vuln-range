@@ -1,0 +1,27 @@
+name	url	http	ms	verdict	snippet
+groq	https://api.groq.com/openai/v1	401	2807	ALIVE_AUTH	{"error":{"message":"Invalid API Key","type":"invalid_request_error","code":"invalid_api_key"}}
+cerebras	https://api.cerebras.ai/v1	401	5870	ALIVE_AUTH	{"message":"Wrong API Key","type":"invalid_request_error","param":"api_key","code":"wrong_api_key"}
+mistral	https://api.mistral.ai/v1	401	2772	ALIVE_AUTH	{"detail":"Invalid API Key"}
+cohere	https://api.cohere.ai/compatibility/v1	401	8404	ALIVE_AUTH	{"id":"d7688da2-b14a-460e-be68-eb126b117b0b","message":"no api key supplied"}
+siliconflow	https://api.siliconflow.cn/v1	401	243	ALIVE_AUTH	{"code":30014,"data":null,"message":"Token is invalid."}
+modelscope	https://api-inference.modelscope.cn/v1	401	477	ALIVE_AUTH	{"error":{"message":"Authentication failed, please make sure that a valid ModelScope token is suppli
+gemini	https://generativelanguage.googleapis.com/v1beta/openai	400	4415	ALIVE_PARAM	[{  "error": {    "code": 400,    "message": "Missing or invalid Authorization header.",    "status"
+nvidia	https://integrate.api.nvidia.com/v1	401	2965	ALIVE_AUTH	Header of type `authorization` was missing
+sambanova	https://api.sambanova.ai/v1	401	2831	ALIVE_AUTH	{"error":{"message":"You didn't provide an API key. You need to provide your API key in an Authoriza
+nebius	https://api.studio.nebius.com/v1	401	7435	ALIVE_AUTH	{"error":{"type":"invalid_request_error","message":"Couldn't authenticate. Reason: token is not pres
+chutes	https://api.chutes.ai/v1	429	3848	ALIVE_RATELIMIT	<html><head><title>429 Too Many Requests</title></head><body><center><h1>429 Too Many Requests</h1><
+xai	https://api.x.ai/v1	401	2590	ALIVE_AUTH	{"code":"unauthenticated:no-credentials","error":"No credentials presented."}
+deepseek	https://api.deepseek.com/v1	401	391	ALIVE_AUTH	Authentication Fails (governor)
+zhipu	https://api.z.ai/api/paas/v4	401	6299	ALIVE_AUTH	{"error":{"code":"1001","message":"Authentication parameter not received in Header, unable to authen
+vercel_gw	https://ai-gateway.vercel.sh/v1	401	3390	ALIVE_AUTH	{"error":{"message":"Missing Authorization header","type":"authentication_error"}}
+kilo	https://api.kilo.ai/api/gateway	200	5223	WORKS_NO_KEY	{"id":"gen-1793691619-hTRTgKJv7sboVvheAj10","object":"chat.completion","created":1793691619,"model":
+aionlabs	https://api.aionlabs.ai/v1	401	4522	ALIVE_AUTH	{"detail":"Authentication credentials were not provided."}
+agnes	https://apihub.agnes-ai.com/v1	401	3042	ALIVE_AUTH	{"error":{"code":"","message":"Token not provided (request id: 20261103074029480534735lflJhnTI)","ty
+llm7	https://api.llm7.io/v1	200	3896	WORKS_NO_KEY	{"choices":[{"finish_reason":"length","index":0,"message":{"content":"Hi! How can I help you today? 
+b_ai	https://api.b.ai/v1	000	5081	UNREACHABLE	
+ai21	https://api.ai21.com/studio/v1	400	3271	ALIVE_PARAM	{"detail":"Bad request: bad or missing authentication."}
+pollinations	https://text.pollinations.ai/openai	200	3561	WORKS_NO_KEY	{"id":"pllns_8e1ceac510fb9a8bc2d1621f389b3f97","choices":[{"index":0,"message":{"role":"assistant","
+openrouter	https://openrouter.ai/api/v1	401	1831	ALIVE_AUTH	{"error":{"message":"No cookie auth credentials found","code":401}}
+together	https://api.together.xyz/v1	401	2774	ALIVE_AUTH	{  "id": "p7oPZTd-2kFHot-a549bbafcf6fa2f1",  "error": {    "message": "Missing API key. You need to 
+hyperbolic	https://api.hyperbolic.xyz/v1	404	2202	ALIVE_PARAM	{"object":"error","message":"This inference endpoint has been decommissioned and is no longer availa
+featherless	https://api.featherless.ai/v1	401	3987	ALIVE_AUTH	{"error":{"message":"You must be signed in to access this resource","type":"invalid_request_error","

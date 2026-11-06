@@ -1,0 +1,37 @@
+{
+  "lodash": "4.17.20",
+  "lodashPath": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\src\\lodash-4.17.20\\lodash.js",
+  "node": "v22.22.2",
+  "findings": [
+    {
+      "name": "_.invoke + __defineGetter__ 污染全局原型",
+      "passed": true,
+      "detail": "新建空对象 ({}).vhvPoc_i88tgo === \"PWNED\""
+    },
+    {
+      "name": "_.invoke 字符串路径",
+      "passed": true,
+      "detail": "({}).vhvPoc_i88tgo_s === \"PWNED2\""
+    },
+    {
+      "name": "_.invoke 构造并执行任意 JS",
+      "passed": true,
+      "detail": "构造出的函数执行结果 = \"v22.22.2\""
+    },
+    {
+      "name": "_.invokeMap",
+      "passed": true,
+      "detail": "({}).vhvPoc_i88tgo_m === \"PWNED3\""
+    },
+    {
+      "name": "_.unset 被拦（证明不一致性真实存在）",
+      "passed": false,
+      "detail": "_.unset({}, [\"__proto__\",\"__defineGetter__\"]) === true"
+    },
+    {
+      "name": "正常 _.invoke 行为不变（修复不应破坏功能）",
+      "passed": true,
+      "detail": "_.invoke({m(){return \"ok\"}}, \"m\") === \"ok\""
+    }
+  ]
+}

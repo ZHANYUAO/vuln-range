@@ -1,0 +1,27 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash-es\\lodash.js",
+  "lines": 332,
+  "fn_count": 0,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [],
+  "counts": {
+    "G_blacklist": 0,
+    "G_ownkey": 0,
+    "bl_call_sites": 0,
+    "S_path": 0,
+    "C_path": 0,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "NO_SINK"
+}

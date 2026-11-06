@@ -1,0 +1,238 @@
+{
+  "_comment": [
+    "分发形态检查的载荷集。按 api 分组，distcheck 会为每个形态挑它对应的组。",
+    "约定：expr 的返回值决定判定 —— 产出唯一 marker 字符串 = HIT，返回 'no' = MISS。",
+    "probe 是签名对照：用同样的调用形状、传良性参数。probe 不过 = SHAPE（形态不兼容），",
+    "绝不能记成 MISS，否则就把「没测到」写成了「安全」。",
+    "M = 唯一 marker（每格新生成），P = ['__proto__','constructor','constructor']，f = 该形态的 API 调用器。"
+  ],
+  "get": [
+    {
+      "id": "get_read_function",
+      "class": "read",
+      "expect": "marker",
+      "probe": "f({a:{b:{c:7}}}, 'a.b.c') === 7",
+      "expr": "(() => { const r = f({}, P); return (typeof r === 'function') ? M : 'no'; })()",
+      "fp": {
+        "probe": "f('a.b.c', {a:{b:{c:7}}}) === 7",
+        "expr": "(() => { const r = f(P, {}); return (typeof r === 'function') ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "get_read_strpath",
+      "class": "read",
+      "expect": "marker",
+      "probe": "f({a:{b:{c:7}}}, 'a.b.c') === 7",
+      "expr": "(() => { const r = f({}, '__proto__.constructor.constructor'); return (typeof r === 'function') ? M : 'no'; })()",
+      "fp": {
+        "probe": "f('a.b.c', {a:{b:{c:7}}}) === 7",
+        "expr": "(() => { const r = f('__proto__.constructor.constructor', {}); return (typeof r === 'function') ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "get_exec_via_function",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f({a:{b:{c:7}}}, 'a.b.c') === 7",
+      "expr": "(() => { const F = f({}, P); if (typeof F !== 'function') return 'no'; return F('return ' + JSON.stringify(M))(); })()",
+      "fp": {
+        "probe": "f('a.b.c', {a:{b:{c:7}}}) === 7",
+        "expr": "(() => { const F = f(P, {}); if (typeof F !== 'function') return 'no'; return F('return ' + JSON.stringify(M))(); })()"
+      }
+    },
+    {
+      "id": "get_control_safe_path",
+      "class": "control",
+      "expect": "no_hole",
+      "probe": "f({a:{b:{c:7}}}, 'a.b.c') === 7",
+      "expr": "(() => { const r = f({a:{b:1}}, 'a.b'); return (r === 1) ? M : 'no'; })()",
+      "fp": {
+        "probe": "f('a.b', {a:{b:1}}) === 1",
+        "expr": "(() => { const r = f('a.b', {a:{b:1}}); return (r === 1) ? M : 'no'; })()"
+      }
+    }
+  ],
+  "invoke": [
+    {
+      "id": "invoke_rce",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f({fn: function(){ return 'OK'; }}, 'fn') === 'OK'",
+      "expr": "f({}, P, 'return ' + JSON.stringify(M))()",
+      "fp": {
+        "probe": "f('fn', [], {fn: function(){ return 'OK'; }}) === 'OK'",
+        "expr": "f(P, ['return ' + JSON.stringify(M)], {})()"
+      }
+    },
+    {
+      "id": "invoke_rce_strpath",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f({fn: function(){ return 'OK'; }}, 'fn') === 'OK'",
+      "expr": "f({}, '__proto__.constructor.constructor', 'return ' + JSON.stringify(M))()",
+      "fp": {
+        "probe": "f('fn', [], {fn: function(){ return 'OK'; }}) === 'OK'",
+        "expr": "f('__proto__.constructor.constructor', ['return ' + JSON.stringify(M)], {})()"
+      }
+    },
+    {
+      "id": "invoke_getter_write",
+      "class": "write",
+      "expect": "marker",
+      "probe": "f({fn: function(){ return 'OK'; }}, 'fn') === 'OK'",
+      "expr": "(() => { f({}, ['__proto__','__defineGetter__'], M, function(){ return 1; }); const hit = Object.getOwnPropertyDescriptor(Object.prototype, M) !== undefined; try { delete Object.prototype[M]; } catch(e){} return hit ? M : 'no'; })()",
+      "fp": {
+        "probe": "f('fn', [], {fn: function(){ return 'OK'; }}) === 'OK'",
+        "expr": "(() => { f(['__proto__','__defineGetter__'], [M, function(){ return 1; }], {}); const hit = Object.getOwnPropertyDescriptor(Object.prototype, M) !== undefined; try { delete Object.prototype[M]; } catch(e){} return hit ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "invoke_control_safe_path",
+      "class": "control",
+      "expect": "no_hole",
+      "probe": "f({fn: function(){ return 'OK'; }}, 'fn') === 'OK'",
+      "expr": "(() => { const r = f({fn: function(){ return M; }}, 'fn'); return (r === M) ? M : 'no'; })()",
+      "fp": {
+        "probe": "f('fn', [], {fn: function(){ return 'OK'; }}) === 'OK'",
+        "expr": "(() => { const r = f('fn', [], {fn: function(){ return M; }}); return (r === M) ? M : 'no'; })()"
+      }
+    }
+  ],
+  "method": [
+    {
+      "id": "method_rce",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f('fn', 1)({fn: function(x){ return x; }}) === 1",
+      "expr": "f(P, 'return ' + JSON.stringify(M))({})()"
+    }
+  ],
+  "methodOf": [
+    {
+      "id": "methodOf_rce",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f({fn: function(){ return 'OK'; }})('fn') === 'OK'",
+      "expr": "f({}, 'return ' + JSON.stringify(M))(P)()"
+    }
+  ],
+  "at": [
+    {
+      "id": "at_read_function",
+      "class": "read",
+      "expect": "marker",
+      "probe": "Array.isArray(f({a:{b:1}}, ['a.b']))",
+      "expr": "(() => { const a = f({}, ['__proto__.constructor.constructor']); const r = Array.isArray(a) ? a[0] : a; return (typeof r === 'function') ? M : 'no'; })()",
+      "fp": {
+        "probe": "Array.isArray(f(['a.b'], {a:{b:1}}))",
+        "expr": "(() => { const a = f(['__proto__.constructor.constructor'], {}); const r = Array.isArray(a) ? a[0] : a; return (typeof r === 'function') ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "at_read_strpath",
+      "class": "read",
+      "expect": "marker",
+      "probe": "Array.isArray(f({a:{b:1}}, ['a.b']))",
+      "expr": "(() => { const a = f({}, '__proto__.constructor.constructor'); const r = Array.isArray(a) ? a[0] : a; return (typeof r === 'function') ? M : 'no'; })()",
+      "fp": {
+        "probe": "Array.isArray(f(['a.b'], {a:{b:1}}))",
+        "expr": "(() => { const a = f('__proto__.constructor.constructor', {}); const r = Array.isArray(a) ? a[0] : a; return (typeof r === 'function') ? M : 'no'; })()"
+      }
+    }
+  ],
+  "set": [
+    {
+      "id": "set_proto_pollution",
+      "class": "write",
+      "expect": "marker",
+      "probe": "(() => { const o = {}; f(o, 'a.b', 1); return o.a.b === 1; })()",
+      "expr": "(() => { f({}, ['__proto__', M], 1); const hit = ({}[M] !== undefined); try { delete Object.prototype[M]; } catch(e){} return hit ? M : 'no'; })()",
+      "fp": {
+        "probe": "f(['a','b'], 1, {}).a.b === 1",
+        "expr": "(() => { f(['__proto__', M], 1, {}); const hit = ({}[M] !== undefined); try { delete Object.prototype[M]; } catch(e){} return hit ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "set_ctor_proto_pollution",
+      "class": "write",
+      "expect": "marker",
+      "probe": "(() => { const o = {}; f(o, 'a.b', 1); return o.a.b === 1; })()",
+      "expr": "(() => { f({}, ['constructor','prototype', M], 1); const hit = ({}[M] !== undefined); try { delete Object.prototype[M]; } catch(e){} return hit ? M : 'no'; })()",
+      "fp": {
+        "probe": "f(['a','b'], 1, {}).a.b === 1",
+        "expr": "(() => { f(['constructor','prototype', M], 1, {}); const hit = ({}[M] !== undefined); try { delete Object.prototype[M]; } catch(e){} return hit ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "set_control_safe_path",
+      "class": "control",
+      "expect": "no_hole",
+      "probe": "(() => { const o = {}; f(o, 'a.b', 1); return o.a.b === 1; })()",
+      "expr": "(() => { const o = {}; f(o, ['x','y'], 1); return (o.x && o.x.y === 1) ? M : 'no'; })()",
+      "fp": {
+        "probe": "f(['a','b'], 1, {}).a.b === 1",
+        "expr": "(() => { const r = f(['x','y'], 1, {}); return (r.x && r.x.y === 1) ? M : 'no'; })()"
+      }
+    }
+  ],
+  "unset": [
+    {
+      "id": "unset_delete_proto_prop",
+      "class": "write",
+      "expect": "marker",
+      "probe": "(() => { const o = {a:{b:1}}; f(o, 'a.b'); return o.a.b === undefined; })()",
+      "expr": "(() => { Object.defineProperty(Object.prototype, M, {value: 1, configurable: true, writable: true}); f({}, ['__proto__', M]); const gone = ({}[M] === undefined); try { delete Object.prototype[M]; } catch(e){} return gone ? M : 'no'; })()",
+      "fp": {
+        "probe": "(() => { const r = f('a.b', {a:{b:1}}); return !!(r && r.a && r.a.b === undefined); })()",
+        "expr": "(() => { Object.defineProperty(Object.prototype, M, {value: 1, configurable: true, writable: true}); f(['__proto__', M], {}); const gone = ({}[M] === undefined); try { delete Object.prototype[M]; } catch(e){} return gone ? M : 'no'; })()"
+      }
+    },
+    {
+      "id": "unset_control_safe_path",
+      "class": "control",
+      "expect": "no_hole",
+      "probe": "(() => { const o = {a:{b:1}}; f(o, 'a.b'); return o.a.b === undefined; })()",
+      "expr": "(() => { const o = {keep:{v:1}}; f(o, 'keep.nope'); return (o.keep && o.keep.v === 1) ? M : 'no'; })()",
+      "fp": {
+        "probe": "f('keep.nope', {keep:{v:1}}) !== undefined",
+        "expr": "(() => { const o = {keep:{v:1}}; f('keep.nope', o); return (o.keep && o.keep.v === 1) ? M : 'no'; })()"
+      }
+    }
+  ],
+  "result": [
+    {
+      "id": "result_read_function",
+      "class": "read",
+      "expect": "marker",
+      "probe": "f({x: 42}, 'x') === 42",
+      "expr": "(() => { const r = f({}, P); return (typeof r === 'function') ? M : 'no'; })()"
+    }
+  ],
+  "has": [
+    {
+      "id": "has_probe_proto",
+      "class": "semantic",
+      "expect": "marker",
+      "probe": "f({a:{b:1}}, 'a.b') === true",
+      "expr": "(() => { return f({}, P) ? M : 'no'; })()",
+      "note": "_.has 走 baseHas（own-property 语义），__proto__ 不是 own → false。正确语义，不是防护也不是洞。"
+    }
+  ],
+  "invokeArgs": [
+    {
+      "id": "invokeArgs_rce",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f('fn', [], {fn: function(){ return 'OK'; }}) === 'OK'",
+      "expr": "f(P, ['return ' + JSON.stringify(M)], {})()",
+      "note": "lodash/fp 的带参调用入口。fp.invoke 是 2 元无参版，带参数必须走 invokeArgs(path, args[], obj)。"
+    },
+    {
+      "id": "invokeArgs_rce_strpath",
+      "class": "rce",
+      "expect": "marker",
+      "probe": "f('fn', [], {fn: function(){ return 'OK'; }}) === 'OK'",
+      "expr": "f('__proto__.constructor.constructor', ['return ' + JSON.stringify(M)], {})()"
+    }
+  ]
+}

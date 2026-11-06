@@ -1,0 +1,4 @@
+﻿PSVersion: 5.1.19041.6456
+curlSource: 
+psExe: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+pythonResult: 42

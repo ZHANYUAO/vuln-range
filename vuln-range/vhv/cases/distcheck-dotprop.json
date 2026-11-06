@@ -1,0 +1,265 @@
+{
+  "package": "dot-prop",
+  "main_version": "6.0.1",
+  "generated_at": "2026-11-02T10:35:34.148Z",
+  "payload_count": 21,
+  "dists": [
+    {
+      "id": "main",
+      "spec": "dot-prop",
+      "version": "6.0.1",
+      "owner": "dot-prop",
+      "origin": "main-entry",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 7,
+        "SHAPE": 0,
+        "SKIP": 13,
+        "ERR": 1
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "ERR",
+          "detail": "对照组失败：连正常路径都跑不通，装置可疑"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    }
+  ],
+  "matrix": {
+    "get": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "get_read_function": "MISS",
+          "get_read_strpath": "MISS",
+          "get_exec_via_function": "MISS",
+          "get_control_safe_path": "MISS"
+        }
+      }
+    ],
+    "invoke": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      }
+    ],
+    "method": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      }
+    ],
+    "methodOf": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      }
+    ],
+    "at": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      }
+    ],
+    "set": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "set_proto_pollution": "MISS",
+          "set_ctor_proto_pollution": "MISS",
+          "set_control_safe_path": "ERR"
+        }
+      }
+    ],
+    "unset": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      }
+    ],
+    "result": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      }
+    ],
+    "has": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "has_probe_proto": "MISS"
+        }
+      }
+    ],
+    "invokeArgs": [
+      {
+        "dist": "main",
+        "spec": "dot-prop",
+        "version": "6.0.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      }
+    ]
+  }
+}

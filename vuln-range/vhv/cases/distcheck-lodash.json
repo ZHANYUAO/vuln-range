@@ -1,0 +1,5670 @@
+{
+  "package": "lodash",
+  "main_version": "4.18.1",
+  "generated_at": "2026-11-02T10:35:26.915Z",
+  "payload_count": 21,
+  "dists": [
+    {
+      "id": "main",
+      "spec": "lodash",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "main-entry",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 10,
+        "MISS": 9,
+        "SHAPE": 0,
+        "SKIP": 2,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.get",
+      "spec": "lodash.get",
+      "version": "4.4.2",
+      "owner": "lodash.get",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 3,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 17,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.invoke",
+      "spec": "lodash.invoke",
+      "version": "4.5.2",
+      "owner": "lodash.invoke",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 3,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 17,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.set",
+      "spec": "lodash.set",
+      "version": "4.3.2",
+      "owner": "lodash.set",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 2,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 18,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.has",
+      "spec": "lodash.has",
+      "version": "4.5.2",
+      "owner": "lodash.has",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 20,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.result",
+      "spec": "lodash.result",
+      "version": "4.5.2",
+      "owner": "lodash.result",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 20,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.at",
+      "spec": "lodash.at",
+      "version": "4.6.0",
+      "owner": "lodash.at",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 2,
+        "MISS": 0,
+        "SHAPE": 0,
+        "SKIP": 19,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash.unset",
+      "spec": "lodash.unset",
+      "version": "4.18.0",
+      "owner": "lodash.unset",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 2,
+        "SHAPE": 0,
+        "SKIP": 19,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "sibling:lodash-es",
+      "spec": "lodash-es",
+      "version": "4.18.1",
+      "owner": "lodash-es",
+      "origin": "sibling-pkg",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 10,
+        "MISS": 9,
+        "SHAPE": 0,
+        "SKIP": 2,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:get",
+      "spec": "lodash/get",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 3,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 17,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/get",
+      "spec": "lodash/fp/get",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 3,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 17,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:invoke",
+      "spec": "lodash/invoke",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 3,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 17,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/invoke",
+      "spec": "lodash/fp/invoke",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 0,
+        "SHAPE": 0,
+        "SKIP": 21,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs（需要 get/invoke/method/methodOf/at/set/unset/result/has/invokeArgs）"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/invokeArgs",
+      "spec": "lodash/fp/invokeArgs",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 5,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 15,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        }
+      ]
+    },
+    {
+      "id": "subpath:set",
+      "spec": "lodash/set",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 3,
+        "SHAPE": 0,
+        "SKIP": 18,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/set",
+      "spec": "lodash/fp/set",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 3,
+        "SHAPE": 0,
+        "SKIP": 18,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:has",
+      "spec": "lodash/has",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 20,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/has",
+      "spec": "lodash/fp/has",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 0,
+        "SHAPE": 1,
+        "SKIP": 20,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SHAPE",
+          "detail": "probe 返回 false，签名不兼容"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:result",
+      "spec": "lodash/result",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 1,
+        "SHAPE": 0,
+        "SKIP": 20,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/result",
+      "spec": "lodash/fp/result",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 0,
+        "SHAPE": 1,
+        "SKIP": 20,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SHAPE",
+          "detail": "probe 返回 false，签名不兼容"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:at",
+      "spec": "lodash/at",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 2,
+        "MISS": 0,
+        "SHAPE": 0,
+        "SKIP": 19,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/at",
+      "spec": "lodash/fp/at",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 2,
+        "MISS": 0,
+        "SHAPE": 0,
+        "SKIP": 19,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "HIT",
+          "detail": "产出 marker"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 unset"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:unset",
+      "spec": "lodash/unset",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 2,
+        "SHAPE": 0,
+        "SKIP": 19,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    },
+    {
+      "id": "subpath:fp/unset",
+      "spec": "lodash/fp/unset",
+      "version": "4.18.1",
+      "owner": "lodash",
+      "origin": "subpath-fp",
+      "loaded": true,
+      "load_error": null,
+      "tally": {
+        "HIT": 0,
+        "MISS": 2,
+        "SHAPE": 0,
+        "SKIP": 19,
+        "ERR": 0
+      },
+      "cells": [
+        {
+          "id": "get_read_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_read_strpath",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_exec_via_function",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "get_control_safe_path",
+          "api": "get",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 get"
+        },
+        {
+          "id": "invoke_rce",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_rce_strpath",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_getter_write",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "invoke_control_safe_path",
+          "api": "invoke",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invoke"
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 method"
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 methodOf"
+        },
+        {
+          "id": "at_read_function",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "at_read_strpath",
+          "api": "at",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 at"
+        },
+        {
+          "id": "set_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_ctor_proto_pollution",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "set_control_safe_path",
+          "api": "set",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 set"
+        },
+        {
+          "id": "unset_delete_proto_prop",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "未产出 marker"
+        },
+        {
+          "id": "unset_control_safe_path",
+          "api": "unset",
+          "verdict": "MISS",
+          "detail": "对照组通过（正常功能可用）"
+        },
+        {
+          "id": "result_read_function",
+          "api": "result",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 result"
+        },
+        {
+          "id": "has_probe_proto",
+          "api": "has",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 has"
+        },
+        {
+          "id": "invokeArgs_rce",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        },
+        {
+          "id": "invokeArgs_rce_strpath",
+          "api": "invokeArgs",
+          "verdict": "SKIP",
+          "detail": "该形态不提供 invokeArgs"
+        }
+      ]
+    }
+  ],
+  "matrix": {
+    "get": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "HIT",
+          "get_read_strpath": "HIT",
+          "get_exec_via_function": "HIT",
+          "get_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "get_read_function": "HIT",
+          "get_read_strpath": "HIT",
+          "get_exec_via_function": "HIT",
+          "get_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "HIT",
+          "get_read_strpath": "HIT",
+          "get_exec_via_function": "HIT",
+          "get_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "HIT",
+          "get_read_strpath": "HIT",
+          "get_exec_via_function": "HIT",
+          "get_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "HIT",
+          "get_read_strpath": "HIT",
+          "get_exec_via_function": "HIT",
+          "get_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "get_read_function": "SKIP",
+          "get_read_strpath": "SKIP",
+          "get_exec_via_function": "SKIP",
+          "get_control_safe_path": "SKIP"
+        }
+      }
+    ],
+    "invoke": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "HIT",
+          "invoke_rce_strpath": "HIT",
+          "invoke_getter_write": "HIT",
+          "invoke_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "invoke_rce": "HIT",
+          "invoke_rce_strpath": "HIT",
+          "invoke_getter_write": "HIT",
+          "invoke_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "HIT",
+          "invoke_rce_strpath": "HIT",
+          "invoke_getter_write": "HIT",
+          "invoke_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "HIT",
+          "invoke_rce_strpath": "HIT",
+          "invoke_getter_write": "HIT",
+          "invoke_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "HIT",
+          "invoke_rce_strpath": "HIT",
+          "invoke_getter_write": "HIT",
+          "invoke_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "invoke_rce": "SKIP",
+          "invoke_rce_strpath": "SKIP",
+          "invoke_getter_write": "SKIP",
+          "invoke_control_safe_path": "SKIP"
+        }
+      }
+    ],
+    "method": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "HIT"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "HIT"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "method_rce": "SKIP"
+        }
+      }
+    ],
+    "methodOf": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "HIT"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "HIT"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "methodOf_rce": "SKIP"
+        }
+      }
+    ],
+    "at": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "HIT",
+          "at_read_strpath": "HIT"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "at_read_function": "HIT",
+          "at_read_strpath": "HIT"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "HIT",
+          "at_read_strpath": "HIT"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "HIT",
+          "at_read_strpath": "HIT"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "HIT",
+          "at_read_strpath": "HIT"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "at_read_function": "SKIP",
+          "at_read_strpath": "SKIP"
+        }
+      }
+    ],
+    "set": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "MISS",
+          "set_ctor_proto_pollution": "MISS",
+          "set_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "set_proto_pollution": "HIT",
+          "set_ctor_proto_pollution": "HIT",
+          "set_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "MISS",
+          "set_ctor_proto_pollution": "MISS",
+          "set_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "MISS",
+          "set_ctor_proto_pollution": "MISS",
+          "set_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "MISS",
+          "set_ctor_proto_pollution": "MISS",
+          "set_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "set_proto_pollution": "SKIP",
+          "set_ctor_proto_pollution": "SKIP",
+          "set_control_safe_path": "SKIP"
+        }
+      }
+    ],
+    "unset": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "MISS",
+          "unset_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "unset_delete_proto_prop": "MISS",
+          "unset_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "MISS",
+          "unset_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "SKIP",
+          "unset_control_safe_path": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "MISS",
+          "unset_control_safe_path": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "unset_delete_proto_prop": "MISS",
+          "unset_control_safe_path": "MISS"
+        }
+      }
+    ],
+    "result": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "result_read_function": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SHAPE"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "result_read_function": "SKIP"
+        }
+      }
+    ],
+    "has": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "has_probe_proto": "MISS"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "MISS"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SHAPE"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "has_probe_proto": "SKIP"
+        }
+      }
+    ],
+    "invokeArgs": [
+      {
+        "dist": "main",
+        "spec": "lodash",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.get",
+        "spec": "lodash.get",
+        "version": "4.4.2",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.invoke",
+        "spec": "lodash.invoke",
+        "version": "4.5.2",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.set",
+        "spec": "lodash.set",
+        "version": "4.3.2",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.has",
+        "spec": "lodash.has",
+        "version": "4.5.2",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.result",
+        "spec": "lodash.result",
+        "version": "4.5.2",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.at",
+        "spec": "lodash.at",
+        "version": "4.6.0",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash.unset",
+        "spec": "lodash.unset",
+        "version": "4.18.0",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "sibling:lodash-es",
+        "spec": "lodash-es",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:get",
+        "spec": "lodash/get",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/get",
+        "spec": "lodash/fp/get",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:invoke",
+        "spec": "lodash/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invoke",
+        "spec": "lodash/fp/invoke",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/invokeArgs",
+        "spec": "lodash/fp/invokeArgs",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "HIT",
+          "invokeArgs_rce_strpath": "HIT"
+        }
+      },
+      {
+        "dist": "subpath:set",
+        "spec": "lodash/set",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/set",
+        "spec": "lodash/fp/set",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:has",
+        "spec": "lodash/has",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/has",
+        "spec": "lodash/fp/has",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:result",
+        "spec": "lodash/result",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/result",
+        "spec": "lodash/fp/result",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:at",
+        "spec": "lodash/at",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/at",
+        "spec": "lodash/fp/at",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:unset",
+        "spec": "lodash/unset",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      },
+      {
+        "dist": "subpath:fp/unset",
+        "spec": "lodash/fp/unset",
+        "version": "4.18.1",
+        "cells": {
+          "invokeArgs_rce": "SKIP",
+          "invokeArgs_rce_strpath": "SKIP"
+        }
+      }
+    ]
+  }
+}

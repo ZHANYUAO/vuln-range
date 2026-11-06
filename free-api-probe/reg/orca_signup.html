@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="application-name" content="OrcaRouter" />
+    <meta name="apple-mobile-web-app-title" content="OrcaRouter" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>OrcaRouter — One API. Every model. Zero middleman.</title>
+    <meta
+      name="description"
+      content="OrcaRouter — One API. Every model. Zero middleman. Direct routing to OpenAI, Anthropic, Google and 200+ models at provider cost with automatic failover."
+    />
+    <meta
+      name="keywords"
+      content="AI API gateway, OpenAI proxy, Anthropic Claude API, Gemini API, LLM routing, multi-model API, AI router, OrcaRouter"
+    />
+    <meta name="author" content="OrcaRouter" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="generator" content="OrcaRouter" />
+    
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OrcaRouter" />
+    <meta property="og:title" content="OrcaRouter — One API. Every model. Zero middleman." />
+    <meta
+      property="og:description"
+      content="Direct routing to OpenAI, Anthropic, Google and 200+ models at provider cost with automatic failover."
+    />
+    
+    <meta property="og:image" content="https://www.orcarouter.ai/orca-og-v2.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="OrcaRouter — One API. Every model. Zero middleman." />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@orcarouter" />
+    <meta name="twitter:title" content="OrcaRouter — One API. Every model. Zero middleman." />
+    <meta
+      name="twitter:description"
+      content="Direct routing to OpenAI, Anthropic, Google and 200+ models at provider cost with automatic failover."
+    />
+    <meta name="twitter:image" content="https://www.orcarouter.ai/orca-og-v2.png" />
+    <meta name="twitter:image:alt" content="OrcaRouter — One API. Every model. Zero middleman." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      referrerpolicy="no-referrer"
+    />
+
+    <script>
+    window.addEventListener('beforeinstallprompt', function (e) {
+      try {
+        if (!window.matchMedia || !window.matchMedia('(max-width: 767px)').matches) {
+          return;
+        }
+      } catch (_) {
+        return;
+      }
+      e.preventDefault();
+      window.__deferredInstallPrompt = e;
+    });
+    </script>
+
+    <script>
+    (function () {
+      var p = window.location.pathname || '';
+      // Decode BEFORE every check below. Go decodes the request path, so
+      // /%72edeem/SECRET routes to /redeem/SECRET and React Router mounts the
+      // claim page — but window.location.pathname keeps the raw bytes, so a
+      // trivially percent-encoded capability URL slipped every guard (codex
+      // round 28). Decoding is safe in one direction only: it can introduce
+      // path separators (%2F) and so only ever ADDS matches, never removes a
+      // literal leading segment. A malformed escape fails CLOSED — we cannot
+      // prove such a path is harmless, so suppress.
+      var pDecodeFailed = false;
+      try {
+        p = decodeURIComponent(p);
+      } catch (e) {
+        pDecodeFailed = true;
+      }
+      // Collapse repeated separators, for the same reason and in the same
+      // direction as the decode above (codex round 53). Every check below is
+      // anchored with ^\/ and one separator per segment, so a hard load of
+      // //compliance/share/TOKEN or //oauth/github?code=… — whose
+      // location.pathname really does keep the doubled slash — matched none of
+      // them, while the ingress (nginx merge_slashes, on by default) merged
+      // them and served the real protected route. These tags run in <head> at
+      // parse time, so nothing else can catch it first: round 52 normalized
+      // helpers/pathGuard.js, but that is a MODULE and this guard runs long
+      // before any module loads. Two parser-time copies exist for that reason
+      // — this one and ssrBootGuardScript in controller/ad_tags.go — and they
+      // are pinned against each other by TestSSRBootGuardMatchesShell.
+      p = p.replace(/\/{2,}/g, '/');
+      // Credential- or PII-bearing QUERY values, which no path check can see:
+      // ?token= (any bearer), ?session_id= (the Stripe Checkout Session ID the
+      // backend appends to the billing return, scrubbed only once React mounts
+      // — the head tags run first), ?email=/?login_hint=/?focus_user_email=
+      // (PKCEAuthorize copies login_hint into the login page's ?email=; admin
+      // deep links carry a customer address), and ?redirect=/?redirect_uri=,
+      // which can nest a token-bearing URL. Names are anchored on [?&] so an
+      // ordinary ?promo_code= / ?aff_code= is unaffected. Bare ?code= is
+      // deliberately NOT listed: /oauth/* is already path-guarded, and an
+      // unqualified `code` elsewhere is far more likely an invite or affiliate
+      // code — suppressing those would blind the very landings they measure.
+      // Matched on DECODED KEY NAMES, not the raw query string. URLSearchParams
+      // decodes keys, so the app consumes ?%73ession_id= as session_id while a
+      // raw-byte regex sees nothing — the same raw-vs-decoded split as the path
+      // above, and it survived the first fix (codex round 31). Split on the raw
+      // & / = boundaries first (exactly where URLSearchParams splits), then
+      // decode ONLY the key: decoding the whole string would let an encoded
+      // VALUE containing %26/%3D forge parameter boundaries. A key we cannot
+      // decode fails CLOSED.
+      var SENSITIVE_PARAM_RE =
+        /^(token|email|login_hint|focus|focus_[a-z0-9_]*|prompt|prompt_id|conversation_id|tool|tool_name|arg_paths|request_id|workspace_name|member_user_id|byok_key_id|client_app[a-z0-9_]*|run_id|guardrail_id|deployment_id|ws|skill_[a-z0-9_]*|redirect|redirect_uri)$/i;
+      // session_id is sensitive ONLY on a checkout return. It is the Stripe
+      // Checkout Session ID on /console/billing, but ActivityTab deliberately
+      // uses ?session_id= as an ordinary firewall drill-in filter
+      // (/console/firewall?tab=activity&session_id=…). Treating it as globally
+      // sensitive meant an admin bookmarking or hard-loading that drill-in set
+      // the DOCUMENT-STICKY __skipAnalytics, silently disabling tracking for
+      // that page and every later SPA navigation in the same document — and
+      // the real billing return strips its query without clearing the flag
+      // either, so the suppression outlived its cause (codex round 48).
+      //
+      // Scoped by PATH PREFIX on the locale-stripped path, matched against the
+      // decoded form for the same raw-vs-decoded reason as everything else
+      // here. Narrowing rather than removing: on the billing return the ID is
+      // still a live checkout reference and must not reach the tags.
+      var CHECKOUT_RETURN_PATH_RE =
+        /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/(console\/billing|redeem)(\/|$)/i;
+      var onCheckoutReturn = pDecodeFailed || CHECKOUT_RETURN_PATH_RE.test(p);
+      /*
+        THE ORCAPOOL INVITE CODE, on /models/<id>/pool?i=<code>.
+
+        A permanent, reusable capability: whoever holds it can attribute a
+        workspace to the referrer it names, and it neither expires nor
+        rotates. A cold load of a shared invite link reaches these tags with
+        the code in page_location before React mounts — GA/GTM/a pixel, a
+        third party with its own retention and its own readers (Rule 14). The
+        server-side redaction added for the access log and OTel does not reach
+        this sink, and attribution.js's reserved-parameter list protects only
+        our own beacon.
+
+        SCOPED BY PATH, like session_id above and for the same reason. "i" is
+        one letter: treating it as globally sensitive would suppress analytics
+        on any page that ever uses a one-letter parameter, which is a silent,
+        document-sticky measurement loss. The pool page itself still measures
+        — it is a public, indexed marketing page — and only a visit CARRYING
+        an invite goes dark.
+
+        "[\s\S]+" RATHER THAN ".+", because this path is DECODED before it is
+        matched: "%0A", "%0D", "%E2%80%A8" and "%E2%80%A9" in a slug become
+        real line terminators, and JavaScript's "." does not match those. The
+        server still serves the SPA shell for such a URL, so ".+" left exactly
+        this page unrecognised and handed the code to the tags — the same
+        raw-vs-decoded split this file records elsewhere, arriving through a
+        regex instead of through a prefix compare.
+      */
+      var ORCAPOOL_PAGE_PATH_RE =
+        /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/models\/[\s\S]+\/pool\/?$/i;
+      var onOrcaPoolPage = pDecodeFailed || ORCAPOOL_PAGE_PATH_RE.test(p);
+      /*
+        AND THE SPELLING THAT PUTS THE WHOLE THING IN THE PATH.
+
+        "/models/<id>/pool%3Fi%3D<code>" reaches the browser with an EMPTY
+        location.search: the "?" is a path byte, so decodeURIComponent above
+        turns it into a literal "?" sitting inside "p", and the loop over
+        location.search below has nothing to walk. ORCAPOOL_PAGE_PATH_RE is
+        anchored at "$", so it does not recognise that path either — and the
+        server serves the SPA shell for it all the same. Result: the code is in
+        page_location, both halves of the guard say "nothing here", and GTM /
+        the pixels / Crisp get it.
+
+        This is the same encoded-tail shape isOrcaPoolPageFolded in
+        middleware/logger.go already handles for the access log. The log half
+        was fixed and this one was not, which is the recurring form of this
+        defect rather than a new one.
+
+        DERIVED FROM THE PATTERN ABOVE, not written out again: the tail case is
+        that same pattern with its "$" replaced by a query DELIMITER — literal
+        or percent-escaped to any depth, see the note below. A second literal
+        is a second thing to drift, and this rule has already drifted between
+        copies twice. The test asserts the derivation actually
+        substituted something, so a pattern that stops ending in "$" reds here
+        rather than silently matching nothing.
+
+        ANY TAIL, NOT A TAIL NAMING "i". Same fail-closed reading the log
+        redactor uses one layer down: a tail that got here cannot carry an
+        invite the product will honour (the SPA reads an empty
+        location.search), so its only demonstrated use is smuggling the code
+        past a name match — and refusing to ask which key is in it removes the
+        spelling question entirely (Rule 25: bind to the shape, not the name).
+        The cost is that "/pool%3Ffoo%3Dbar" goes dark too; the one spelling
+        that reaches this honestly is a model id which itself contains an
+        encoded "?" ahead of a "/pool" segment, and the access-log redactor
+        already treats that the same way.
+      */
+      /*
+        AND ONE DECODE IS NOT A FIXED POINT. `/pool%253Fi%253D<code>` reaches
+        the browser with that spelling intact in location.pathname, and the
+        single decodeURIComponent above turns it into `/pool%3Fi%3D<code>` —
+        still no `?` byte, so a pattern anchored on one matched nothing and the
+        code went to page_location with the tags installed (codex round 39).
+        Every deeper spelling repeats it one level out.
+
+        So the delimiter is a SHAPE: `?`, or `%(25)*3F` case-insensitively,
+        which is what each extra round of percent-encoding produces. Greedy is
+        safe because `25` never begins with `3`. middleware/logger.go's
+        orcaPoolDelimiterAt is the same grammar for the log and OTel sinks.
+      */
+      var ORCAPOOL_ENCODED_TAIL_RE = new RegExp(
+        ORCAPOOL_PAGE_PATH_RE.source.replace(/\$$/, '(\\?|%(?:25)*3[Ff])'),
+        'i',
+      );
+      var orcaPoolEncodedTail = ORCAPOOL_ENCODED_TAIL_RE.test(p);
+
+      /*
+        AND THE CREATOR INVITE PAIR, on /creators (main, codex r47 P2).
+
+        A separate page with a separate pair of parameters, kept beside the
+        pool guard rather than folded into it: they scope different keys to
+        different paths, and one regex answering for both would have to
+        widen one of the two. controller/ad_tags.go carries the same pair of
+        guards, in the same order, for the server-injected copy.
+      */
+      var CREATOR_INVITE_PATH_RE =
+        /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/creators(\/|$)/i;
+      var onCreatorInvite = pDecodeFailed || CREATOR_INVITE_PATH_RE.test(p);
+      // THE PLAYGROUND'S ?key= (codex PR #1727). The product's own links put a
+      // numeric token ROW ID there, never the secret; anything else in it is a
+      // pasted credential, and these tags run before React can strip it.
+      // Path-scoped like the pairs above ("key" is an ordinary word elsewhere
+      // and the flag is document-sticky) and value-scoped so the row-id links
+      // keep measuring. Mirrors carriesPlaygroundSecretKey in
+      // helpers/queryGuard.js.
+      var PLAYGROUND_PATH_RE =
+        /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/(console\/)?playground(\/|$)/i;
+      var onPlayground = pDecodeFailed || PLAYGROUND_PATH_RE.test(p);
+      // AND THE WHOLE QUERY SMUGGLED INTO THE PATH (codex PR #1727 round 8):
+      // /playground%3Fkey%3D… arrives with an empty location.search, so the
+      // loop below has nothing to walk. Derived from the pattern above with its
+      // end replaced by a query DELIMITER shape (? or %(25)*3F), as the pool
+      // guard's encoded tail is. Any tail goes dark, whatever it names.
+      var PLAYGROUND_ENCODED_TAIL_RE = new RegExp(
+        PLAYGROUND_PATH_RE.source.replace(
+          /\(\\\/\|\$\)$/,
+          // Any descendant first: /playground/battle%3Fkey%3D… is a tail too
+          // (codex PR #1727 round 14).
+          '(?:\\/[^?]*?)?(\\?|%(?:25)*3[Ff])',
+        ),
+        'i',
+      );
+      var sensitiveQuery = false;
+      try {
+        if (PLAYGROUND_ENCODED_TAIL_RE.test(p)) sensitiveQuery = true;
+        var pairs = (window.location.search || '').replace(/^\?/, '').split('&');
+        for (var qi = 0; qi < pairs.length; qi++) {
+          var eq = pairs[qi].indexOf('=');
+          var rawKey = eq < 0 ? pairs[qi] : pairs[qi].slice(0, eq);
+          // A MATCHING KEY WITH NO VALUE IS NOT A BEARER (codex round 33, P2).
+          // The verdict below is DOCUMENT-STICKY for the whole SPA session, so
+          // treating "?i=" as a capability costs every later pageview's
+          // campaign and experiment reporting plus the support widget, and
+          // protects nothing — there is no code in an empty parameter. Tested
+          // RAW and never decoded: non-empty is the whole question, and
+          // decoding would let an encoded value forge a pair boundary.
+          // Mirrors hasQueryKeyMatching in helpers/queryGuard.js, which makes
+          // the same change for the live-document half (Rule 18 — the two
+          // copies answer one question and must not drift).
+          var rawValue = eq < 0 ? '' : pairs[qi].slice(eq + 1);
+          // AN ENCODED DELIMITER in the name (?key%3Dsk-…): there is no literal
+          // "=", so the value reads as empty and the skip below would pass it.
+          // A name that decodes to contain "=" is never a real parameter name;
+          // on the Playground it goes dark (codex PR #1727 round 12).
+          //
+          // Judged on the FULLY decoded name, not on the raw spelling of the
+          // delimiter: %25%33%44 is a "=" too (codex PR #1727 round 13). A
+          // name that still carries % or + after the loop, or will not decode
+          // (throws into the catch below), fails closed.
+          if (onPlayground) {
+            var pgRawName = rawKey;
+            for (
+              var pn = 0;
+              pn < 9 && /%[0-9A-Fa-f]{2}|\+/.test(pgRawName);
+              pn++
+            ) {
+              pgRawName = decodeURIComponent(pgRawName.replace(/\+/g, ' '));
+            }
+            if (/[%+=]/.test(pgRawName)) {
+              sensitiveQuery = true;
+              break;
+            }
+          }
+          if (!rawKey || !rawValue) continue;
+          // '+' encodes a space in query strings; normalize before decoding.
+          var decodedKey = decodeURIComponent(rawKey.replace(/\+/g, ' '));
+          if (SENSITIVE_PARAM_RE.test(decodedKey)) {
+            sensitiveQuery = true;
+            break;
+          }
+          if (onCheckoutReturn && /^session_id$/i.test(decodedKey)) {
+            sensitiveQuery = true;
+            break;
+          }
+          // The creator invite pair, path-scoped for the same reason
+          // session_id is: `h` and `r` are one-letter names certain to mean
+          // something harmless elsewhere, and __skipAnalytics is
+          // document-sticky, so a global rule would silence tags across the
+          // product. On /creators they are a named person's public handle and
+          // our own outreach-recipient id, sitting in the address bar of a
+          // page whose GTM/GA/pixel tags are parse-time <head> scripts — they
+          // run before any React code, and nothing ever strips the params, so
+          // every pageview of the visit reports them to third parties.
+          // (codex r47 P2)
+          if (onOrcaPoolPage && /^i$/i.test(decodedKey)) {
+            sensitiveQuery = true;
+            break;
+          }
+          if (onCreatorInvite && /^(h|r)$/i.test(decodedKey)) {
+            sensitiveQuery = true;
+            break;
+          }
+          // Tested on the RAW value: our links emit exactly a positive
+          // integer, and an encoded digit is not that shape, so it fails
+          // closed rather than being decoded into one.
+          //
+          // The NAME is decoded to a fixed point (codex PR #1727 round 7):
+          // "%256bey" decodes once to "%6bey", not "key". A name that still
+          // carries an escape after the loop fails closed, and one that will
+          // not decode throws into the catch below, which also fails closed.
+          if (onPlayground && !/^[1-9][0-9]*$/.test(rawValue)) {
+            // FORM decoding on every pass, not only the first: %2Bkey%2B
+            // decodes to +key+, which is " key " (codex PR #1727 round 9).
+            var pgKey = decodedKey;
+            for (var pd = 0; pd < 8 && /%[0-9A-Fa-f]{2}|\+/.test(pgKey); pd++) {
+              pgKey = decodeURIComponent(pgKey.replace(/\+/g, ' '));
+            }
+            // Trimmed and folded as common.QueryKeyMatches does (TrimSpace
+            // includes U+0085; EqualFold folds U+212A to k, as toLowerCase
+            // does), and a name still carrying an escape or a + after the
+            // bound fails closed (codex PR #1727 rounds 8 and 10).
+            // Any % at all: "%25key" decodes to "%key", which Go's next
+            // decode rejects and fails closed on (codex PR #1727 round 11).
+            var pgUnfinished = /[%+]/.test(pgKey);
+            pgKey = pgKey.replace(/^[\s\u0085]+|[\s\u0085]+$/g, '');
+            if (pgUnfinished || pgKey.toLowerCase() === 'key') {
+              sensitiveQuery = true;
+              break;
+            }
+          }
+        }
+      } catch (e) {
+        sensitiveQuery = true;
+      }
+      // Locale-stripped path for the exact/prefix auth checks below. A
+      // localized URL like /zh-CN/auth?code_challenge=… or
+      // /ja/accept-invite?token=… is served as the SPA shell (IsKnownSPARoute
+      // strips the locale) and LocaleFallback preserves the query while it
+      // client-redirects to the bare path — so this boot guard, which runs
+      // FIRST, must normalize the locale prefix or the token/PII-bearing URL
+      // reaches the tags before the redirect (codex round 15). The
+      // redeem/boost/squad regexes below already embed the optional prefix.
+      var pNoLocale = p.replace(/^\/[A-Za-z]{2}(-[A-Za-z0-9]+)?(?=\/)/, '').toLowerCase();
+      // The public /redeem/:code claim route carries a redeemable bearer
+      // voucher code in the path. Skip third-party analytics so GTM/Meta Pixel
+      // never capture the code via page_location/referrer. Matched with an
+      // optional leading locale segment (/zh-CN/redeem/:code etc., served by
+      // the /:loc/* SPA fallback) and requires /redeem to be a full path
+      // segment so /redeemed... is not caught.
+      var isRedeem = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/redeem(\/|$)/i.test(p);
+      // The /b/:token boost share landing carries the sharer's tap-scoped
+      // token in the path. Same page_location leak class as /redeem, so the
+      // cold click must not reach GTM/Meta before the stub redirects. The
+      // sessionStorage 'boost_token' breadcrumb deliberately does NOT join
+      // the pendingRedeem-style blanket suppression: the token grants TAP
+      // rights only (never read/claim — a different bearer class than a
+      // redeemable voucher code), and suppressing all analytics through the
+      // /register leg would blind the signup conversion pixel for exactly
+      // the boost-referred cohort the growth loop measures.
+      var isBoostShare = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/b\//i.test(p);
+      // The /s/:token squad-share landing carries a join-rights bearer token in
+      // the path — same page_location leak class as /b, so the cold click must
+      // not reach GTM/Meta before the redirect stub replaces the URL (codex).
+      var isSquadShare = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/s\//i.test(p);
+      // /compliance/share/<token> is a PUBLIC, no-login report view whose path
+      // token is an unauthenticated bearer capability — it authorizes reading
+      // the report and (when enabled) downloading the artifact. Same
+      // page_location leak class as /b and /s, so no tag may see it (codex).
+      var isComplianceShare = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/compliance\/share(\/|$)/i.test(p);
+      // /share/<token> is the routing-report landing the card's QR resolves to.
+      // The token is an unauthenticated bearer capability over the frozen
+      // snapshot, and the reader is ALWAYS signed out (it arrives from a
+      // screenshot, a social unfurl or a scan), so the cold load is exactly the
+      // moment a tag would capture page_location. Same class as /compliance/share.
+      var isRoutingShare = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/share(\/|$)/i.test(p);
+      // /rig/<token> is the rig-share landing — the recipient's first view of
+      // somebody else's machine. Same bearer class as /share and MORE than it
+      // grants: the routing share exposes a frozen report, this token authorizes
+      // running inference on the owner's own GPU until the link expires or its
+      // request cap runs out. The reader is ALWAYS signed out and always arrives
+      // cold (the link was sent to them), so the parse-time load is exactly the
+      // moment a tag would capture page_location — and BearerRouteHead cannot
+      // help, because it is a React component that mounts long after the tags in
+      // this head have run.
+      //
+      // /rig-bench/<token> is deliberately NOT suppressed. It is the one page on
+      // this surface built to be posted, indexed and unfurled — a frozen
+      // measurement with no account data behind it and no access granted — so it
+      // carries no BearerRouteHead either (web/src/App.jsx). Suppressing it would
+      // blind exactly the growth loop it exists to feed. The trailing
+      // separator-or-end group keeps the two apart: rig-bench has no separator
+      // after rig.
+      var isRigShare = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/rig(\/|$)/i.test(p);
+      // /quote/<token> is the customer-facing proposal. The path token is the
+      // STRONGEST bearer capability on this public surface: it reads a named
+      // company's negotiated pricing AND signs the agreement on their behalf,
+      // and it stays live until the quote expires. Every arrival is a cold
+      // load from an email, so the parse-time page_view is exactly when a tag
+      // would capture page_location with the token in it. App.jsx already
+      // gives the route a BearerRouteHead, but that is a React component that
+      // mounts long after the tags in this head have run — same gap the rig
+      // and routing shares document. Trailing separator-or-end so a future
+      // /quotes… marketing route is not swept up.
+      var isQuoteShare = /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/quote(\/|$)/i.test(p);
+      // A signed-out claim stashes its /redeem/:code return target in
+      // localStorage['post_login_redirect'] (never a URL) and sends the visitor
+      // to /login. That value carries the bearer voucher code and is readable by
+      // any first-party analytics tag, so suppress analytics on ANY page load
+      // while a pending redeem return target exists — closing the /login
+      // cold-load / OAuth-callback window until the code is consumed and the key
+      // cleared (helpers/auth.jsx consumePostLoginRedirect removes it).
+      // Check the breadcrumbs a claim writes: the localStorage return target,
+      // the signed-out sessionStorage pending code, AND the logged-in card-gate
+      // pending_redeem_claim (stashed before the $0 Stripe card setup so the
+      // return can finish the claim — an abandoned Checkout can leave it while
+      // the visitor lands on /console). If localStorage is unavailable / its
+      // write failed, the raw code can still sit in one of the sessionStorage
+      // keys — same-origin analytics could read it — so any breadcrumb suppresses
+      // analytics.
+      var pendingRedeem = false;
+      try {
+        // The stash is a RETURN TARGET, so it inherits the sensitivity of the
+        // route it points at. Matching only 'redeem/' missed the two other
+        // writers: PKCEAuthorize stashes the full /auth?state=&code_challenge=
+        // &login_hint=… URL and AcceptInvite stashes /accept-invite?token=…,
+        // both verbatim, before hard-navigating to /login or /register — so
+        // tags ran on the destination while live PKCE/invite data sat in
+        // storage (codex round 24). Both are consumed on the next successful
+        // login, so suppression covers essentially their whole lifetime.
+        //
+        // DECODED before matching, and fail-closed (codex round 66). Neither
+        // writer composes a literal: both stash
+        // `location.pathname + location.search` verbatim, and location.pathname
+        // keeps the escapes from the address bar. `/%61ccept-invite?token=…`
+        // resolves to the real invite route while this regex saw nothing, so
+        // tags ran on /login with a live invite token in localStorage — the
+        // round-25/32 finding on a second, independent path input. Query off
+        // first so an encoded VALUE cannot forge a path match.
+        var stashed = localStorage.getItem('post_login_redirect') || '';
+        var sPath = stashed.split('?')[0].split('#')[0];
+        var sDecoded = sPath;
+        var sDecodeFailed = false;
+        try { sDecoded = decodeURIComponent(sPath); } catch (e2) { sDecodeFailed = true; }
+        var sRe = /(^|\/)(redeem|b|s|share|rig|quote|compliance\/share)\/|(^|\/)(auth|accept-invite)(\/|$)/i;
+        pendingRedeem =
+          (!!stashed && sDecodeFailed) ||
+          sRe.test(sPath) ||
+          sRe.test(sDecoded) ||
+          sRe.test(sPath.replace(/\/{2,}/g, '/')) ||
+          sRe.test(sDecoded.replace(/\/{2,}/g, '/'));
+      } catch (e) { /* localStorage unavailable — ignore */ }
+      try {
+        // pending_squad_join is the /s/:token breadcrumb {token, code} that
+        // SquadShareLanding stashes before redirecting to /redeem/:code; it holds
+        // a join-rights bearer token + voucher key and is only cleared when
+        // SquadCard mounts, so on an early exit it can linger on a non-sensitive
+        // route — suppress analytics while it's present too (codex).
+        pendingRedeem =
+          pendingRedeem ||
+          !!(sessionStorage.getItem('pending_redeem_code') || '') ||
+          !!(sessionStorage.getItem('pending_redeem_claim') || '') ||
+          !!(sessionStorage.getItem('pending_squad_join') || '') ||
+          // redeem_personalization keeps the voucher code in its VALUE and is
+          // written on first paint of a personalized claim link — no CTA press
+          // — so a visitor who just navigates on in the same tab leaves a
+          // redeemable code behind with neither breadcrumb above set (codex).
+          !!(sessionStorage.getItem('redeem_personalization') || '');
+      } catch (e) { /* sessionStorage unavailable — ignore */ }
+      // Published for the ad-tag templates (controller/ad_tags.go) and the
+      // static fallback (helpers/adTagsFallback.js), which each re-derived this
+      // from the RAW pathname in their own copy of the regex. Six copies have
+      // now drifted three separate times — the locale prefix, letter case, and
+      // percent encoding: /%6fauth/github routes to /oauth/github server-side
+      // while location.pathname keeps the escape, and `code` is deliberately
+      // absent from the sensitive-query list above, so nothing else caught it
+      // (codex round 32). One decoded, fail-closed computation published once,
+      // and no copies left to drift.
+      window.__ORCA_OAUTH_CALLBACK =
+        pDecodeFailed || /^(\/[A-Za-z]{2}(-[A-Za-z0-9]+)?)?\/oauth\//i.test(p);
+      // Suppression reasons split by whether they are STILL TRUE after an SPA
+      // navigation (codex round 61 / open item 15). __skipAnalytics is
+      // document-sticky, so a cold load of an invalid /s/:token that then
+      // navigates to / left the whole document permanently unreportable —
+      // on a static frontend the deferred fallback tags never install at all.
+      //
+      // The naive fix is to drop the sticky short-circuit in
+      // analyticsSuppressed(); that UNDER-suppresses, which is the direction
+      // that leaks credentials rather than the one that loses a conversion.
+      // So the guard publishes WHY instead, and the runtime re-evaluates only
+      // the reasons it can re-derive from the CURRENT url.
+      //
+      // STICKY = true about this SESSION, not about the URL we are on:
+      // an impersonation view token and the claim-resume breadcrumbs outlive
+      // any navigation, so a document that booted under them stays silent.
+      // Stored impersonation, read the same way helpers/impersonation.js does.
+      // The PATH check below is not enough (codex round 65): the bootstrap page
+      // scrubs its own url and navigates into the app, so a RELOAD in that tab
+      // parses at /console with imp_token still in sessionStorage. Round 64 gave
+      // analytics.js an isImpersonating() check, but THIS script runs first and
+      // GTM plus the injected head tags load from it — by the time any module
+      // could object, the tags are already live on the customer's account.
+      // Exactly the fix-it-twice shape this file's own drift pins exist for.
+      var impersonating = false;
+      try {
+        impersonating = !!(
+          sessionStorage.getItem('imp_token') &&
+          sessionStorage.getItem('imp_user')
+        );
+      } catch (e) {
+        // Storage unavailable: nothing could have been stashed there either.
+        impersonating = false;
+      }
+      var stickyReason =
+        impersonating ||
+        pNoLocale.indexOf('/impersonate') === 0 ||
+        pendingRedeem;
+      // PATH/QUERY = true only of the url in the address bar right now.
+      var pathQueryReason =
+        pDecodeFailed ||
+        sensitiveQuery ||
+        // The encoded spelling of a pool invite. It is a PATH reason, not a
+        // query one: location.search is empty and the code is in the pathname.
+        // See ORCAPOOL_ENCODED_TAIL_RE.
+        orcaPoolEncodedTail ||
+        pNoLocale.indexOf('/user/reset') === 0 ||
+        pNoLocale.indexOf('/login/magic') === 0 ||
+        // PKCE authorize (/auth?state=&code_challenge=&login_hint=…) and
+        // workspace invites (/accept-invite?token=…) carry OAuth params /
+        // bearer tokens / PII in the query — no tag may see those URLs
+        // (codex round 13). '/auth' is matched EXACTLY (both slash forms —
+        // react-router renders /auth/ as PKCEAuthorize and the Go shell
+        // serves it 200, so a trailing slash must not slip the guard): the
+        // nested first-party /auth/continue exists precisely to LOAD tags
+        // post-auth, so it must NOT be suppressed. Checked against the
+        // locale-stripped path so /zh-CN/auth etc. are covered (round 15).
+        pNoLocale === '/auth' ||
+        pNoLocale === '/auth/' ||
+        pNoLocale.indexOf('/accept-invite') === 0 ||
+        // /device?code=<user code> is the human half of the RFC 8628 device
+        // grant. The code names a LIVE pending grant: handed to a tag vendor it
+        // is a credential-shaped value in an analytics warehouse, and handed
+        // back to whoever talked a user into starting the flow it confirms
+        // their code is waiting to be approved. Every arrival is a cold load —
+        // the link is printed on another machine's console — so this guard is
+        // the only thing that runs before the code could reach a tag. Matched
+        // as a PREFIX on the locale-stripped path rather than as a ?code=
+        // query rule, because bare `code` deliberately stays off
+        // SENSITIVE_PARAM_RE (see its note) and because a user who TYPES the
+        // code arrives at /device with no query at all.
+        pNoLocale.indexOf('/device') === 0 ||
+        isRedeem ||
+        isBoostShare ||
+        isSquadShare ||
+        isComplianceShare ||
+        isRoutingShare ||
+        isRigShare ||
+        isQuoteShare;
+      window.__skipAnalytics = stickyReason || pathQueryReason;
+      // Only when EVERY reason was about the url may the runtime re-decide.
+      // Absent/false keeps the pre-existing sticky behaviour exactly, so a
+      // reason added to the guard without being classified here fails CLOSED.
+      window.__skipAnalyticsPathOnly = !stickyReason && pathQueryReason;
+    })();
+    </script>
+
+    <!--Umami OrcaRouter-->
+    <!--Google Analytics OrcaRouter-->
+
+    <script>(function(){var installGtm=function(){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T674D3WQ');};
+    if(!window.__skipAnalytics){installGtm();}else{(window.__orcaDeferredAnalytics=window.__orcaDeferredAnalytics||[]).push(installGtm);}})();</script>
+
+    <script>window.__AD_CLICK_ID_PARAMS = ["gclid","gbraid","wbraid","fbclid","msclkid","ttclid","twclid","li_fat_id","rdt_cid","sccid","ScCid","epik"];</script>
+    <script>window.__AD_TRACKING_ON = {vendor:true,custom:true};</script>
+    <!-- Meta Pixel (admin-configured) -->
+    <script>
+    (function () {
+      if (window.__skipAnalytics) { return; }
+      if (window.__ORCA_OAUTH_CALLBACK) { return; }
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '656083250933792');
+      fbq('track', 'PageView');
+    })();
+    </script>
+    <!-- Custom ad snippet (admin-configured) -->
+    <script>
+    (function () {
+      if (window.__skipAnalytics) { return; }
+      if (window.__ORCA_OAUTH_CALLBACK) { return; }
+      window.__orcaCustomAdSnippet = true;
+      document.write("\u003c!-- Google tag (gtag.js) --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=AW-18540132286\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'AW-18540132286');\n\u003c/script\u003e\n\n\u003c!-- Google Ads conversion: fire on signup and on payment --\u003e\n\u003cscript\u003e\n  window.addEventListener('orcarouter:conversion', function (e) {\n    var type = e.detail \u0026\u0026 e.detail.type;\n    if (type !== 'signup' \u0026\u0026 type !== 'purchase') return;\n    gtag('event', 'conversion', {\n      'send_to': 'AW-18540132286/zDrkCJzL2awdEL7vz4hF',\n      'value': 1.0,\n      'currency': 'SGD'\n    });\n  });\n\u003c/script\u003e");
+    })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-DjpPPX6Z.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/chunk-react-core-Bzjilivm.js">
+    <link rel="modulepreload" crossorigin href="/assets/chunk-semi-ui-Bv41NB9y.js">
+    <link rel="modulepreload" crossorigin href="/assets/chunk-i18n-BvjP2w3A.js">
+    <link rel="modulepreload" crossorigin href="/assets/chunk-tools-Uj3RNI36.js">
+    <link rel="modulepreload" crossorigin href="/assets/chunk-react-components-CuWoz0PM.js">
+    <link rel="stylesheet" crossorigin href="/assets/semi-ui-yRXI6evF.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-kHpxAZnz.css">
+  </head>
+
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T674D3WQ"
+    referrerpolicy="no-referrer"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Meta Pixel noscript (admin-configured) -->
+    <noscript><img height="1" width="1" style="display:none"
+    referrerpolicy="no-referrer"
+    src="https://www.facebook.com/tr?id=656083250933792&ev=PageView&noscript=1"
+    /></noscript>
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

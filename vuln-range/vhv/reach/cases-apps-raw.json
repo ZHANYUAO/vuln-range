@@ -1,0 +1,1398 @@
+{
+ "results": [
+  {
+   "pkg": "apostrophe",
+   "files_scanned": 339,
+   "minified_skipped": 0,
+   "hits": [
+    {
+     "file": "modules\\@apostrophecms\\ai\\lib\\startup.js",
+     "line": 225,
+     "api": "startCase",
+     "via": "lodash/startCase",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "label: tool.label || startCase(tool.name),"
+    },
+    {
+     "file": "modules\\@apostrophecms\\area\\index.js",
+     "line": 687,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (parentDotPath)",
+     "snippet": "return _.get(doc, parentDotPath, doc);"
+    },
+    {
+     "file": "modules\\@apostrophecms\\area\\index.js",
+     "line": 807,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (dotPath)",
+     "snippet": "const existing = _.get(doc, dotPath);"
+    },
+    {
+     "file": "modules\\@apostrophecms\\area\\index.js",
+     "line": 812,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (dotPath)",
+     "snippet": "const existingArea = _.get(doc, dotPath);"
+    },
+    {
+     "file": "modules\\@apostrophecms\\doc\\index.js",
+     "line": 1146,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (metaPathFull)",
+     "snippet": "const existingValue = _.get(doc, metaPathFull) || {};"
+    },
+    {
+     "file": "modules\\@apostrophecms\\doc\\index.js",
+     "line": 1176,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "template with ${}",
+     "snippet": "return _.get("
+    },
+    {
+     "file": "modules\\@apostrophecms\\doc\\index.js",
+     "line": 1212,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (metaPathFull)",
+     "snippet": "const existingValue = _.get(doc, metaPathFull) || {};"
+    },
+    {
+     "file": "modules\\@apostrophecms\\doc\\index.js",
+     "line": 1248,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "template with ${}",
+     "snippet": "_.get("
+    },
+    {
+     "file": "modules\\@apostrophecms\\document-versions\\lib\\text.js",
+     "line": 133,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (titleField)",
+     "snippet": "const value = _.get(item, titleField);"
+    },
+    {
+     "file": "modules\\@apostrophecms\\module\\index.js",
+     "line": 783,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (dotPathOrArray)",
+     "snippet": "return _.get(self.options, dotPathOrArray, def);"
+    },
+    {
+     "file": "modules\\@apostrophecms\\module\\index.js",
+     "line": 790,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "template with ${}",
+     "snippet": "return _.get(self.options, `components.${name}`, def);"
+    },
+    {
+     "file": "modules\\@apostrophecms\\page\\index.js",
+     "line": 969,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (typeof _.get(req, 'data.page.level') === 'number') {"
+    }
+   ]
+  },
+  {
+   "pkg": "ghost",
+   "files_scanned": 2166,
+   "minified_skipped": 71,
+   "hits": [
+    {
+     "file": "core\\frontend\\helpers\\asset.js",
+     "line": 19,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const hasMinFile = get(options, 'hash.hasMinFile');"
+    },
+    {
+     "file": "core\\frontend\\helpers\\authors.js",
+     "line": 29,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "autolink = !(isString(autolink) && autolink === 'false');"
+    },
+    {
+     "file": "core\\frontend\\helpers\\has.js",
+     "line": 122,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "return _.has(data, prop.replace(/@/, '')) && !_.isEmpty(_.get(data, prop.replace(/@/, '')));"
+    },
+    {
+     "file": "core\\frontend\\helpers\\has.js",
+     "line": 124,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (prop)",
+     "snippet": "return _.has(obj, prop) && !_.isEmpty(_.get(obj, prop));"
+    },
+    {
+     "file": "core\\frontend\\helpers\\plural.js",
+     "line": 24,
+     "api": "isUndefined",
+     "via": "lodash/isUndefined",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "isUndefined(options.hash) ||"
+    },
+    {
+     "file": "core\\frontend\\helpers\\plural.js",
+     "line": 25,
+     "api": "isUndefined",
+     "via": "lodash/isUndefined",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "isUndefined(options.hash.empty) ||"
+    },
+    {
+     "file": "core\\frontend\\helpers\\plural.js",
+     "line": 26,
+     "api": "isUndefined",
+     "via": "lodash/isUndefined",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "isUndefined(options.hash.singular) ||"
+    },
+    {
+     "file": "core\\frontend\\helpers\\plural.js",
+     "line": 27,
+     "api": "isUndefined",
+     "via": "lodash/isUndefined",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "isUndefined(options.hash.plural)"
+    },
+    {
+     "file": "core\\frontend\\helpers\\prev_post.js",
+     "line": 41,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (get(options, 'hash.in')) {"
+    },
+    {
+     "file": "core\\frontend\\helpers\\prev_post.js",
+     "line": 42,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (options.hash.in === 'primary_tag' && get(post, 'primary_tag.slug')) {"
+    },
+    {
+     "file": "core\\frontend\\helpers\\prev_post.js",
+     "line": 44,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "} else if (options.hash.in === 'primary_author' && get(post, 'primary_author.slug')) {"
+    },
+    {
+     "file": "core\\frontend\\helpers\\prev_post.js",
+     "line": 46,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "} else if (options.hash.in === 'author' && get(post, 'author.slug')) {"
+    },
+    {
+     "file": "core\\frontend\\helpers\\price.js",
+     "line": 76,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "locale = _.get(options, 'data.site.locale', 'en'),"
+    },
+    {
+     "file": "core\\frontend\\helpers\\tiers.js",
+     "line": 14,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "const separator = isString(options.hash.separator) ? options.hash.separator : ', ';"
+    },
+    {
+     "file": "core\\frontend\\helpers\\tiers.js",
+     "line": 15,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "const lastSeparator = isString(options.hash.lastSeparator) ? options.hash.lastSeparator : ' and ';"
+    },
+    {
+     "file": "core\\frontend\\helpers\\tiers.js",
+     "line": 16,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "const prefix = isString(options.hash.prefix) ? options.hash.prefix : '';"
+    },
+    {
+     "file": "core\\frontend\\helpers\\tiers.js",
+     "line": 17,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "let suffix = isString(options.hash.suffix) ? options.hash.suffix : '';"
+    },
+    {
+     "file": "core\\frontend\\helpers\\tiers.js",
+     "line": 30,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "suffix = isString(options.hash.suffix) ? options.hash.suffix : ' tier';"
+    },
+    {
+     "file": "core\\frontend\\helpers\\tiers.js",
+     "line": 32,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "suffix = isString(options.hash.suffix) ? options.hash.suffix : ' tiers';"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 140,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "tainted",
+     "why": "identifier (lookupPath)",
+     "snippet": "return get(this._strings, lookupPath) || fallback;"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 150,
+     "api": "merge",
+     "via": "lodash/merge",
+     "verdict": "tainted",
+     "why": "logical expr",
+     "snippet": "const options = merge({ log: true }, opts || {});"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 155,
+     "api": "isString",
+     "via": "lodash/isString",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "if (!msgPath || msgPath.length === 0 || !isString(msgPath)) {"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 161,
+     "api": "isNil",
+     "via": "lodash/isNil",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "if (isNil(this._strings)) {"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 169,
+     "api": "isObject",
+     "via": "lodash/isObject",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "if (isObject(matchingString) || isEqual(matchingString, {})) {"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 169,
+     "api": "isEqual",
+     "via": "lodash/isEqual",
+     "verdict": "unknown",
+     "why": "ObjectExpression",
+     "snippet": "if (isObject(matchingString) || isEqual(matchingString, {})) {"
+    },
+    {
+     "file": "core\\frontend\\services\\theme-engine\\i18n\\i18n.js",
+     "line": 278,
+     "api": "get",
+     "via": "lodash/get",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "return get(this._strings, 'errors.errors.anErrorOccurred', 'An error occurred');"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\authors-public.js",
+     "line": 58,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (ALLOWED_READ_FIELDS)",
+     "snippet": "const data = pick(frame.data, ALLOWED_READ_FIELDS);"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\pages-public.js",
+     "line": 93,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (ALLOWED_READ_FIELDS)",
+     "snippet": "const data = pick(frame.data, ALLOWED_READ_FIELDS);"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\settings.js",
+     "line": 95,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (_.get(paidMembers, 'meta.pagination.total') !== 0) {"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\tags-public.js",
+     "line": 60,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (ALLOWED_READ_FIELDS)",
+     "snippet": "const data = pick(frame.data, ALLOWED_READ_FIELDS);"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\utils\\serializers\\input\\pages.js",
+     "line": 176,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (_.get(frame, 'options.source')) {"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\utils\\serializers\\input\\posts.js",
+     "line": 220,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (_.get(frame, 'options.source')) {"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\utils\\serializers\\input\\webhooks.js",
+     "line": 8,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "if (_.get(frame, 'options.context.integration.id')) {"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\utils\\validators\\input\\webhooks.js",
+     "line": 15,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "!_.get(frame, 'options.context.integration.id') &&"
+    },
+    {
+     "file": "core\\server\\api\\endpoints\\utils\\validators\\input\\webhooks.js",
+     "line": 16,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "!_.get(frame.data, 'webhooks[0].integration_id')"
+    },
+    {
+     "file": "core\\server\\models\\api-key.js",
+     "line": 35,
+     "api": "omit",
+     "via": "lodash/omit",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "return omit(attrs, 'role');"
+    },
+    {
+     "file": "core\\server\\models\\base\\plugins\\filtered-collection.js",
+     "line": 29,
+     "api": "result",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "_.result(filteredCollection, 'tableName'),"
+    },
+    {
+     "file": "core\\server\\models\\base\\plugins\\sanitize.js",
+     "line": 107,
+     "api": "result",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const tableName = _.result(this.prototype, 'tableName');"
+    },
+    {
+     "file": "core\\server\\services\\custom-theme-settings\\custom-theme-settings-service.js",
+     "line": 237,
+     "api": "isEmpty",
+     "via": "lodash/isEmpty",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "if (knownSettings.length === 0 && isEmpty(themeSettings)) {"
+    },
+    {
+     "file": "core\\server\\services\\custom-theme-settings\\custom-theme-settings-service.js",
+     "line": 298,
+     "api": "isEmpty",
+     "via": "lodash/isEmpty",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "if (isEmpty(theme.customSettings)) {"
+    },
+    {
+     "file": "core\\server\\services\\custom-theme-settings\\custom-theme-settings-service.js",
+     "line": 312,
+     "api": "isEmpty",
+     "via": "lodash/isEmpty",
+     "verdict": "unknown",
+     "why": "no expr",
+     "snippet": "if (isEmpty(theme.customSettings)) {"
+    },
+    {
+     "file": "core\\server\\services\\stripe\\services\\webhook\\checkout-session-event-service.js",
+     "line": 350,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const checkoutType = _.get(session, 'metadata.checkoutType');"
+    },
+    {
+     "file": "core\\server\\services\\stripe\\services\\webhook\\checkout-session-event-service.js",
+     "line": 358,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const metadataName = _.get(session, 'metadata.name');"
+    },
+    {
+     "file": "core\\server\\services\\stripe\\services\\webhook\\checkout-session-event-service.js",
+     "line": 359,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const metadataNewsletters = _.get(session, 'metadata.newsletters');"
+    },
+    {
+     "file": "core\\server\\services\\stripe\\services\\webhook\\checkout-session-event-service.js",
+     "line": 369,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const payerName = _.get("
+    },
+    {
+     "file": "core\\server\\services\\stripe\\services\\webhook\\checkout-session-event-service.js",
+     "line": 392,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const payerName = _.get("
+    },
+    {
+     "file": "core\\server\\services\\stripe\\services\\webhook\\subscription-event-service.js",
+     "line": 28,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const subscriptionPriceData = _.get(subscription, 'items.data');"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 135,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamGlobalBlock, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 118,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 176,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamGlobalReset, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 159,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 212,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamWebmentionsBlock, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 200,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 248,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamEmailPreviewBlock, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 236,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 289,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(settings, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 270,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 358,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamSupportRequestBlock, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 346,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 395,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamUserLogin, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 381,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 436,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamMemberLogin, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 422,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 474,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamCheckoutSessionGlobal, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 460,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 512,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamCheckoutSessionEmail, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 498,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 551,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamOtcVerificationEnumeration, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 536,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 590,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamOtcVerification, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 575,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 633,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamUserLogin, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 619,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 677,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamUserReset, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 660,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 713,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamUserVerification, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 701,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 749,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamSendVerificationCode, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 737,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 797,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamPrivateBlock, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 775,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 826,
+     "api": "pick",
+     "via": "lodash/pick",
+     "verdict": "tainted",
+     "why": "identifier (spamConfigKeys)",
+     "snippet": "pick(spamContentApiKey, spamConfigKeys),"
+    },
+    {
+     "file": "core\\server\\web\\shared\\middleware\\api\\spam-prevention.js",
+     "line": 813,
+     "api": "extend",
+     "via": "lodash/extend",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "extend("
+    }
+   ]
+  },
+  {
+   "pkg": "n8n",
+   "files_scanned": 2223,
+   "minified_skipped": 0,
+   "hits": []
+  },
+  {
+   "pkg": "parse-server",
+   "files_scanned": 199,
+   "minified_skipped": 2,
+   "hits": []
+  },
+  {
+   "pkg": "_directus_api",
+   "files_scanned": 824,
+   "minified_skipped": 0,
+   "hits": [
+    {
+     "file": "dist\\services\\graphql\\schema\\parse-query.js",
+     "line": 54,
+     "api": "get",
+     "via": "lodash-es",
+     "verdict": "tainted",
+     "why": "identifier (parent)",
+     "snippet": "setDeep(query.deep, path, merge({}, get(query.deep, parent), { _alias: { [selection.alias.value]: selection.name.value } }));"
+    },
+    {
+     "file": "dist\\services\\graphql\\schema\\parse-query.js",
+     "line": 88,
+     "api": "get",
+     "via": "lodash-es",
+     "verdict": "tainted",
+     "why": "identifier (path)",
+     "snippet": "setDeep(query.deep, path, merge({}, get(query.deep, path), mapKeys(await sanitizeQuery(args, schema, accountability), (_value, key) => `_${key}`)));"
+    },
+    {
+     "file": "dist\\services\\versions.js",
+     "line": 328,
+     "api": "get",
+     "via": "lodash-es",
+     "verdict": "tainted",
+     "why": "identifier (path)",
+     "snippet": "const existing = get(existingDelta, path);"
+    }
+   ]
+  },
+  {
+   "pkg": "_nocobase_server",
+   "files_scanned": 96,
+   "minified_skipped": 0,
+   "hits": []
+  },
+  {
+   "pkg": "_strapi_core",
+   "files_scanned": 458,
+   "minified_skipped": 0,
+   "hits": [
+    {
+     "file": "dist\\configuration\\get-dirs.js",
+     "line": 30,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "public: path.resolve(appDir, _.get(config, 'server.dirs.public'))"
+    },
+    {
+     "file": "dist\\configuration\\get-dirs.mjs",
+     "line": 28,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "public: resolve(appDir, get(config, 'server.dirs.public'))"
+    },
+    {
+     "file": "dist\\configuration\\index.mjs",
+     "line": 80,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "uuid: _.get(pkgJSON, 'strapi.uuid'),"
+    },
+    {
+     "file": "dist\\configuration\\index.mjs",
+     "line": 81,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "installId: _.get(pkgJSON, 'strapi.installId'),"
+    },
+    {
+     "file": "dist\\configuration\\index.mjs",
+     "line": 82,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "packageJsonStrapi: _.omit(_.get(pkgJSON, 'strapi', {}), 'uuid'),"
+    },
+    {
+     "file": "dist\\configuration\\urls.mjs",
+     "line": 9,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "let serverUrl = _.get(serverConfig, 'url', '');"
+    },
+    {
+     "file": "dist\\configuration\\urls.mjs",
+     "line": 24,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "let adminUrl = _.get(adminConfig, 'url', '/admin');"
+    },
+    {
+     "file": "dist\\core-api\\controller\\index.js",
+     "line": 11,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const getAuthFromKoaContext = (ctx)=>_.get(ctx, 'state.auth') ?? {};"
+    },
+    {
+     "file": "dist\\core-api\\controller\\index.mjs",
+     "line": 9,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const getAuthFromKoaContext = (ctx)=>get(ctx, 'state.auth') ?? {};"
+    },
+    {
+     "file": "dist\\domain\\content-type\\index.mjs",
+     "line": 85,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const isPrivate = !_.get(schema, 'options.populateCreatorFields', false);"
+    },
+    {
+     "file": "dist\\loaders\\plugins\\get-enabled-plugins.js",
+     "line": 23,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const isStrapiPlugin = (info)=>_.get(info, 'strapi.kind') === 'plugin';"
+    },
+    {
+     "file": "dist\\loaders\\plugins\\get-enabled-plugins.mjs",
+     "line": 21,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const isStrapiPlugin = (info)=>get(info, 'strapi.kind') === 'plugin';"
+    },
+    {
+     "file": "dist\\loaders\\plugins\\index.js",
+     "line": 62,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "array with non-literal element",
+     "snippet": "const extendedContentTypes = _.get(extendedSchemas, ["
+    },
+    {
+     "file": "dist\\loaders\\plugins\\index.js",
+     "line": 84,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "array with non-literal element",
+     "snippet": "const strapiServer = _.get(strapiServers, ["
+    },
+    {
+     "file": "dist\\loaders\\plugins\\index.js",
+     "line": 97,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "template with ${}",
+     "snippet": "const userPluginConfig = _.get(userPluginsConfig, `${pluginName}.config`, {});"
+    },
+    {
+     "file": "dist\\loaders\\plugins\\index.mjs",
+     "line": 37,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "array with non-literal element",
+     "snippet": "const extendedContentTypes = get(extendedSchemas, ["
+    },
+    {
+     "file": "dist\\loaders\\plugins\\index.mjs",
+     "line": 59,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "array with non-literal element",
+     "snippet": "const strapiServer = get(strapiServers, ["
+    },
+    {
+     "file": "dist\\loaders\\plugins\\index.mjs",
+     "line": 72,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "template with ${}",
+     "snippet": "const userPluginConfig = get(userPluginsConfig, `${pluginName}.config`, {});"
+    },
+    {
+     "file": "dist\\registries\\sanitizers.mjs",
+     "line": 7,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (path)",
+     "snippet": "return _.get(sanitizers, path, []);"
+    },
+    {
+     "file": "dist\\registries\\validators.mjs",
+     "line": 7,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (path)",
+     "snippet": "return _.get(validators, path, []);"
+    },
+    {
+     "file": "dist\\services\\config.js",
+     "line": 38,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "return _.get(state.config, transformDeprecatedPaths(path), defaultValue);"
+    },
+    {
+     "file": "dist\\services\\config.mjs",
+     "line": 36,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "call result",
+     "snippet": "return get(state.config, transformDeprecatedPaths(path), defaultValue);"
+    },
+    {
+     "file": "dist\\services\\document-service\\attributes\\transforms.js",
+     "line": 19,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const rounds = _.toNumber(_.get(attribute, 'encryption.rounds', 10));"
+    },
+    {
+     "file": "dist\\services\\document-service\\attributes\\transforms.mjs",
+     "line": 13,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const rounds = toNumber(get(attribute, 'encryption.rounds', 10));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.js",
+     "line": 59,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (path)",
+     "snippet": "return _.get(submitted, path);"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.js",
+     "line": 278,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (ownerPath)",
+     "snippet": "const owner = _.get(entryData, ownerPath);"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.js",
+     "line": 296,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (ownerPath)",
+     "snippet": "const sourceComponent = ownerComponentUid(_.get(originalData, ownerPath));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.js",
+     "line": 297,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (ownerPath)",
+     "snippet": "const cloneComponent = ownerComponentUid(_.get(clonedData, ownerPath));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.js",
+     "line": 667,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "member access",
+     "snippet": "const cloneComponent = ownerComponentUid(_.get(clonedData, update.ownerPath));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.js",
+     "line": 685,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "member access",
+     "snippet": "originalValue: _.get(originalData, update.dataPath),"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.mjs",
+     "line": 57,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (path)",
+     "snippet": "return get(submitted, path);"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.mjs",
+     "line": 276,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (ownerPath)",
+     "snippet": "const owner = get(entryData, ownerPath);"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.mjs",
+     "line": 294,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (ownerPath)",
+     "snippet": "const sourceComponent = ownerComponentUid(get(originalData, ownerPath));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.mjs",
+     "line": 295,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (ownerPath)",
+     "snippet": "const cloneComponent = ownerComponentUid(get(clonedData, ownerPath));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.mjs",
+     "line": 665,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "member access",
+     "snippet": "const cloneComponent = ownerComponentUid(get(clonedData, update.ownerPath));"
+    },
+    {
+     "file": "dist\\services\\document-service\\utils\\clone-relations.mjs",
+     "line": 683,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "member access",
+     "snippet": "originalValue: get(originalData, update.dataPath),"
+    },
+    {
+     "file": "dist\\services\\entity-validator\\index.js",
+     "line": 119,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const model = strapi.getModel(_.get(item, '__component'));"
+    },
+    {
+     "file": "dist\\services\\entity-validator\\index.js",
+     "line": 367,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (attributeName)",
+     "snippet": "value: _.get(data, attributeName)"
+    },
+    {
+     "file": "dist\\services\\entity-validator\\index.mjs",
+     "line": 94,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const model = strapi.getModel(get(item, '__component'));"
+    },
+    {
+     "file": "dist\\services\\entity-validator\\index.mjs",
+     "line": 342,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (attributeName)",
+     "snippet": "value: get(data, attributeName)"
+    }
+   ]
+  },
+  {
+   "pkg": "_strapi_utils",
+   "files_scanned": 152,
+   "minified_skipped": 0,
+   "hits": [
+    {
+     "file": "dist\\content-types.js",
+     "line": 232,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const computeStoredPrivateAttributes = (model)=>new Set(_.union(_.get(model, 'options.privateAttributes', []), strapi?.config?.get('api.responses.privateAttribu"
+    },
+    {
+     "file": "dist\\content-types.mjs",
+     "line": 186,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "}, _.get(model, 'options', {}));"
+    },
+    {
+     "file": "dist\\content-types.mjs",
+     "line": 187,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const hasDraftAndPublish = (model)=>_.get(model, 'options.draftAndPublish', false) === true;"
+    },
+    {
+     "file": "dist\\content-types.mjs",
+     "line": 189,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (PUBLISHED_AT_ATTRIBUTE)",
+     "snippet": "const isDraft = (data, model)=>hasDraftAndPublish(model) && _.get(data, PUBLISHED_AT_ATTRIBUTE) === null;"
+    },
+    {
+     "file": "dist\\content-types.mjs",
+     "line": 226,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "safe",
+     "why": "string literal",
+     "snippet": "const computeStoredPrivateAttributes = (model)=>new Set(union(get(model, 'options.privateAttributes', []), strapi?.config?.get('api.responses.privateAttributes'"
+    },
+    {
+     "file": "dist\\convert-query-params.js",
+     "line": 475,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (key)",
+     "snippet": "const attribute = _.get(schema?.attributes, key);"
+    },
+    {
+     "file": "dist\\convert-query-params.mjs",
+     "line": 469,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (key)",
+     "snippet": "const attribute = get(schema?.attributes, key);"
+    },
+    {
+     "file": "dist\\yup.js",
+     "line": 56,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (propertyName)",
+     "snippet": "const sameElements = list.filter((e)=>_.get(e, propertyName) === _.get(element, propertyName));"
+    },
+    {
+     "file": "dist\\yup.js",
+     "line": 56,
+     "api": "get",
+     "via": "lodash._",
+     "verdict": "tainted",
+     "why": "identifier (propertyName)",
+     "snippet": "const sameElements = list.filter((e)=>_.get(e, propertyName) === _.get(element, propertyName));"
+    },
+    {
+     "file": "dist\\yup.mjs",
+     "line": 32,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (propertyName)",
+     "snippet": "const sameElements = list.filter((e)=>get(e, propertyName) === get(element, propertyName));"
+    },
+    {
+     "file": "dist\\yup.mjs",
+     "line": 32,
+     "api": "get",
+     "via": "lodash",
+     "verdict": "tainted",
+     "why": "identifier (propertyName)",
+     "snippet": "const sameElements = list.filter((e)=>get(e, propertyName) === get(element, propertyName));"
+    }
+   ]
+  }
+ ]
+}

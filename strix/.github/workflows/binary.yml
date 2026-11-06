@@ -1,0 +1,69 @@
+name: Binary
+
+on:
+  pull_request:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - strix.spec
+      - scripts/**
+      - strix/interface/tui/**
+      - .github/actions/**
+      - .github/workflows/binary.yml
+  push:
+    branches:
+      - main
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - strix.spec
+      - scripts/**
+      - strix/interface/tui/**
+      - .github/actions/**
+      - .github/workflows/binary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  binary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00  # v6.0.0
+        with:
+          go-version-file: strix/interface/tui/go.mod
+          cache-dependency-path: strix/interface/tui/go.sum
+      - uses: ./.github/actions/setup-python-env
+      - run: make tui-build
+      - run: uv run --frozen pyinstaller strix.spec --noconfirm
+      - run: dist/strix --version
+      - name: Binary bundles the TUI sidecar and the provider dependencies
+        run: |
+          uv run --frozen pyi-archive_viewer -l -r dist/strix > archive.txt
+          grep -E "strix/bin/strix-tui" archive.txt >/dev/null
+          grep -E "'google\.auth\.transport\.requests'" archive.txt >/dev/null
+          grep -E "'boto3\.session'" archive.txt >/dev/null
+      - name: Binary reaches Vertex AI and Bedrock authentication
+        env:
+          STRIX_TELEMETRY: "false"
+          STRIX_IMAGE: alpine:3.20
+          VERTEXAI_PROJECT: strix-ci
+          VERTEXAI_LOCATION: us-central1
+          AWS_REGION: us-east-1
+        run: |
+          mkdir -p /tmp/target && echo 'print("hi")' > /tmp/target/app.py
+          STRIX_LLM=vertex_ai/gemini-2.5-pro dist/strix -n -t /tmp/target --scan-mode quick > vertex.log 2>&1 || true
+          grep -q "DefaultCredentialsError" vertex.log
+          if grep -q "No module named" vertex.log; then exit 1; fi
+          STRIX_LLM=bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0 dist/strix -n -t /tmp/target --scan-mode quick > bedrock.log 2>&1 || true
+          grep -q "Unable to locate credentials" bedrock.log
+          if grep -q "No module named" bedrock.log; then exit 1; fi

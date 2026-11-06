@@ -1,0 +1,68 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\dot-prop\\index.js",
+  "lines": 139,
+  "fn_count": 7,
+  "export_count": 4,
+  "file_blacklist": {
+    "exists": true,
+    "form": "set",
+    "keys": [
+      "__proto__",
+      "prototype",
+      "constructor"
+    ]
+  },
+  "guards": [
+    {
+      "name": "isValidPath",
+      "line": 10,
+      "kind": "lookup",
+      "shape": "predicate",
+      "test": "!pathSegments.some(segment => disallowedKeys.has(segment))",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 1,
+      "refs": 0,
+      "callers": [
+        "getPathSegments"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    },
+    {
+      "name": "anon@10",
+      "line": 10,
+      "kind": "lookup",
+      "shape": "predicate",
+      "test": "disallowedKeys.has(segment)",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 0,
+      "refs": 0,
+      "callers": [],
+      "owner_sites": 0,
+      "type": "dead"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 2,
+    "G_ownkey": 0,
+    "bl_call_sites": 1,
+    "S_path": 4,
+    "C_path": 4,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "COVERED"
+}

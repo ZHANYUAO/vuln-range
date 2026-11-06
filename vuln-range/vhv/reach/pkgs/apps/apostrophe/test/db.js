@@ -1,0 +1,56 @@
+const t = require('../test-lib/test.js');
+const assert = require('assert');
+
+const bogusUri = t.testDbProtocol === 'postgres'
+  ? 'postgres://this-will-not-work-unless-db-successfully-overrides-it/fail'
+  : 'mongodb://this-will-not-work-unless-db-successfully-overrides-it/fail';
+
+describe('Db', function() {
+
+  let apos, apos2;
+
+  after(async function () {
+    await t.destroy(apos);
+    await t.destroy(apos2);
+  });
+
+  this.timeout(t.timeout);
+
+  it('should exist on the apos object', async function() {
+    apos = await t.create({
+      root: module
+    });
+
+    assert(apos.db);
+    // Verify a normal, boring connection to localhost without the db option
+    // worked
+    const doc = await apos.doc.db.findOne();
+
+    assert(doc);
+  });
+
+  // Client reuse with a different database name is only supported in
+  // mongodb and multipostgres mode, not simple postgres (which has no
+  // schema isolation)
+  if (t.testDbProtocol !== 'postgres') {
+    it('should be able to launch a second instance reusing the connection', async function() {
+      // Often takes too long otherwise
+      this.timeout(10000);
+      apos2 = await t.create({
+        root: module,
+        modules: {
+          '@apostrophecms/db': {
+            options: {
+              client: apos.dbClient,
+              uri: bogusUri
+            }
+          }
+        }
+      });
+
+      const doc = await apos2.doc.db.findOne();
+
+      assert(doc);
+    });
+  }
+});

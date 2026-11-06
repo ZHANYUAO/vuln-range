@@ -1,0 +1,125 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\dot-prop\\index.js",
+  "fn_count": 6,
+  "export_count": 4,
+  "results": [
+    {
+      "api": "delete",
+      "impl": "delete",
+      "sink": "getPathSegments",
+      "sink_class": "custom",
+      "chain": [
+        "delete",
+        "getPathSegments"
+      ],
+      "guard": "validated",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false,
+        "callsValidator": true
+      },
+      "sink_line": 12,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "get",
+      "impl": "get",
+      "sink": "getPathSegments",
+      "sink_class": "custom",
+      "chain": [
+        "get",
+        "getPathSegments"
+      ],
+      "guard": "validated",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false,
+        "callsValidator": true
+      },
+      "sink_line": 12,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "value"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "has",
+      "impl": "has",
+      "sink": "getPathSegments",
+      "sink_class": "custom",
+      "chain": [
+        "has",
+        "getPathSegments"
+      ],
+      "guard": "validated",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false,
+        "callsValidator": true
+      },
+      "sink_line": 12,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "set",
+      "impl": "set",
+      "sink": "getPathSegments",
+      "sink_class": "custom",
+      "chain": [
+        "set",
+        "getPathSegments"
+      ],
+      "guard": "validated",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false,
+        "callsValidator": true
+      },
+      "sink_line": 12,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "value"
+      ],
+      "other_sinks": []
+    }
+  ]
+}

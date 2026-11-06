@@ -1,0 +1,65 @@
+# ============================================
+# 密钥与凭证（绝不入库）
+# ============================================
+ARTEX/.env
+ARTEX/jwt.key
+vuln-range/.zro_key
+vuln-range/.nvidia_key
+vuln-range/lab/.control_token*
+vuln-range/lab/.oast_token
+*.key
+*.pem
+*.p12
+.env
+.env.*
+!.env.example
+
+# ============================================
+# 未披露研究（公开前移除，本地保留）
+# 说明：这两项尚未协调披露，公开仓库不含其内容
+# ============================================
+vuln-range/vhv/发现-lodash-invoke原型污染-2026-11-02.md
+vuln-range/vhv/cases/matrix-invoke.json
+vuln-range/vhv/cases/matrix-invoke.md
+vuln-range/vhv/cases/guardcov/lodash.invoke.json
+vuln-range/vhv/cve-db/raw/lodash.invoke.json
+
+# ============================================
+# 依赖目录（可由 lock 文件还原，不进仓库）
+# ============================================
+node_modules/
+.pnpm-store/
+vuln-range/vhv/.pkgs/
+
+# ============================================
+# 二进制与超 100MB 文件（GitHub 硬限制）
+# ============================================
+*.exe
+*.zip
+*.node
+*.dll
+*.so
+*.dylib
+ARTEX/dist/
+vuln-range/baseline/bin/
+vuln-range/apps/gitea/gitea.exe
+vuln-range/apps/gitea/data/
+vuln-range/apps/gitea/log/
+ARTEX/web/.next/
+
+# ============================================
+# 运行时产物与缓存
+# ============================================
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.edgeprof/
+.workbuddy/
+.DS_Store
+Thumbs.db
+
+# ============================================
+# 嵌套仓库（ARTEX 已有独立公开仓库 Hinln/ARTEX，避免重复）
+# ============================================
+ARTEX/

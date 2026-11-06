@@ -1,0 +1,162 @@
+[
+ {
+  "model": "openai/gpt-oss-20b",
+  "ok": true,
+  "sec": 1.5,
+  "tool_calls": false,
+  "tool_arg": null,
+  "content": "OK"
+ },
+ {
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "ok": true,
+  "sec": 2.3,
+  "tool_calls": false,
+  "tool_arg": null,
+  "content": "OK"
+ },
+ {
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "ok": true,
+  "sec": 2.8,
+  "tool_calls": false,
+  "tool_arg": null,
+  "content": "OK"
+ },
+ {
+  "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+  "ok": true,
+  "sec": 3.0,
+  "tool_calls": false,
+  "tool_arg": null,
+  "content": "OK"
+ },
+ {
+  "model": "z-ai/glm-5.3-flash",
+  "ok": true,
+  "sec": 4.9,
+  "tool_calls": false,
+  "tool_arg": null,
+  "content": "OK"
+ },
+ {
+  "model": "mistralai/mistral-7b-instruct-v0.3",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'cd89bd68-13e3-47a9-861e-9a"
+ },
+ {
+  "model": "mistralai/mistral-large-2-instruct",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '7fadd4de-e22a-48e4-90e9-f0"
+ },
+ {
+  "model": "mistralai/mistral-large",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '767b5b9a-3f9d-4c1d-86e8-fa"
+ },
+ {
+  "model": "mistralai/mixtral-8x22b-v0.1",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '39655fc1-9ebc-4b24-963e-69"
+ },
+ {
+  "model": "ibm/granite-3.0-8b-instruct",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '5a24a4f0-2d59-46b3-ac65-42"
+ },
+ {
+  "model": "moonshotai/kimi-k2.6",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '23d4f03a-b8a6-4adb-a183-7d"
+ },
+ {
+  "model": "meta/llama2-70b",
+  "ok": false,
+  "sec": 1.0,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '2fddadfb-7e76-4c8a-9b82-f7"
+ },
+ {
+  "model": "google/gemma-3-4b-it",
+  "ok": false,
+  "sec": 1.1,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'c322f327-55a3-4af3-a91f-c7"
+ },
+ {
+  "model": "ibm/granite-8b-code-instruct",
+  "ok": false,
+  "sec": 1.1,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'af7b6f03-f615-4c5f-86c6-38"
+ },
+ {
+  "model": "01-ai/yi-large",
+  "ok": false,
+  "sec": 1.1,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '23bd454d-b225-49a3-8118-58"
+ },
+ {
+  "model": "mistralai/codestral-22b-instruct-v0.1",
+  "ok": false,
+  "sec": 1.1,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '9a10b012-e6df-46fd-83b2-70"
+ },
+ {
+  "model": "nvidia/nemotron-nano-3-30b-a3b",
+  "ok": false,
+  "sec": 1.2,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '2b2dcd47-c858-425a-9c04-4c"
+ },
+ {
+  "model": "google/gemma-3-12b-it",
+  "ok": false,
+  "sec": 1.2,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ee47df99-c92b-4dc9-b3a7-f3"
+ },
+ {
+  "model": "nvidia/llama-3.1-nemotron-51b-instruct",
+  "ok": false,
+  "sec": 1.2,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '5beba52c-65a9-4f46-8cd9-65"
+ },
+ {
+  "model": "microsoft/phi-3.5-moe-instruct",
+  "ok": false,
+  "sec": 1.9,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'e6cab982-62f4-481e-9a7a-3d"
+ },
+ {
+  "model": "deepseek-ai/deepseek-coder-6.7b-instruct",
+  "ok": false,
+  "sec": 4.2,
+  "err": "HTTP 404 {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'e503b15c-62b0-4d69-b532-a8"
+ },
+ {
+  "model": "google/gemma-4-31b-it",
+  "ok": false,
+  "sec": 30.5,
+  "err": "TimeoutError"
+ },
+ {
+  "model": "moonshotai/kimi-k3",
+  "ok": false,
+  "sec": 30.5,
+  "err": "TimeoutError"
+ },
+ {
+  "model": "deepseek-ai/deepseek-v4.1-flash",
+  "ok": false,
+  "sec": 30.5,
+  "err": "TimeoutError"
+ },
+ {
+  "model": "z-ai/glm-5.3",
+  "ok": false,
+  "sec": 31.1,
+  "err": "TimeoutError"
+ }
+]

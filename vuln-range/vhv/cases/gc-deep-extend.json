@@ -1,0 +1,23 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\deep-extend\\lib\\deep-extend.js",
+  "lines": 151,
+  "fn_count": 8,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [],
+  "counts": {
+    "G_blacklist": 0,
+    "G_ownkey": 0,
+    "bl_call_sites": 0,
+    "S_path": 0,
+    "C_path": 0,
+    "R": null,
+    "S_all": 6
+  },
+  "unguarded": [],
+  "signal": "NO_SINK"
+}

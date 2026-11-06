@@ -1,0 +1,18 @@
+{
+  "fast-json-patch": "https://github.com/Starcounter-Jack/JSON-Patch/issues/342",
+  "json-logic-js": "https://github.com/jwadhams/json-logic-js/issues/145",
+  "_fast-json-patch_verified": {
+    "body_len": 4354,
+    "body_matches_source": true,
+    "state": "open",
+    "created": "2026-11-05T00:58:48Z"
+  },
+  "_json-logic-js_verified": {
+    "body_len": 3367,
+    "body_matches_source": true,
+    "state": "open",
+    "created": "2026-11-05T01:12:57Z"
+  },
+  "_account": "ZHANYUAO",
+  "_submitted_at": "2026-11-05T01:12:57Z"
+}

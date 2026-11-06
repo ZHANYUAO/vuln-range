@@ -1,0 +1,225 @@
+{
+ "generated_at": "2026-11-02T13:38:03.956Z",
+ "node": "v22.22.2",
+ "summary": {
+  "hit": 5,
+  "miss": 10,
+  "na": 2,
+  "control_fail": 1
+ },
+ "rows": [
+  {
+   "engine": "object-path",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "PASS",
+   "extra": null
+  },
+  {
+   "engine": "object-path",
+   "kind": "dot",
+   "detail": "__proto__.constructor.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "undefined",
+    "err": null
+   }
+  },
+  {
+   "engine": "object-path",
+   "kind": "dot",
+   "detail": "constructor.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "undefined",
+    "err": null
+   }
+  },
+  {
+   "engine": "object-path",
+   "kind": "dot",
+   "detail": "toString.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "undefined",
+    "err": null
+   }
+  },
+  {
+   "engine": "object-path",
+   "kind": "array",
+   "detail": "[\"__proto__\",\"constructor\",\"constructor\"]",
+   "state": "MISS",
+   "extra": {
+    "got": "undefined",
+    "err": null
+   }
+  },
+  {
+   "engine": "json-ptr",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "PASS",
+   "extra": null
+  },
+  {
+   "engine": "json-ptr",
+   "kind": "pointer",
+   "detail": "/__proto__/constructor/constructor",
+   "state": "HIT",
+   "extra": {
+    "got": "function",
+    "err": null
+   }
+  },
+  {
+   "engine": "json-ptr",
+   "kind": "pointer",
+   "detail": "/constructor/constructor",
+   "state": "HIT",
+   "extra": {
+    "got": "function",
+    "err": null
+   }
+  },
+  {
+   "engine": "jsonpath-plus",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "PASS",
+   "extra": null
+  },
+  {
+   "engine": "jsonpath-plus",
+   "kind": "jsonpath",
+   "detail": "$.__proto__.constructor.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "undefined",
+    "err": null
+   }
+  },
+  {
+   "engine": "jsonpath-plus",
+   "kind": "jsonpath",
+   "detail": "$..constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "undefined",
+    "err": null
+   }
+  },
+  {
+   "engine": "jmespath",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "PASS",
+   "extra": null
+  },
+  {
+   "engine": "jmespath",
+   "kind": "dot",
+   "detail": "__proto__.constructor.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "object",
+    "err": null
+   }
+  },
+  {
+   "engine": "jmespath",
+   "kind": "dot",
+   "detail": "constructor.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "object",
+    "err": null
+   }
+  },
+  {
+   "engine": "jmespath",
+   "kind": "dot",
+   "detail": "toString.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "object",
+    "err": null
+   }
+  },
+  {
+   "engine": "jsonata",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "FAIL",
+   "extra": null
+  },
+  {
+   "engine": "jsonata",
+   "kind": "expr",
+   "detail": "__proto__.constructor.constructor",
+   "state": "NA",
+   "extra": null
+  },
+  {
+   "engine": "jsonata",
+   "kind": "expr",
+   "detail": "constructor.constructor",
+   "state": "NA",
+   "extra": null
+  },
+  {
+   "engine": "json-logic-js",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "PASS",
+   "extra": null
+  },
+  {
+   "engine": "json-logic-js",
+   "kind": "var",
+   "detail": "{\"var\":\"__proto__.constructor.constructor\"}",
+   "state": "HIT",
+   "extra": {
+    "got": "function",
+    "err": null
+   }
+  },
+  {
+   "engine": "json-logic-js",
+   "kind": "var",
+   "detail": "{\"var\":\"constructor.constructor\"}",
+   "state": "HIT",
+   "extra": {
+    "got": "function",
+    "err": null
+   }
+  },
+  {
+   "engine": "json-logic-js",
+   "kind": "var",
+   "detail": "{\"var\":\"toString.constructor\"}",
+   "state": "HIT",
+   "extra": {
+    "got": "function",
+    "err": null
+   }
+  },
+  {
+   "engine": "expr-eval",
+   "kind": "control",
+   "detail": "正常取值",
+   "state": "PASS",
+   "extra": null
+  },
+  {
+   "engine": "expr-eval",
+   "kind": "expr",
+   "detail": "__proto__.constructor.constructor",
+   "state": "MISS",
+   "extra": {
+    "got": "object",
+    "err": "parse error [1:22]: Expected TNAME"
+   }
+  }
+ ]
+}

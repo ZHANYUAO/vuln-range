@@ -1,0 +1,23 @@
+{
+  "name": "JuiceShop-20.3.0 自动化渗透第1轮（只读）",
+  "description": "【执行环境】Windows，shell 不是 bash：禁止 curl / wget / nc / nmap / 管道 / 重定向 / && ；发 HTTP 一律写临时 python 脚本执行（urllib.request + ProxyHandler({}) 直连）。python: C:\\Users\\yuao\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe\n\n【目标】http://127.0.0.1:3001 —— OWASP Juice Shop 20.3.0（本地自建开源项目，自有资产，已授权）\n\n【边界】只允许访问 127.0.0.1:3001；禁止访问任何外网；禁止 DELETE；禁止修改/删除商品、用户、订单；禁止上传 webshell；只做读与认证类请求（GET、POST 登录/搜索）。\n\n【本轮按顺序做，每项必须有 HTTP 证据（状态码 + 响应片段），先跑正常对照再打 payload】\n1) 侦察：GET / ；GET /rest/products/search?q=apple ；GET /rest/admin/application-version ；GET /api-docs\n2) SQLi 登录：POST /rest/user/login，body {\"email\":\"' OR 1=1--\",\"password\":\"x\"} 与正常账号对照\n3) 反射 XSS：GET /rest/products/search?q=<iframe src=javascript:alert(1)>\n4) 越权：无 token 访问 GET /rest/basket/1，再与带 token 的响应对比\n5) 目录/文件：GET /ftp/ ；GET /ftp/package.json.bak%2500.md\n6) 错误信息泄露：对 /rest/products/1/reviews、/rest/user/login 传异常输入，看堆栈/字段泄露\n\n【强制】每确认一条发现，立即 report_finding（标题 / URL / 请求 / 证据 / 影响 / 修复建议），处理完一条再下一条；全部条目处理完才允许收官；收官时输出交接清单并逐条复现一次。不要臆测，没有 HTTP 证据的一律写「未验证」。",
+  "goal": "完成 Juice Shop 20.3.0 首轮自动化渗透，产出至少 3 条可复现、带 HTTP 证据与修复建议的发现；未验证项明确标注，不得虚构。",
+  "timeout_seconds": 5400,
+  "seed_first_intent": true,
+  "intercept_rules": [
+    {
+      "enabled": true,
+      "action": "allow",
+      "kind": "fuzzy_url",
+      "pattern": "127.0.0.1:3001",
+      "note": "唯一允许目标：本地 Juice Shop 20.3.0"
+    },
+    {
+      "enabled": true,
+      "action": "allow",
+      "kind": "fuzzy_url",
+      "pattern": "localhost:3001",
+      "note": "同上，host 别名"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "legacy",
+  "kind": "selfbuilt-lab",
+  "desc": "最小的传统表单登录栈（302 → /login），专门用来验证 classify_block 的重定向分支。不是漏洞靶场，是闸门的回归夹具。",
+  "base": "http://127.0.0.1:8896",
+  "oast": null,
+  "reset_endpoint": null,
+  "control_token_file": null,
+  "oast_token_file": null,
+  "blind_ua": null,
+  "artifacts": {},
+  "artifact_notes": {
+    "_": "空是故意的：这个夹具不测 artifact 派生，只测「没带会话时会不会被误判成 rejected」。"
+  },
+  "auth_paths": [
+    "/login"
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "target": "http://127.0.0.1:3001",
+  "challenges_total": 116,
+  "challenges_solved": [
+    "accessLogDisclosureChallenge",
+    "basketAccessChallenge",
+    "directoryListingChallenge",
+    "easterEggLevelOneChallenge",
+    "errorHandlingChallenge",
+    "exposedMetricsChallenge",
+    "forgottenBackupChallenge",
+    "forgottenDevBackupChallenge",
+    "loginAdminChallenge",
+    "misplacedSignatureFileChallenge",
+    "nullByteChallenge",
+    "securityPolicyChallenge",
+    "unionSqlInjectionChallenge"
+  ],
+  "challenges_solved_count": 13,
+  "rounds": {
+    "round1_gate": {
+      "tally": {
+        "confirmed": 9,
+        "rejected": 5,
+        "blocked": 1
+      },
+      "oracle_cases": 6,
+      "oracle_agree": 6,
+      "rows": [
+        {
+          "case": "J-LOGIN-SQLI",
+          "class": "auth_bypass_sqli",
+          "gate": "confirmed",
+          "oracle": "loginAdminChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "J-LOGIN-SQLI_ev_24075f654e6d.json"
+        },
+        {
+          "case": "J-UNION-CRED",
+          "class": "union_credential_dump",
+          "gate": "confirmed",
+          "oracle": "unionSqlInjectionChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "J-UNION-CRED_ev_cea0ebb6815c.json"
+        },
+        {
+          "case": "J-FTP-DOC",
+          "class": "confidential_document",
+          "gate": "confirmed",
+          "oracle": "directoryListingChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "J-FTP-DOC_ev_78fca3abe361.json"
+        },
+        {
+          "case": "J-IDOR-BASKET",
+          "class": "idor",
+          "gate": "confirmed",
+          "oracle": "basketAccessChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "J-IDOR-BASKET_ev_5cca8a64a7c8.json"
+        },
+        {
+          "case": "J-NULLBYTE",
+          "class": "sensitive_file_disclosure",
+          "gate": "confirmed",
+          "oracle": "nullByteChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "J-NULLBYTE_ev_458e46afd815.json"
+        },
+        {
+          "case": "J-FTP-DIRLIST",
+          "class": "directory_listing",
+          "gate": "confirmed",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "J-FTP-DIRLIST_ev_a9e8db245f08.json"
+        },
+        {
+          "case": "J-METRICS",
+          "class": "exposed_metrics",
+          "gate": "confirmed",
+          "oracle": "exposedMetricsChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "J-METRICS_ev_3eb80688f68a.json"
+        },
+        {
+          "case": "J-BAC-USER1",
+          "class": "data_exposure_object",
+          "gate": "confirmed",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "J-BAC-USER1_ev_7f6c16eabca8.json"
+        },
+        {
+          "case": "J-USERLIST",
+          "class": "data_exposure_list",
+          "gate": "confirmed",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "J-USERLIST_ev_d75dc4731123.json"
+        },
+        {
+          "case": "N-LOGIN-NOUSER",
+          "class": "auth_bypass_sqli",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-LOGIN-NOUSER_ev_7aa559ec9a5e.json"
+        },
+        {
+          "case": "N-UNION-9COLS",
+          "class": "sql_injection",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-UNION-9COLS_ev_9c21ba33176c.json"
+        },
+        {
+          "case": "N-BASKET-404",
+          "class": "idor",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-BASKET-404_ev_d296956067c6.json"
+        },
+        {
+          "case": "N-TRAVERSAL",
+          "class": "sensitive_file_disclosure",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-TRAVERSAL_ev_6163a7006f24.json"
+        },
+        {
+          "case": "N-USERS-NOAUTH",
+          "class": "data_exposure_list",
+          "gate": "blocked",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-USERS-NOAUTH_ev_75a0bae2da32.json"
+        },
+        {
+          "case": "N-METRICS-INDEX",
+          "class": "exposed_metrics",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-METRICS-INDEX_ev_1519572231f1.json"
+        }
+      ]
+    },
+    "round2_llm": {
+      "tally": {
+        "confirmed": 6,
+        "rejected": 2
+      },
+      "oracle_cases": 4,
+      "oracle_agree": 4,
+      "rows": [
+        {
+          "case": "L-ACCESSLOG",
+          "class": "file_disclosure",
+          "gate": "confirmed",
+          "oracle": "accessLogDisclosureChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "L-ACCESSLOG_ev_cd886668cb00.json"
+        },
+        {
+          "case": "L-KDBX",
+          "class": "file_disclosure",
+          "gate": "confirmed",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "L-KDBX_ev_14b9dd8fc71f.json"
+        },
+        {
+          "case": "L-PREMIUMKEY",
+          "class": "file_disclosure",
+          "gate": "confirmed",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "L-PREMIUMKEY_ev_8570d9e918f1.json"
+        },
+        {
+          "case": "L-COUPONBAK",
+          "class": "file_disclosure",
+          "gate": "confirmed",
+          "oracle": "forgottenBackupChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "L-COUPONBAK_ev_a2860ae24145.json"
+        },
+        {
+          "case": "L-SIGMA",
+          "class": "file_disclosure",
+          "gate": "confirmed",
+          "oracle": "misplacedSignatureFileChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "L-SIGMA_ev_681576e231d4.json"
+        },
+        {
+          "case": "L-EASTER",
+          "class": "file_disclosure",
+          "gate": "confirmed",
+          "oracle": "easterEggLevelOneChallenge",
+          "oracle_solved": true,
+          "agree": "✅",
+          "evidence": "L-EASTER_ev_9b9e4de43104.json"
+        },
+        {
+          "case": "N-LOG-FAKE",
+          "class": "file_disclosure",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-LOG-FAKE_ev_4c60cbf17b45.json"
+        },
+        {
+          "case": "N-KDBX-FAKE",
+          "class": "file_disclosure",
+          "gate": "rejected",
+          "oracle": null,
+          "oracle_solved": null,
+          "agree": "—",
+          "evidence": "N-KDBX-FAKE_ev_6991671e0db3.json"
+        }
+      ]
+    }
+  }
+}

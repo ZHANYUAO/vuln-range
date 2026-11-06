@@ -1,0 +1,9 @@
+model	http	ms	content_len	tools	snippet
+nvidia/nemotron-3-ultra-550b-a55b:free	200	9836	2	-	'OK'
+nvidia/nemotron-3.5-lightning:free	200	3136	2	-	'OK'
+nvidia/nemotron-3.5-super-vl:free	200	1817	2	-	'OK'
+reflection/beam-free	200	1776	2	-	'OK'
+recursive/flint-v1.0:free	503	1718	0	-	{"error": {"message": "Provider returned error", "code": 503, "metadata": {"raw": "{\"error\":\"no upstreams available\"}", "provider_name": "Recursiv
+kilo-auto/free	200	6693	2	-	'OK'
+nvidia/nemotron-3-ultra-550b-a55b:free	200	6047	0	YES	''
+kilo-auto/free	200	4063	0	YES	''

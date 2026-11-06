@@ -1,0 +1,1 @@
+{"model": "glm-5.3-flash", "messages": [{"role": "user", "content": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the number."}], "max_tokens": 2000, "temperature": 0}

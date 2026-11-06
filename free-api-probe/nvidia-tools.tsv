@@ -1,0 +1,7 @@
+model	http	ms	tool_calls	snippet
+nvidia/nemotron-3-ultra-550b-a55b	200	3146	YES	{"id":"chatcmpl-4800821c-00cb-43c6-b9cc-8074b895f39e","choices":[{"index":0,"message":{"content":null,"tool_calls":[{"id":"call-ef08b825-d9d0-4947-9a5
+mistralai/mistral-large-4-1t-a52b	200	11050	YES	{"id":"chatcmpl-64a231bc-e95c-49ba-918e-28fcee214ff1","choices":[{"index":0,"message":{"content":null,"refusal":null,"tool_calls":[{"id":"dbfe4d270","
+stepfun-ai/step-5-preview	000	40106	-	
+nvidia/nemotron-3.5-lightning-30b-a3b	200	9633	YES	{"id":"chatcmpl-e97962a8-975a-42f1-82a7-4d8898dd586c","choices":[{"index":0,"message":{"content":null,"tool_calls":[{"id":"call-44b6fa51-e976-4ef6-808
+nvidia/nemotron-3.5-super-vl-120b-a12b	200	2463	YES	{"id":"chatcmpl-26344376-6241-4fb4-97f8-b6f1ec9d0f0c","choices":[{"index":0,"message":{"content":null,"tool_calls":[{"id":"call-f8e28487-28fa-4529-944
+nvidia/nemotron-3-nano-omni-30b-a3b-reasoning	200	28726	YES	{"id":"chatcmpl-31d8029f-418d-4a9a-8383-80bbbdcf6f65","choices":[{"index":0,"message":{"content":null,"tool_calls":[{"id":"call-c6576458-cd80-405a-9d1

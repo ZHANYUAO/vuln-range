@@ -1,0 +1,136 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\object-path\\index.js",
+  "lines": 321,
+  "fn_count": 27,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [
+    {
+      "name": "factory",
+      "line": 69,
+      "kind": "blacklist",
+      "shape": "block",
+      "test": "currentPath === '__proto__' || currentPath === 'prototype' || (current",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 4,
+      "refs": 1,
+      "callers": [
+        "anon@1",
+        "anon@14"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    },
+    {
+      "name": "hasOwnProperty",
+      "line": 19,
+      "kind": "ownkey",
+      "shape": "predicate",
+      "test": "Object.prototype.hasOwnProperty.call(obj, prop)",
+      "keys": [],
+      "calls": 3,
+      "refs": 0,
+      "callers": [
+        "isEmpty",
+        "hasShallowProperty",
+        "has"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    },
+    {
+      "name": "hasShallowProperty",
+      "line": 93,
+      "kind": "ownkey",
+      "shape": "predicate",
+      "test": "(typeof prop === 'number' && Array.isArray(obj)) || hasOwnProperty(obj",
+      "keys": [],
+      "calls": 3,
+      "refs": 0,
+      "callers": [
+        "getShallowProperty",
+        "empty",
+        "del"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    },
+    {
+      "name": "getShallowPropertySafely",
+      "line": 106,
+      "kind": "blacklist",
+      "shape": "block",
+      "test": "currentPath === '__proto__' || currentPath === 'prototype' || (current",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 3,
+      "refs": 0,
+      "callers": [
+        "set",
+        "get",
+        "del"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    },
+    {
+      "name": "isEmpty",
+      "line": 27,
+      "kind": "ownkey",
+      "shape": "block",
+      "test": "hasOwnProperty(value, i)",
+      "keys": [],
+      "calls": 2,
+      "refs": 0,
+      "callers": [
+        "empty",
+        "del"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    },
+    {
+      "name": "anon@14",
+      "line": 14,
+      "kind": "ownkey",
+      "shape": "block",
+      "test": "hasOwnProperty(value, i)",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 0,
+      "refs": 0,
+      "callers": [],
+      "owner_sites": 0,
+      "type": "dead"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 2,
+    "G_ownkey": 4,
+    "bl_call_sites": 8,
+    "S_path": 7,
+    "C_path": 7,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "COVERED"
+}

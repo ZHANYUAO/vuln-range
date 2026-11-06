@@ -1,0 +1,15 @@
+{% extends data.outerLayout %}
+
+{% block main %}
+  <title>{{ data.page.title }}</title>
+
+  <h3>Sing to me, Oh Muse.</h3>
+
+  <a href="{{ data.home._url }}">Home: {{ data.home.slug }}</a>
+
+  {% for tab in data.home._children %}
+    <a href="{{ tab._url }}">Tab: {{ tab.slug }}</a>
+  {% endfor %}
+
+  URL: {{ data.page._url }}
+{% endblock %}

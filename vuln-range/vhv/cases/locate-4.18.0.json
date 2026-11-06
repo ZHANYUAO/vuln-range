@@ -1,0 +1,4256 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\src\\lodash-4.18.0\\lodash.js",
+  "fn_count": 576,
+  "export_count": 306,
+  "results": [
+    {
+      "api": "compact",
+      "impl": "compact",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "compact",
+        "filter",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [],
+      "other_sinks": []
+    },
+    {
+      "api": "cond",
+      "impl": "cond",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "cond",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "pairs"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "differenceBy",
+      "impl": "differenceBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "differenceBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "values"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "dropRightWhile",
+      "impl": "dropRightWhile",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "dropRightWhile",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "dropWhile",
+      "impl": "dropWhile",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "dropWhile",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "each",
+      "impl": "forEach",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forEach",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "eachRight",
+      "impl": "forEachRight",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forEachRight",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "every",
+      "impl": "every",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "every",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "predicate",
+        "guard"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "filter",
+      "impl": "filter",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "filter",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "find",
+      "impl": "find",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "find",
+        "filter",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "findIndex",
+      "impl": "findIndex",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "findIndex",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "predicate",
+        "fromIndex"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "findKey",
+      "impl": "findKey",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "findKey",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "findLast",
+      "impl": "findLast",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "findLast",
+        "find",
+        "filter",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "findLastIndex",
+      "impl": "findLastIndex",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "findLastIndex",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "predicate",
+        "fromIndex"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "findLastKey",
+      "impl": "findLastKey",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "findLastKey",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "flatMap",
+      "impl": "flatMap",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "flatMap",
+        "map",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "flatMapDeep",
+      "impl": "flatMapDeep",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "flatMapDeep",
+        "map",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "flatMapDepth",
+      "impl": "flatMapDepth",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "flatMapDepth",
+        "map",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee",
+        "depth"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "forEach",
+      "impl": "forEach",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forEach",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "forEachRight",
+      "impl": "forEachRight",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forEachRight",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "forIn",
+      "impl": "forIn",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forIn",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "forInRight",
+      "impl": "forInRight",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forInRight",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "forOwn",
+      "impl": "forOwn",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forOwn",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "forOwnRight",
+      "impl": "forOwnRight",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "forOwnRight",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "intersectionBy",
+      "impl": "intersectionBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "intersectionBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": [
+        "hasPath",
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "invoke",
+      "impl": "invoke",
+      "sink": "baseInvoke",
+      "sink_class": "invoke",
+      "chain": [
+        "invoke",
+        "baseInvoke"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3260,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [],
+      "other_sinks": [
+        "result"
+      ]
+    },
+    {
+      "api": "invokeMap",
+      "impl": "invokeMap",
+      "sink": "baseInvoke",
+      "sink_class": "invoke",
+      "chain": [
+        "invokeMap",
+        "baseInvoke"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3260,
+      "path_param_pos": 0,
+      "path_origin": "direct",
+      "impl_params": [
+        "path",
+        "args"
+      ],
+      "other_sinks": [
+        "result"
+      ]
+    },
+    {
+      "api": "map",
+      "impl": "map",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "map",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "maxBy",
+      "impl": "maxBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "maxBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "meanBy",
+      "impl": "meanBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "meanBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "method",
+      "impl": "method",
+      "sink": "baseInvoke",
+      "sink_class": "invoke",
+      "chain": [
+        "method",
+        "baseInvoke"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3260,
+      "path_param_pos": 0,
+      "path_origin": "direct",
+      "impl_params": [
+        "path",
+        "args"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "methodOf",
+      "impl": "methodOf",
+      "sink": "baseInvoke",
+      "sink_class": "invoke",
+      "chain": [
+        "methodOf",
+        "baseInvoke"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3260,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "args"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "minBy",
+      "impl": "minBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "minBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "nthArg",
+      "impl": "nthArg",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "nthArg",
+        "baseRest",
+        "overRest",
+        "transform",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "n"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "omitBy",
+      "impl": "omitBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "omitBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "predicate"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "castPath"
+      ]
+    },
+    {
+      "api": "overArgs",
+      "impl": "overArgs",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "overArgs",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "func",
+        "transforms"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "pickBy",
+      "impl": "pickBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "pickBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "predicate"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "castPath",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "pull",
+      "impl": "pull",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "pull",
+        "baseRest",
+        "overRest",
+        "transform",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [],
+      "other_sinks": []
+    },
+    {
+      "api": "pullAllBy",
+      "impl": "pullAllBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "pullAllBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "values",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "reduce",
+      "impl": "reduce",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "reduce",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee",
+        "accumulator"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "reduceRight",
+      "impl": "reduceRight",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "reduceRight",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratee",
+        "accumulator"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "reject",
+      "impl": "reject",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "reject",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "remove",
+      "impl": "remove",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "remove",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "predicate"
+      ],
+      "other_sinks": [
+        "baseUnset",
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "rest",
+      "impl": "rest",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "rest",
+        "baseRest",
+        "overRest",
+        "transform",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "func",
+        "start"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "result",
+      "impl": "result",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [],
+      "other_sinks": []
+    },
+    {
+      "api": "some",
+      "impl": "some",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "some",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "predicate",
+        "guard"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "sortedIndexBy",
+      "impl": "sortedIndexBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "sortedIndexBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "value",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "sortedLastIndexBy",
+      "impl": "sortedLastIndexBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "sortedLastIndexBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "value",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "sortedUniqBy",
+      "impl": "sortedUniqBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "sortedUniqBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "spread",
+      "impl": "spread",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "spread",
+        "baseRest",
+        "overRest",
+        "transform",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "func",
+        "start"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "sumBy",
+      "impl": "sumBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "sumBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "takeRightWhile",
+      "impl": "takeRightWhile",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "takeRightWhile",
+        "takeWhile",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "takeWhile",
+      "impl": "takeWhile",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "takeWhile",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "predicate"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "times",
+      "impl": "times",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "times",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "n",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue",
+        "hasPath"
+      ]
+    },
+    {
+      "api": "transform",
+      "impl": "transform",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "transform",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee",
+        "accumulator"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue",
+        "hasPath"
+      ]
+    },
+    {
+      "api": "union",
+      "impl": "union",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "union",
+        "baseUniq",
+        "setToArray",
+        "forEach",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "unionBy",
+      "impl": "unionBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "unionBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "unionWith",
+      "impl": "unionWith",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "unionWith",
+        "baseUniq",
+        "setToArray",
+        "forEach",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "uniq",
+      "impl": "uniq",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "uniq",
+        "baseUniq",
+        "setToArray",
+        "forEach",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "uniqBy",
+      "impl": "uniqBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "uniqBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "uniqWith",
+      "impl": "uniqWith",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "uniqWith",
+        "baseUniq",
+        "setToArray",
+        "forEach",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "comparator"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "xorBy",
+      "impl": "xorBy",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "xorBy",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "zip",
+      "impl": "zip",
+      "sink": "result",
+      "sink_class": "invoke",
+      "chain": [
+        "zip",
+        "baseRest",
+        "overRest",
+        "transform",
+        "getIteratee",
+        "result"
+      ],
+      "guard": "none",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 14992,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [],
+      "other_sinks": []
+    },
+    {
+      "api": "assign",
+      "impl": "assign",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "assign",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "assignIn",
+      "impl": "assignIn",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "assignIn",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "assignInWith",
+      "impl": "assignInWith",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "assignInWith",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source",
+        "srcIndex",
+        "customizer"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "assignWith",
+      "impl": "assignWith",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "assignWith",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source",
+        "srcIndex",
+        "customizer"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "bindAll",
+      "impl": "bindAll",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "bindAll",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "methodNames"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet"
+      ]
+    },
+    {
+      "api": "countBy",
+      "impl": "countBy",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "countBy",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "result",
+        "value",
+        "key"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "create",
+      "impl": "create",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "create",
+        "baseAssign",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "prototype",
+        "properties"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "extend",
+      "impl": "assignIn",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "assignIn",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "extendWith",
+      "impl": "assignInWith",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "assignInWith",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source",
+        "srcIndex",
+        "customizer"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "fromPairs",
+      "impl": "fromPairs",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "fromPairs",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "pairs"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "groupBy",
+      "impl": "groupBy",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "groupBy",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "result",
+        "value",
+        "key"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "keyBy",
+      "impl": "keyBy",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "keyBy",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "result",
+        "value",
+        "key"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "mapKeys",
+      "impl": "mapKeys",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "mapKeys",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "result",
+        "baseGet",
+        "baseSet",
+        "hasPath"
+      ]
+    },
+    {
+      "api": "mapValues",
+      "impl": "mapValues",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "mapValues",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "object",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "result",
+        "baseGet",
+        "baseSet",
+        "hasPath"
+      ]
+    },
+    {
+      "api": "merge",
+      "impl": "merge",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "merge",
+        "baseMerge",
+        "assignMergeValue",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source",
+        "srcIndex"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet"
+      ]
+    },
+    {
+      "api": "mergeWith",
+      "impl": "mergeWith",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "mergeWith",
+        "baseMerge",
+        "assignMergeValue",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source",
+        "srcIndex",
+        "customizer"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet"
+      ]
+    },
+    {
+      "api": "runInContext",
+      "impl": "runInContext",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "runInContext",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "context"
+      ],
+      "other_sinks": [
+        "castPath",
+        "parent",
+        "baseGet",
+        "baseSet",
+        "baseUnset",
+        "result",
+        "baseAt",
+        "baseInvoke",
+        "hasPath"
+      ]
+    },
+    {
+      "api": "template",
+      "impl": "template",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "template",
+        "assignWith",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "string",
+        "options",
+        "guard"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet"
+      ]
+    },
+    {
+      "api": "toPlainObject",
+      "impl": "toPlainObject",
+      "sink": "baseAssignValue",
+      "sink_class": "write",
+      "chain": [
+        "toPlainObject",
+        "copyObject",
+        "baseAssignValue"
+      ],
+      "guard": "partial(define-only-proto)",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": true
+      },
+      "sink_line": 2597,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "set",
+      "impl": "set",
+      "sink": "baseSet",
+      "sink_class": "write",
+      "chain": [
+        "set",
+        "baseSet"
+      ],
+      "guard": "full",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": true,
+        "protoWord": true,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": true,
+        "definePropSafe": false
+      },
+      "sink_line": 4025,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "value"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "setWith",
+      "impl": "setWith",
+      "sink": "baseSet",
+      "sink_class": "write",
+      "chain": [
+        "setWith",
+        "baseSet"
+      ],
+      "guard": "full",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": true,
+        "protoWord": true,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": true,
+        "definePropSafe": false
+      },
+      "sink_line": 4025,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "value",
+        "customizer"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "unset",
+      "impl": "unset",
+      "sink": "baseUnset",
+      "sink_class": "write",
+      "chain": [
+        "unset",
+        "baseUnset"
+      ],
+      "guard": "full",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": true,
+        "protoWord": true,
+        "ownCheck": true,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 4376,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "update",
+      "impl": "update",
+      "sink": "baseSet",
+      "sink_class": "write",
+      "chain": [
+        "update",
+        "baseUpdate",
+        "baseSet"
+      ],
+      "guard": "full",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": true,
+        "protoWord": true,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": true,
+        "definePropSafe": false
+      },
+      "sink_line": 4025,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "updater"
+      ],
+      "other_sinks": [
+        "baseGet"
+      ]
+    },
+    {
+      "api": "updateWith",
+      "impl": "updateWith",
+      "sink": "baseSet",
+      "sink_class": "write",
+      "chain": [
+        "updateWith",
+        "baseUpdate",
+        "baseSet"
+      ],
+      "guard": "full",
+      "guard_evidence": {
+        "protoKey": true,
+        "ctorKey": true,
+        "protoWord": true,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": true,
+        "definePropSafe": false
+      },
+      "sink_line": 4025,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "updater",
+        "customizer"
+      ],
+      "other_sinks": [
+        "baseGet"
+      ]
+    },
+    {
+      "api": "ary",
+      "impl": "ary",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "ary",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "n",
+        "guard"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "at",
+      "impl": "at",
+      "sink": "baseAt",
+      "sink_class": "read",
+      "chain": [
+        "at",
+        "baseAt"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 2618,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [],
+      "other_sinks": [
+        "result"
+      ]
+    },
+    {
+      "api": "bind",
+      "impl": "bind",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "bind",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "thisArg",
+        "partials"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "bindKey",
+      "impl": "bindKey",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "bindKey",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "key",
+        "partials"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "clone",
+      "impl": "clone",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "clone",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "cloneDeep",
+      "impl": "cloneDeep",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "cloneDeep",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "cloneDeepWith",
+      "impl": "cloneDeepWith",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "cloneDeepWith",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value",
+        "customizer"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "cloneWith",
+      "impl": "cloneWith",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "cloneWith",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value",
+        "customizer"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "conforms",
+      "impl": "conforms",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "conforms",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "source"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "curry",
+      "impl": "curry",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "curry",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "arity",
+        "guard"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "curryRight",
+      "impl": "curryRight",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "curryRight",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "arity",
+        "guard"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "difference",
+      "impl": "difference",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "difference",
+        "baseDifference",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array",
+        "values"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "differenceWith",
+      "impl": "differenceWith",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "differenceWith",
+        "baseDifference",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array",
+        "values"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "flip",
+      "impl": "flip",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "flip",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "get",
+      "impl": "get",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path",
+        "defaultValue"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "has",
+      "impl": "has",
+      "sink": "hasPath",
+      "sink_class": "read",
+      "chain": [
+        "has",
+        "hasPath"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 6215,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "hasIn",
+      "impl": "hasIn",
+      "sink": "hasPath",
+      "sink_class": "read",
+      "chain": [
+        "hasIn",
+        "hasPath"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 6215,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "path"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "intersection",
+      "impl": "intersection",
+      "sink": "hasPath",
+      "sink_class": "read",
+      "chain": [
+        "intersection",
+        "baseIntersection",
+        "cacheHas",
+        "has",
+        "hasPath"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 6215,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "intersectionWith",
+      "impl": "intersectionWith",
+      "sink": "hasPath",
+      "sink_class": "read",
+      "chain": [
+        "intersectionWith",
+        "baseIntersection",
+        "cacheHas",
+        "has",
+        "hasPath"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 6215,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "arrays"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "isEqual",
+      "impl": "isEqual",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "isEqual",
+        "baseIsEqual",
+        "baseIsEqualDeep",
+        "equalArrays",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value",
+        "other"
+      ],
+      "other_sinks": [
+        "baseSet"
+      ]
+    },
+    {
+      "api": "isEqualWith",
+      "impl": "isEqualWith",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "isEqualWith",
+        "baseIsEqual",
+        "baseIsEqualDeep",
+        "equalArrays",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value",
+        "other",
+        "customizer"
+      ],
+      "other_sinks": [
+        "baseSet"
+      ]
+    },
+    {
+      "api": "iteratee",
+      "impl": "iteratee",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "hasPath",
+        "result"
+      ]
+    },
+    {
+      "api": "matches",
+      "impl": "matches",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "matches",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "source"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "matchesProperty",
+      "impl": "matchesProperty",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "matchesProperty",
+        "baseMatchesProperty",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": 0,
+      "path_origin": "direct",
+      "impl_params": [
+        "path",
+        "srcValue"
+      ],
+      "other_sinks": [
+        "hasPath",
+        "baseSet",
+        "baseAssignValue",
+        "result"
+      ]
+    },
+    {
+      "api": "max",
+      "impl": "max",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "max",
+        "baseExtremum",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "memoize",
+      "impl": "memoize",
+      "sink": "hasPath",
+      "sink_class": "read",
+      "chain": [
+        "memoize",
+        "has",
+        "hasPath"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 6215,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "resolver"
+      ],
+      "other_sinks": [
+        "baseGet",
+        "baseSet"
+      ]
+    },
+    {
+      "api": "min",
+      "impl": "min",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "min",
+        "baseExtremum",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "mixin",
+      "impl": "mixin",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "mixin",
+        "arrayEach",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object",
+        "source",
+        "options"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "omit",
+      "impl": "omit",
+      "sink": "castPath",
+      "sink_class": "read",
+      "chain": [
+        "omit",
+        "castPath"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 4549,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "paths"
+      ],
+      "other_sinks": [
+        "baseUnset",
+        "baseAssignValue",
+        "baseGet",
+        "baseSet",
+        "result"
+      ]
+    },
+    {
+      "api": "orderBy",
+      "impl": "orderBy",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "orderBy",
+        "baseOrderBy",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratees",
+        "orders",
+        "guard"
+      ],
+      "other_sinks": [
+        "result",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "partial",
+      "impl": "partial",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "partial",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "partials"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "partialRight",
+      "impl": "partialRight",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "partialRight",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "partials"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "pick",
+      "impl": "pick",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "pick",
+        "basePick",
+        "basePickBy",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": 1,
+      "path_origin": "direct",
+      "impl_params": [
+        "object",
+        "paths"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "castPath",
+        "hasPath"
+      ]
+    },
+    {
+      "api": "property",
+      "impl": "property",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "property",
+        "basePropertyDeep",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": 0,
+      "path_origin": "direct",
+      "impl_params": [
+        "path"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "propertyOf",
+      "impl": "propertyOf",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "propertyOf",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "object"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "pullAll",
+      "impl": "pullAll",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "pullAll",
+        "basePullAll",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array",
+        "values"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "pullAllWith",
+      "impl": "pullAllWith",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "pullAllWith",
+        "basePullAll",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array",
+        "values",
+        "comparator"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "pullAt",
+      "impl": "pullAt",
+      "sink": "baseAt",
+      "sink_class": "read",
+      "chain": [
+        "pullAt",
+        "baseAt"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 2618,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array",
+        "indexes"
+      ],
+      "other_sinks": [
+        "baseUnset",
+        "baseGet",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "rearg",
+      "impl": "rearg",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "rearg",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func",
+        "indexes"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "sortBy",
+      "impl": "sortBy",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "sortBy",
+        "baseOrderBy",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "collection",
+        "iteratees"
+      ],
+      "other_sinks": [
+        "result",
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "sortedUniq",
+      "impl": "sortedUniq",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "sortedUniq",
+        "baseSortedUniq",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "sum",
+      "impl": "sum",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "sum",
+        "baseSum",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "toPath",
+      "impl": "toPath",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "toPath",
+        "arrayMap",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "unary",
+      "impl": "unary",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "unary",
+        "ary",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "func"
+      ],
+      "other_sinks": []
+    },
+    {
+      "api": "unzip",
+      "impl": "unzip",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "unzip",
+        "baseTimes",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "unzipWith",
+      "impl": "unzipWith",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "unzipWith",
+        "arrayMap",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "iteratee",
+      "impl_params": [
+        "array",
+        "iteratee"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "without",
+      "impl": "without",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "without",
+        "baseDifference",
+        "iteratee",
+        "baseClone",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "array",
+        "values"
+      ],
+      "other_sinks": [
+        "baseSet",
+        "baseAssignValue"
+      ]
+    },
+    {
+      "api": "wrap",
+      "impl": "wrap",
+      "sink": "baseGet",
+      "sink_class": "read",
+      "chain": [
+        "wrap",
+        "partial",
+        "createWrap",
+        "getData",
+        "get",
+        "baseGet"
+      ],
+      "guard": "read",
+      "guard_evidence": {
+        "protoKey": false,
+        "ctorKey": false,
+        "protoWord": false,
+        "ownCheck": false,
+        "isPrototype": false,
+        "returnsOnBlock": false,
+        "definePropSafe": false
+      },
+      "sink_line": 3075,
+      "path_param_pos": -1,
+      "path_origin": "other",
+      "impl_params": [
+        "value",
+        "wrapper"
+      ],
+      "other_sinks": []
+    }
+  ]
+}

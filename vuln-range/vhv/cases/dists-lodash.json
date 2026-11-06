@@ -1,0 +1,351 @@
+{
+  "package": "lodash",
+  "main_version": "4.18.1",
+  "root": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs",
+  "apis": [
+    "get",
+    "invoke",
+    "invokeArgs",
+    "set",
+    "has",
+    "result",
+    "at",
+    "unset"
+  ],
+  "generated_at": "2026-11-02T10:35:23.500Z",
+  "counts": {
+    "present": 24,
+    "missing": 3
+  },
+  "version_delta": [
+    {
+      "id": "sibling:lodash.get",
+      "spec": "lodash.get",
+      "version": "4.4.2",
+      "main": "4.18.1"
+    },
+    {
+      "id": "sibling:lodash.invoke",
+      "spec": "lodash.invoke",
+      "version": "4.5.2",
+      "main": "4.18.1"
+    },
+    {
+      "id": "sibling:lodash.set",
+      "spec": "lodash.set",
+      "version": "4.3.2",
+      "main": "4.18.1"
+    },
+    {
+      "id": "sibling:lodash.has",
+      "spec": "lodash.has",
+      "version": "4.5.2",
+      "main": "4.18.1"
+    },
+    {
+      "id": "sibling:lodash.result",
+      "spec": "lodash.result",
+      "version": "4.5.2",
+      "main": "4.18.1"
+    },
+    {
+      "id": "sibling:lodash.at",
+      "spec": "lodash.at",
+      "version": "4.6.0",
+      "main": "4.18.1"
+    },
+    {
+      "id": "sibling:lodash.unset",
+      "spec": "lodash.unset",
+      "version": "4.18.0",
+      "main": "4.18.1"
+    }
+  ],
+  "dists": [
+    {
+      "id": "main",
+      "spec": "lodash",
+      "origin": "main-entry",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\lodash.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.get",
+      "spec": "lodash.get",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.get\\index.js",
+      "owner": "lodash.get",
+      "version": "4.4.2",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.invoke",
+      "spec": "lodash.invoke",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.invoke\\index.js",
+      "owner": "lodash.invoke",
+      "version": "4.5.2",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.invokeArgs",
+      "spec": "lodash.invokeArgs",
+      "origin": "sibling-pkg",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.set",
+      "spec": "lodash.set",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.set\\index.js",
+      "owner": "lodash.set",
+      "version": "4.3.2",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.has",
+      "spec": "lodash.has",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.has\\index.js",
+      "owner": "lodash.has",
+      "version": "4.5.2",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.result",
+      "spec": "lodash.result",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.result\\index.js",
+      "owner": "lodash.result",
+      "version": "4.5.2",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.at",
+      "spec": "lodash.at",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.at\\index.js",
+      "owner": "lodash.at",
+      "version": "4.6.0",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash.unset",
+      "spec": "lodash.unset",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash.unset\\index.js",
+      "owner": "lodash.unset",
+      "version": "4.18.0",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash-es",
+      "spec": "lodash-es",
+      "origin": "sibling-pkg",
+      "status": "present",
+      "kind": "esm",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash-es\\lodash.js",
+      "owner": "lodash-es",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "sibling:lodash-fp",
+      "spec": "lodash-fp",
+      "origin": "sibling-pkg",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "subpath:get",
+      "spec": "lodash/get",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\get.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/get",
+      "spec": "lodash/fp/get",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\get.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:invoke",
+      "spec": "lodash/invoke",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\invoke.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/invoke",
+      "spec": "lodash/fp/invoke",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\invoke.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:invokeArgs",
+      "spec": "lodash/invokeArgs",
+      "origin": "subpath",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/invokeArgs",
+      "spec": "lodash/fp/invokeArgs",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\invokeArgs.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:set",
+      "spec": "lodash/set",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\set.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/set",
+      "spec": "lodash/fp/set",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\set.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:has",
+      "spec": "lodash/has",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\has.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/has",
+      "spec": "lodash/fp/has",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\has.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:result",
+      "spec": "lodash/result",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\result.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/result",
+      "spec": "lodash/fp/result",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\result.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:at",
+      "spec": "lodash/at",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\at.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/at",
+      "spec": "lodash/fp/at",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\at.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:unset",
+      "spec": "lodash/unset",
+      "origin": "subpath",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\unset.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/unset",
+      "spec": "lodash/fp/unset",
+      "origin": "subpath-fp",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\lodash\\fp\\unset.js",
+      "owner": "lodash",
+      "version": "4.18.1",
+      "note": null
+    }
+  ]
+}

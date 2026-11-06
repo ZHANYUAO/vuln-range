@@ -1,0 +1,66 @@
+{
+  "target": "http://127.0.0.1:8896",
+  "gt_source": "闸门回归夹具（lab/legacy_app.py），不是漏洞靶场",
+  "note": "两条互为对照：同一端点 /admin，带会话时必须有证据（confirmed），不带会话时必须判 blocked 而不是 rejected。旧版闸门只会输出 rejected，把『我没带会话』写成『漏洞不存在』。",
+  "vulns": [
+    {
+      "id": "LEGACY-NOSESSION",
+      "class": "auth_gate_probe",
+      "criterion": "fixture_check",
+      "expect": "blocked",
+      "request": { "method": "GET", "path": "/admin" },
+      "assert": { "type": "body_contains", "value": "ADMIN-PANEL-SECRET" },
+      "control": [ { "method": "GET", "path": "/public" } ],
+      "control_assert": { "type": "body_not_contains", "value": "ADMIN-PANEL-SECRET" }
+    },
+    {
+      "id": "LEGACY-WITHSESSION",
+      "class": "auth_gate_probe",
+      "criterion": "fixture_check",
+      "expect": "confirmed",
+      "pre": [
+        { "method": "POST", "path": "/login",
+          "params": { "user": "admin", "pass": "admin123" },
+          "save_cookie": "admin" }
+      ],
+      "request": { "method": "GET", "path": "/admin", "session": "admin" },
+      "assert": { "type": "body_contains", "value": "ADMIN-PANEL-SECRET" },
+      "control": [ { "method": "GET", "path": "/public" } ],
+      "control_assert": { "type": "body_not_contains", "value": "ADMIN-PANEL-SECRET" }
+    },
+    {
+      "id": "LEGACY-OPENREDIR",
+      "class": "open_redirect",
+      "criterion": "redirect_to_attacker_host",
+      "expect": "confirmed",
+      "_why": "2026-11-02：urllib 默认跟随 3xx，Location 头会彻底消失，这类漏洞过去**无法验证且静默判 rejected**。step 加 no_redirect 后，头才是可观测事实。",
+      "request": {
+        "method": "GET", "path": "/go",
+        "params": { "to": "https://evil.example.com/" },
+        "no_redirect": true
+      },
+      "assert": { "type": "header_equals", "header": "Location", "value": "https://evil.example.com/" },
+      "control": [
+        { "method": "GET", "path": "/go", "params": { "to": "/public" }, "no_redirect": true }
+      ],
+      "control_assert": { "type": "header_not_contains", "header": "Location", "value": "evil.example.com" }
+    },
+    {
+      "id": "LEGACY-OPENREDIR-BLIND",
+      "class": "open_redirect_control",
+      "criterion": "same_endpoint_safe_param",
+      "expect": "rejected",
+      "_why": "同端点的安全参数：Location 指向站内路径，不该出现攻击者域名。用来证明上一条不是『这个端点永远返回 302』的假阳性。",
+      "request": {
+        "method": "GET", "path": "/go",
+        "params": { "to": "/public" },
+        "no_redirect": true
+      },
+      "assert": { "type": "header_contains", "header": "Location", "value": "evil.example.com" },
+      "control": [
+        { "method": "GET", "path": "/go", "params": { "to": "/public" }, "no_redirect": true }
+      ],
+      "control_assert": { "type": "header_not_contains", "header": "Location", "value": "evil.example.com" }
+    }
+  ]
+}

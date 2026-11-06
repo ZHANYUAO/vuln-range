@@ -1,0 +1,99 @@
+{
+ "generated_at": "2026-11-02T13:40:59.158Z",
+ "versions": {
+  "json-ptr": "3.1.1",
+  "json-logic-js": "2.0.5",
+  "node": "v22.22.2"
+ },
+ "summary": {
+  "hit": 9,
+  "miss": 2,
+  "control_fail": 0
+ },
+ "results": [
+  {
+   "id": "A0:control",
+   "desc": "正常指针 /user/role",
+   "state": "PASS",
+   "detail": "got user"
+  },
+  {
+   "id": "A1:setGuard",
+   "desc": "写侧 /__proto__ 被拦截",
+   "state": "PASS",
+   "detail": "抛出：Attempted prototype pollution disallowed."
+  },
+  {
+   "id": "A2:readBypass",
+   "desc": "读侧同一段未被拦截",
+   "state": "HIT",
+   "detail": "取到 Function 本体（写侧拦了，读侧没拦）"
+  },
+  {
+   "id": "A3:exec",
+   "desc": "执行任意表达式",
+   "state": "HIT",
+   "detail": "got 42"
+  },
+  {
+   "id": "A4:readfile",
+   "desc": "读本机任意文件",
+   "state": "HIT",
+   "detail": "读到 3700 字节"
+  },
+  {
+   "id": "A5:exec_cmd",
+   "desc": "执行系统命令",
+   "state": "HIT",
+   "detail": "stdout=PTR_RCE_OK"
+  },
+  {
+   "id": "A6:jsonpatch",
+   "desc": "JSON Patch test 操作：path 可控即穿越",
+   "state": "HIT",
+   "detail": "客户端拿到 matched=true，说明服务端把 Function 当数据处理了"
+  },
+  {
+   "id": "A7:genericApi",
+   "desc": "通用取值 API：穿越结果外显",
+   "state": "HIT",
+   "detail": "返回 type=function text=function Function() { [native code] }"
+  },
+  {
+   "id": "A8:jsonref",
+   "desc": "$ref 解析穿越",
+   "state": "HIT",
+   "detail": "resolve 返回 function"
+  },
+  {
+   "id": "B0:control",
+   "desc": "正常规则 {var:\"user.role\"}",
+   "state": "PASS",
+   "detail": "got user"
+  },
+  {
+   "id": "B1:varBypass",
+   "desc": "var 操作符穿越到 Function",
+   "state": "HIT",
+   "detail": "取到 Function 本体"
+  },
+  {
+   "id": "B2:methodOld",
+   "desc": "历史 payload",
+   "state": "MISS",
+   "detail": "Unrecognized operation method"
+  },
+  {
+   "id": "B3:combo1",
+   "desc": "var + method 组合",
+   "state": "MISS",
+   "detail": "Unrecognized operation method"
+  },
+  {
+   "id": "B5:ruleEngine",
+   "desc": "用户提交规则场景：直达 Function",
+   "state": "HIT",
+   "detail": "规则即攻击载荷，无需任何额外条件"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\just-safe-set\\index.cjs",
+  "lines": 62,
+  "fn_count": 2,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [
+    {
+      "name": "prototypeCheck",
+      "line": 56,
+      "kind": "blacklist",
+      "shape": "block",
+      "test": "prop == '__proto__' || prop == 'constructor' || prop == 'prototype'",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 2,
+      "refs": 0,
+      "callers": [
+        "set"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 1,
+    "G_ownkey": 0,
+    "bl_call_sites": 2,
+    "S_path": 4,
+    "C_path": 4,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "COVERED"
+}

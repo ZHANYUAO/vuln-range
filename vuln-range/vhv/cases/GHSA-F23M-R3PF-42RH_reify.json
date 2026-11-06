@@ -1,0 +1,461 @@
+{
+  "seed": "GHSA-F23M-R3PF-42RH",
+  "vuln": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\src\\lodash-4.17.20\\lodash.js",
+  "secure": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\src\\lodash-4.18.0\\lodash.js",
+  "tally": {
+    "ineffective": 20,
+    "fixed": 5
+  },
+  "rows": [
+    {
+      "case": "set_str_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "set_str_ctor",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "set_str_prototype_only",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "set_arr_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "set_arr_ctor",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "set_arr_proto_num",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "set_arr_proto_obj",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "setWith_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "setWith_arr_ctor",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "merge_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "merge_ctor",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "defaultsDeep_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "defaultsDeep_ctor",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "update_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "zipObjectDeep_proto",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "zipObjectDeep_ctor",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "write",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "unset_del_proto_str",
+      "verdict": "fixed",
+      "why": "未修复版污染，修复版不污染 → 载荷有效且已修复",
+      "kind": "delete",
+      "vuln": {
+        "polluted": true,
+        "error": null,
+        "detail": "预置属性被删除",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "unset_del_proto_arr",
+      "verdict": "fixed",
+      "why": "未修复版污染，修复版不污染 → 载荷有效且已修复",
+      "kind": "delete",
+      "vuln": {
+        "polluted": true,
+        "error": null,
+        "detail": "预置属性被删除",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "unset_del_ctor_proto",
+      "verdict": "fixed",
+      "why": "未修复版污染，修复版不污染 → 载荷有效且已修复",
+      "kind": "delete",
+      "vuln": {
+        "polluted": true,
+        "error": null,
+        "detail": "预置属性被删除",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "unset_del_prototype_only",
+      "verdict": "ineffective",
+      "why": "两版都不污染 → 载荷没打到点，不等于该路径安全",
+      "kind": "delete",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "omit_del_proto_arr",
+      "verdict": "fixed",
+      "why": "未修复版污染，修复版不污染 → 载荷有效且已修复",
+      "kind": "delete",
+      "vuln": {
+        "polluted": true,
+        "error": null,
+        "detail": "预置属性被删除",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "omit_del_proto_str",
+      "verdict": "fixed",
+      "why": "未修复版污染，修复版不污染 → 载荷有效且已修复",
+      "kind": "delete",
+      "vuln": {
+        "polluted": true,
+        "error": null,
+        "detail": "预置属性被删除",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "预置属性仍在",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "ctrl_normal_set",
+      "verdict": "ineffective",
+      "why": "阴性对照通过（本就不该污染）",
+      "kind": "control",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "ctrl_normal_merge",
+      "verdict": "ineffective",
+      "why": "阴性对照通过（本就不该污染）",
+      "kind": "control",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    },
+    {
+      "case": "ctrl_normal_unset",
+      "verdict": "ineffective",
+      "why": "阴性对照通过（本就不该污染）",
+      "kind": "control",
+      "vuln": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.17.20"
+      },
+      "secure": {
+        "polluted": false,
+        "error": null,
+        "detail": "全局不可见",
+        "version": "4.18.0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+# 凭据：绝不允许进版本库（2026-11-02）
+.token
+.nvidia_key
+.zro_key
+profiles/*.secrets.json
+lab/.oast_token
+*.local.json
+
+# 证据与产物：体积大、含目标响应片段，按需单独归档
+evidence/
+baseline/out/
+apps/juice/out/
+apps/juice/ext/
+apps/juice/node_modules/
+__pycache__/
+*.pyc
+
+# 第三方源码快照（体积大，用脚本可重建）
+ext/
+_src/

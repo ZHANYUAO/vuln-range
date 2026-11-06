@@ -1,0 +1,89 @@
+{
+  "target": "OWASP Juice Shop 20.3.0 — LLM 层第二轮（从扫描器线索到攻击假设）",
+  "note": "这 8 条不在第一轮 GT 里。来源：ffuf 只给出 /ftp、/support/logs、/encryptionkeys 三个入口，具体文件名由目录索引读取得到；断言由派生层按文件类型生成（.log/.kdbx/.key/未知）。",
+  "vulns": [
+    {
+      "id": "L-ACCESSLOG",
+      "class": "file_disclosure",
+      "criterion": "information_disclosure",
+      "oracle": "accessLogDisclosureChallenge",
+      "request": {"method": "GET", "path": "/support/logs/access.log.2026-10-29"},
+      "control": [{"method": "GET", "path": "/support/logs/access.log.1999-01-01"}],
+      "control_assert": {"type": "status_not", "value": 200},
+      "note": "目录索引 /support/logs 直接列出日志文件名；取当天日志。对照=不存在的日期"
+    },
+    {
+      "id": "L-KDBX",
+      "class": "file_disclosure",
+      "criterion": "credential_store_exposure",
+      "oracle": null,
+      "request": {"method": "GET", "path": "/ftp/incident-support.kdbx"},
+      "control": [{"method": "GET", "path": "/ftp/legal.md"}],
+      "control_assert": {"type": "status", "value": 200},
+      "note": "KeePass 凭据库被直接下载。判据=magic bytes 03D9A29A，不是文本内容。官方 116 条挑战里没有对应项，因此无 oracle"
+    },
+    {
+      "id": "L-PREMIUMKEY",
+      "class": "file_disclosure",
+      "criterion": "secret_exposure",
+      "oracle": null,
+      "oracle_note": "曾映射 premiumPaywallChallenge，实测不一致且是我映射错：该挑战要求『用密钥解开付费墙』，而本条只证明『密钥可下载』。闸门判对了，映射错了。",
+      "request": {"method": "GET", "path": "/encryptionkeys/premium.key"},
+      "control": [{"method": "GET", "path": "/encryptionkeys/jwt.pub"}],
+      "control_assert": {"type": "status", "value": 200},
+      "note": "授权密钥明文可取。取到密钥不等于解开付费墙，oracle 只作参考；本条判的是密钥泄漏这个事实"
+    },
+    {
+      "id": "L-COUPONBAK",
+      "class": "file_disclosure",
+      "criterion": "backup_file_exposure",
+      "oracle": "forgottenBackupChallenge",
+      "request": {"method": "GET", "path": "/ftp/coupons_2013.md.bak%2500.md"},
+      "control": [{"method": "GET", "path": "/ftp/coupons_2013.md.bak"}],
+      "control_assert": {"type": "status", "value": 403},
+      "note": "把已确认的 null-byte 原语迁移到新目标：.bak 后缀被白名单拦（403），%2500 解码成 %00 截断后缀后 200"
+    },
+    {
+      "id": "L-SIGMA",
+      "class": "file_disclosure",
+      "criterion": "security_config_exposure",
+      "oracle": "misplacedSignatureFileChallenge",
+      "request": {"method": "GET", "path": "/ftp/suspicious_errors.yml%2500.md"},
+      "control": [{"method": "GET", "path": "/ftp/suspicious_errors.yml"}],
+      "control_assert": {"type": "status", "value": 403},
+      "note": "Sigma/SIEM 规则文件泄漏（官方挑战描述明确指 sigma）"
+    },
+    {
+      "id": "L-EASTER",
+      "class": "file_disclosure",
+      "criterion": "unintended_file_exposure",
+      "oracle": "easterEggLevelOneChallenge",
+      "request": {"method": "GET", "path": "/ftp/eastere.gg%2500.md"},
+      "control": [{"method": "GET", "path": "/ftp/eastere.gg"}],
+      "control_assert": {"type": "status", "value": 403},
+      "note": "彩蛋文件。价值不在难度，而在验证同一绕过原语可批量迁移"
+    },
+    {
+      "id": "N-LOG-FAKE",
+      "class": "file_disclosure",
+      "criterion": "information_disclosure",
+      "oracle": null,
+      "expect": "rejected",
+      "request": {"method": "GET", "path": "/support/logs/access.log.1999-01-01"},
+      "control": [{"method": "GET", "path": "/support/logs/access.log.2026-10-29"}],
+      "control_assert": {"type": "status", "value": 200},
+      "note": "负数：不存在的日期必须被拒（防止闸门见 200 就给 confirmed）"
+    },
+    {
+      "id": "N-KDBX-FAKE",
+      "class": "file_disclosure",
+      "criterion": "credential_store_exposure",
+      "oracle": null,
+      "expect": "rejected",
+      "request": {"method": "GET", "path": "/ftp/notexist.kdbx"},
+      "control": [{"method": "GET", "path": "/ftp/incident-support.kdbx"}],
+      "control_assert": {"type": "status", "value": 200},
+      "note": "负数：不存在的凭据库必须被拒"
+    }
+  ]
+}

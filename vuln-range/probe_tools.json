@@ -1,0 +1,42 @@
+[
+ {
+  "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "ok": true,
+  "sec": 2.0,
+  "tool_calls": true,
+  "tool_arg": "{\"cmd\":\"ls -l\"}",
+  "content": null
+ },
+ {
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "ok": true,
+  "sec": 2.1,
+  "tool_calls": true,
+  "tool_arg": "{\"cmd\":\"ls -la\"}",
+  "content": null
+ },
+ {
+  "model": "z-ai/glm-5.3-flash",
+  "ok": true,
+  "sec": 3.0,
+  "tool_calls": true,
+  "tool_arg": "{\"cmd\":\"ls -la\"}",
+  "content": null
+ },
+ {
+  "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+  "ok": true,
+  "sec": 3.7,
+  "tool_calls": true,
+  "tool_arg": "{\"cmd\":\"ls\"}",
+  "content": null
+ },
+ {
+  "model": "openai/gpt-oss-20b",
+  "ok": true,
+  "sec": 4.6,
+  "tool_calls": true,
+  "tool_arg": "{\"cmd\": \"ls -la\"}",
+  "content": null
+ }
+]

@@ -1,0 +1,16 @@
+model	http	ms	verdict	snippet
+nvidia/nemotron-3-ultra-550b-a55b	200	2009	OK	{"id":"chatcmpl-6a45ff68-9ffa-4dda-aec1-be29dc8a0567","choices":[{"index":0,"message":{"content":null,"role":"assistant","reasonin
+deepseek-ai/deepseek-v4.1-flash	000	25112	TIMEOUT_HANG	
+moonshotai/kimi-k2.6	404	1299	NOT_FOUND	{"status":404,"title":"Not Found","detail":"Function '23d4f03a-b8a6-4adb-a183-7daa083a09cc': Not found for account 'UIXKDel6Ul2FSu
+z-ai/glm-5.3-flash	000	25100	TIMEOUT_HANG	
+minimaxai/minimax-m3.1-flash	000	25128	TIMEOUT_HANG	
+openai/gpt-oss-20b	000	25125	TIMEOUT_HANG	
+nvidia/nemotron-3-super-120b-a12b	404	2028	NOT_FOUND	{"status":404,"title":"Not Found","detail":"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'UIXKDel6Ul2FSu
+nvidia/llama-3.1-nemotron-70b-instruct	404	3437	NOT_FOUND	{"status":404,"title":"Not Found","detail":"Function '9b96341b-9791-4db9-a00d-4e43aa192a39': Not found for account 'UIXKDel6Ul2FSu
+nvidia/nemotron-3-nano-omni-30b-a3b-reasoning	200	10359	OK	{"id":"chatcmpl-68c75056-56f9-4df0-b347-fbe45464b53a","choices":[{"index":0,"message":{"content":null,"role":"assistant","reasonin
+mistralai/mistral-large-4-1t-a52b	200	3023	OK	{"id":"chatcmpl-72b0e32d-192d-4200-b2cc-1be399f7fae6","choices":[{"index":0,"message":{"content":"OK","refusal":null,"role":"assis
+stepfun-ai/step-5-preview	200	3522	OK	{"id":"99bc737233bb6ff1","choices":[{"index":0,"message":{"content":null,"refusal":null,"role":"assistant","reasoning_content":"We
+meta/muse-glimmer-30b	000	25122	TIMEOUT_HANG	
+google/gemma-4-31b-it	000	25124	TIMEOUT_HANG	
+nvidia/nemotron-3.5-lightning-30b-a3b	200	1734	OK	{"id":"chatcmpl-6ea921d0-46c5-4ef6-bdc1-f1e737b3442d","choices":[{"index":0,"message":{"content":null,"role":"assistant","reasonin
+nvidia/nemotron-3.5-super-vl-120b-a12b	200	2113	OK	{"id":"chatcmpl-6d03b66b-ede5-4fd3-9dfb-da75b5c28bfa","choices":[{"index":0,"message":{"content":null,"role":"assistant","reasonin

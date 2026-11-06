@@ -1,0 +1,25 @@
+{# Included directly from the `area.html` template.
+The area related `data.*` is available plus `item` and `widgetOptions`. #}
+{%- set lastId = apos.modules['@apostrophecms/layout-widget'].detectLastTabletFullWidthItem(data.area.items) -%}
+{%- set styles = apos.styles.render(item) -%}
+{%- set styleTag = apos.styles.elements(styles, data.scene) -%}
+{%- set wrapperAttrs = apos.styles.attributes(styles, {}, {asObject: true}) -%}
+{{ styleTag }}
+<div
+  {% for key, value in wrapperAttrs %}
+    {% if key != 'style' %}{{ key }}="{{ value }}"{% endif %}
+  {% endfor %}
+  {% if data.canEdit %} data-apos-widget="{{ item._id }}"{% endif %}
+  data-visible-tablet="{{ item.showTablet !== false }}"
+  data-visible-mobile="{{ item.showMobile !== false }}"
+  {% if lastId and item._id === lastId %}data-tablet-full="true"{% endif %}
+  style="
+    {{ wrapperAttrs.style or '' }}
+    --colstart: {{ item.colstart }};
+    --colspan: {{ item.colspan }};
+    --rowstart: {{ item.rowstart }};
+    --rowspan: {{ item.rowspan }};
+    --order: {{ item.order }};
+">
+  {% area item, 'content' %}
+</div>

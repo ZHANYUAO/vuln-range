@@ -1,0 +1,344 @@
+{
+ "generated_at": "2026-11-03T07:03:41.105Z",
+ "doc": {
+  "a": {
+   "b": 7
+  },
+  "user": {
+   "name": "alice"
+  }
+ },
+ "ctrl": "/a/b=7",
+ "can_call": true,
+ "results": [
+  {
+   "lib": "json-ptr",
+   "ver": "3.1.1",
+   "control": "PASS",
+   "get": [
+    {
+     "id": "P1",
+     "ptr": "/a/constructor/constructor",
+     "note": "前缀固定 /a",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P2",
+     "ptr": "/constructor/constructor",
+     "note": "首段即危险键",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P3",
+     "ptr": "/__proto__/constructor/constructor",
+     "note": "经典 __proto__ 路径",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P4",
+     "ptr": "/a/__proto__/constructor/constructor",
+     "note": "前缀 + __proto__",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P5",
+     "ptr": "/a/b/constructor/constructor",
+     "note": "命中真实值后再穿",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P6",
+     "ptr": "/a/constructor",
+     "note": "单跳：应得 Object 构造器",
+     "verdict": "HIT_CTOR",
+     "got": "Object 构造器"
+    },
+    {
+     "id": "P7",
+     "ptr": "/a/__proto__",
+     "note": "单跳：应得 Object.prototype",
+     "verdict": "HIT_PROTO",
+     "got": "Object.prototype"
+    }
+   ],
+   "patch": [
+    {
+     "id": "W1",
+     "op": "test",
+     "verdict": "READ_HIT",
+     "got": "test failed"
+    },
+    {
+     "id": "W2",
+     "op": "replace __proto__",
+     "verdict": "BLOCK",
+     "got": "Attempted prototype pollution disallowed."
+    }
+   ],
+   "note": null
+  },
+  {
+   "lib": "json-pointer",
+   "ver": "0.6.2",
+   "control": "PASS",
+   "get": [
+    {
+     "id": "P1",
+     "ptr": "/a/constructor/constructor",
+     "note": "前缀固定 /a",
+     "verdict": "ERR",
+     "got": "ERR: Invalid reference token: constructor"
+    },
+    {
+     "id": "P2",
+     "ptr": "/constructor/constructor",
+     "note": "首段即危险键",
+     "verdict": "ERR",
+     "got": "ERR: Invalid reference token: constructor"
+    },
+    {
+     "id": "P3",
+     "ptr": "/__proto__/constructor/constructor",
+     "note": "经典 __proto__ 路径",
+     "verdict": "ERR",
+     "got": "ERR: Invalid reference token: constructor"
+    },
+    {
+     "id": "P4",
+     "ptr": "/a/__proto__/constructor/constructor",
+     "note": "前缀 + __proto__",
+     "verdict": "ERR",
+     "got": "ERR: Invalid reference token: constructor"
+    },
+    {
+     "id": "P5",
+     "ptr": "/a/b/constructor/constructor",
+     "note": "命中真实值后再穿",
+     "verdict": "ERR",
+     "got": "ERR: Invalid reference token: constructor"
+    },
+    {
+     "id": "P6",
+     "ptr": "/a/constructor",
+     "note": "单跳：应得 Object 构造器",
+     "verdict": "HIT_CTOR",
+     "got": "Object 构造器"
+    },
+    {
+     "id": "P7",
+     "ptr": "/a/__proto__",
+     "note": "单跳：应得 Object.prototype",
+     "verdict": "HIT_PROTO",
+     "got": "Object.prototype"
+    }
+   ],
+   "patch": [],
+   "note": null
+  },
+  {
+   "lib": "jsonpointer",
+   "ver": "5.0.1",
+   "control": "PASS",
+   "get": [
+    {
+     "id": "P1",
+     "ptr": "/a/constructor/constructor",
+     "note": "前缀固定 /a",
+     "verdict": "MISS",
+     "got": "undefined"
+    },
+    {
+     "id": "P2",
+     "ptr": "/constructor/constructor",
+     "note": "首段即危险键",
+     "verdict": "MISS",
+     "got": "undefined"
+    },
+    {
+     "id": "P3",
+     "ptr": "/__proto__/constructor/constructor",
+     "note": "经典 __proto__ 路径",
+     "verdict": "MISS",
+     "got": "undefined"
+    },
+    {
+     "id": "P4",
+     "ptr": "/a/__proto__/constructor/constructor",
+     "note": "前缀 + __proto__",
+     "verdict": "MISS",
+     "got": "undefined"
+    },
+    {
+     "id": "P5",
+     "ptr": "/a/b/constructor/constructor",
+     "note": "命中真实值后再穿",
+     "verdict": "MISS",
+     "got": "undefined"
+    },
+    {
+     "id": "P6",
+     "ptr": "/a/constructor",
+     "note": "单跳：应得 Object 构造器",
+     "verdict": "HIT_CTOR",
+     "got": "Object 构造器"
+    },
+    {
+     "id": "P7",
+     "ptr": "/a/__proto__",
+     "note": "单跳：应得 Object.prototype",
+     "verdict": "HIT_PROTO",
+     "got": "Object.prototype"
+    }
+   ],
+   "patch": [],
+   "note": null
+  },
+  {
+   "lib": "jsonpatch",
+   "ver": "3.1.0",
+   "control": "PASS",
+   "get": [
+    {
+     "id": "P1",
+     "ptr": "/a/constructor/constructor",
+     "note": "前缀固定 /a",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    },
+    {
+     "id": "P2",
+     "ptr": "/constructor/constructor",
+     "note": "首段即危险键",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    },
+    {
+     "id": "P3",
+     "ptr": "/__proto__/constructor/constructor",
+     "note": "经典 __proto__ 路径",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    },
+    {
+     "id": "P4",
+     "ptr": "/a/__proto__/constructor/constructor",
+     "note": "前缀 + __proto__",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    },
+    {
+     "id": "P5",
+     "ptr": "/a/b/constructor/constructor",
+     "note": "命中真实值后再穿",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    },
+    {
+     "id": "P6",
+     "ptr": "/a/constructor",
+     "note": "单跳：应得 Object 构造器",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    },
+    {
+     "id": "P7",
+     "ptr": "/a/__proto__",
+     "note": "单跳：应得 Object.prototype",
+     "verdict": "ERR",
+     "got": "ERR: Path not found in document"
+    }
+   ],
+   "patch": [
+    {
+     "id": "W1",
+     "op": "test",
+     "verdict": "ERR",
+     "got": "Path not found in document"
+    },
+    {
+     "id": "W2",
+     "op": "replace __proto__",
+     "verdict": "BLOCK",
+     "got": "Replace operation must point to an existing value!"
+    }
+   ],
+   "note": null
+  },
+  {
+   "lib": "fast-json-patch",
+   "ver": "3.1.1",
+   "control": "PASS",
+   "get": [
+    {
+     "id": "P1",
+     "ptr": "/a/constructor/constructor",
+     "note": "前缀固定 /a",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P2",
+     "ptr": "/constructor/constructor",
+     "note": "首段即危险键",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P3",
+     "ptr": "/__proto__/constructor/constructor",
+     "note": "经典 __proto__ 路径",
+     "verdict": "BLOCK",
+     "got": "ERR: JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned for "
+    },
+    {
+     "id": "P4",
+     "ptr": "/a/__proto__/constructor/constructor",
+     "note": "前缀 + __proto__",
+     "verdict": "BLOCK",
+     "got": "ERR: JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned for "
+    },
+    {
+     "id": "P5",
+     "ptr": "/a/b/constructor/constructor",
+     "note": "命中真实值后再穿",
+     "verdict": "HIT",
+     "got": "Function"
+    },
+    {
+     "id": "P6",
+     "ptr": "/a/constructor",
+     "note": "单跳：应得 Object 构造器",
+     "verdict": "HIT_CTOR",
+     "got": "Object 构造器"
+    },
+    {
+     "id": "P7",
+     "ptr": "/a/__proto__",
+     "note": "单跳：应得 Object.prototype",
+     "verdict": "BLOCK",
+     "got": "ERR: JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned for "
+    }
+   ],
+   "patch": [
+    {
+     "id": "W1",
+     "op": "test",
+     "verdict": "ERR",
+     "got": "Test operation failed\nname: TEST_OPERATION_FAILED\nindex: 0\noperation: {\n  \"op\": \"test\",\n  "
+    },
+    {
+     "id": "W2",
+     "op": "replace __proto__",
+     "verdict": "BLOCK",
+     "got": "JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned for security r"
+    }
+   ],
+   "note": null
+  }
+ ]
+}

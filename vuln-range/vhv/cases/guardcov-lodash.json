@@ -1,0 +1,584 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\src\\lodash-4.18.1\\lodash.js",
+  "lines": 17260,
+  "bytes": 545941,
+  "fn_count": 678,
+  "export_count": 306,
+  "exports": [
+    {
+      "api": "after",
+      "target": "after"
+    },
+    {
+      "api": "ary",
+      "target": "ary"
+    },
+    {
+      "api": "assign",
+      "target": "assign"
+    },
+    {
+      "api": "assignIn",
+      "target": "assignIn"
+    },
+    {
+      "api": "assignInWith",
+      "target": "assignInWith"
+    },
+    {
+      "api": "assignWith",
+      "target": "assignWith"
+    },
+    {
+      "api": "at",
+      "target": "at"
+    },
+    {
+      "api": "before",
+      "target": "before"
+    },
+    {
+      "api": "bind",
+      "target": "bind"
+    },
+    {
+      "api": "bindAll",
+      "target": "bindAll"
+    },
+    {
+      "api": "bindKey",
+      "target": "bindKey"
+    },
+    {
+      "api": "castArray",
+      "target": "castArray"
+    },
+    {
+      "api": "chain",
+      "target": "chain"
+    },
+    {
+      "api": "chunk",
+      "target": "chunk"
+    },
+    {
+      "api": "compact",
+      "target": "compact"
+    },
+    {
+      "api": "concat",
+      "target": "concat"
+    },
+    {
+      "api": "cond",
+      "target": "cond"
+    },
+    {
+      "api": "conforms",
+      "target": "conforms"
+    },
+    {
+      "api": "constant",
+      "target": "constant"
+    },
+    {
+      "api": "countBy",
+      "target": "countBy"
+    },
+    {
+      "api": "create",
+      "target": "create"
+    },
+    {
+      "api": "curry",
+      "target": "curry"
+    },
+    {
+      "api": "curryRight",
+      "target": "curryRight"
+    },
+    {
+      "api": "debounce",
+      "target": "debounce"
+    },
+    {
+      "api": "defaults",
+      "target": "defaults"
+    },
+    {
+      "api": "defaultsDeep",
+      "target": "defaultsDeep"
+    },
+    {
+      "api": "defer",
+      "target": "defer"
+    },
+    {
+      "api": "delay",
+      "target": "delay"
+    },
+    {
+      "api": "difference",
+      "target": "difference"
+    },
+    {
+      "api": "differenceBy",
+      "target": "differenceBy"
+    },
+    {
+      "api": "differenceWith",
+      "target": "differenceWith"
+    },
+    {
+      "api": "drop",
+      "target": "drop"
+    },
+    {
+      "api": "dropRight",
+      "target": "dropRight"
+    },
+    {
+      "api": "dropRightWhile",
+      "target": "dropRightWhile"
+    },
+    {
+      "api": "dropWhile",
+      "target": "dropWhile"
+    },
+    {
+      "api": "fill",
+      "target": "fill"
+    },
+    {
+      "api": "filter",
+      "target": "filter"
+    },
+    {
+      "api": "flatMap",
+      "target": "flatMap"
+    },
+    {
+      "api": "flatMapDeep",
+      "target": "flatMapDeep"
+    },
+    {
+      "api": "flatMapDepth",
+      "target": "flatMapDepth"
+    }
+  ],
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [
+    {
+      "name": "baseSet",
+      "line": 4025,
+      "kind": "blacklist",
+      "test": "key === '__proto__' || key === 'constructor' || key === 'prototype'",
+      "calls": 6,
+      "callers": [
+        "runInContext",
+        "basePickBy",
+        "baseUpdate",
+        "set",
+        "setWith",
+        "anon@9"
+      ]
+    },
+    {
+      "name": "baseUnset",
+      "line": 4376,
+      "kind": "blacklist",
+      "test": "key === '__proto__' && !hasOwnProperty.call(object, '__proto__')",
+      "calls": 5,
+      "callers": [
+        "runInContext",
+        "basePullAt",
+        "omit",
+        "unset",
+        "anon@9"
+      ]
+    },
+    {
+      "name": "safeGet",
+      "line": 6704,
+      "kind": "blacklist",
+      "test": "key === 'constructor' && typeof object[key] === 'function'",
+      "calls": 5,
+      "callers": [
+        "runInContext",
+        "baseMerge",
+        "baseMergeDeep",
+        "anon@9",
+        "anon@3647"
+      ]
+    },
+    {
+      "name": "lodash",
+      "line": 1691,
+      "kind": "ownkey",
+      "test": "hasOwnProperty.call(value, '__wrapped__')",
+      "calls": 3,
+      "callers": [
+        "runInContext",
+        "chain",
+        "anon@9"
+      ]
+    },
+    {
+      "name": "equalObjects",
+      "line": 5863,
+      "kind": "ownkey",
+      "test": "!(isPartial ? key in other : hasOwnProperty.call(other, key))",
+      "calls": 3,
+      "callers": [
+        "runInContext",
+        "baseIsEqualDeep",
+        "anon@9"
+      ]
+    },
+    {
+      "name": "runInContext",
+      "line": 1449,
+      "kind": "ownkey",
+      "test": "hasOwnProperty.call(value, '__wrapped__')",
+      "calls": 1,
+      "callers": [
+        "anon@9"
+      ]
+    },
+    {
+      "name": "customDefaultsAssignIn",
+      "line": 5648,
+      "kind": "ownkey",
+      "test": "objValue === undefined || (eq(objValue, objectProto[key]) && !hasOwnPr",
+      "calls": 0,
+      "callers": []
+    },
+    {
+      "name": "isEmpty",
+      "line": 11578,
+      "kind": "ownkey",
+      "test": "hasOwnProperty.call(value, key)",
+      "calls": 0,
+      "callers": []
+    },
+    {
+      "name": "template",
+      "line": 14882,
+      "kind": "regex",
+      "test": "reForbiddenIdentifierChars.test(key)",
+      "calls": 0,
+      "callers": []
+    },
+    {
+      "name": "anon@9",
+      "line": 9,
+      "kind": "ownkey",
+      "test": "hasOwnProperty.call(value, '__wrapped__')",
+      "calls": 0,
+      "callers": []
+    },
+    {
+      "name": "anon@14898",
+      "line": 14898,
+      "kind": "regex",
+      "test": "reForbiddenIdentifierChars.test(key)",
+      "calls": 0,
+      "callers": []
+    }
+  ],
+  "counts": {
+    "G_blacklist": 5,
+    "G_ownkey": 6,
+    "bl_call_sites": 16,
+    "S_path": 91,
+    "C_path": 60,
+    "R": 0.659,
+    "S_all": 184
+  },
+  "unguarded": [
+    {
+      "line": 908,
+      "owner": "anon@907",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 1007,
+      "owner": "anon@1006",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 1049,
+      "owner": "anon@1048",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 1157,
+      "owner": "getValue",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 1985,
+      "owner": "hashDelete",
+      "expr": "this.__data__[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2002,
+      "owner": "hashGet",
+      "expr": "data[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2005,
+      "owner": "hashGet",
+      "expr": "data[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2019,
+      "owner": "hashHas",
+      "expr": "data[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2035,
+      "owner": "hashSet",
+      "expr": "data[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2502,
+      "owner": "assignMergeValue",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2519,
+      "owner": "assignValue",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2606,
+      "owner": "baseAssignValue",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2735,
+      "owner": "anon@2732",
+      "expr": "value[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2773,
+      "owner": "baseConformsTo",
+      "expr": "source[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 2774,
+      "owner": "baseConformsTo",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 3063,
+      "owner": "anon@3062",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 3082,
+      "owner": "baseGet",
+      "expr": "object[toKey(path[index++])]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 3263,
+      "owner": "baseInvoke",
+      "expr": "object[toKey(last(path))]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 4864,
+      "owner": "copyObject",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 4864,
+      "owner": "copyObject",
+      "expr": "source[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 4868,
+      "owner": "copyObject",
+      "expr": "source[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 5150,
+      "owner": "predicate",
+      "expr": "iterable[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 6035,
+      "owner": "getMapData",
+      "expr": "data[typeof key == 'string' ? 'string' : 'hash']",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 6226,
+      "owner": "hasPath",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 9174,
+      "owner": "countBy",
+      "expr": "result[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 9494,
+      "owner": "groupBy",
+      "expr": "result[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 9736,
+      "owner": "partition",
+      "expr": "result[key ? 0 : 1]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 13315,
+      "owner": "invert",
+      "expr": "result[value]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 13351,
+      "owner": "invertBy",
+      "expr": "result[value]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 13353,
+      "owner": "invertBy",
+      "expr": "result[value]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    },
+    {
+      "line": 15411,
+      "owner": "anon@15409",
+      "expr": "object[key]",
+      "inline_kind": null,
+      "via_guard_call": false,
+      "path_like": true,
+      "guarded": false
+    }
+  ],
+  "signal": "LOW_COVERAGE"
+}

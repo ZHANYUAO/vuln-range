@@ -1,0 +1,26 @@
+{
+  "name": "lab_secure",
+  "kind": "self-built-lab-secure",
+  "desc": "与 lab.json 完全相同的目标，但以 LAB_MODE=secure 启动（每条漏洞已按标准模式修复）。用于 patched 反事实差分。",
+  "base": "http://127.0.0.1:8895",
+  "oast": "http://127.0.0.1:8897",
+  "reset_endpoint": "/__reset",
+  "control_token_file": "lab/.control_token_secure",
+  "oast_token_file": "lab/.oast_token",
+  "blind_ua": "MiniShopLab-Blind/2.0",
+  "artifacts": {
+    "api_key": "AK-LIVE-9f2a3c8e1b4d",
+    "canary": "CANARY-TRAVERSAL-OK",
+    "ssrf_banner": "INTERNAL-ONLY-METADATA",
+    "cmdi_marker": "CMDI-MARKER",
+    "idor_owner_uid": 3
+  },
+  "artifact_notes": {
+    "api_key": "users 表凭据列，只在越权/注入成功时出现",
+    "canary": "沙箱外 canary.txt 内容",
+    "ssrf_banner": "自家 8898 内部服务 banner",
+    "idor_owner_uid": "TODO(identity): order 1002 归属 uid=3(bob)，应改为运行时解析"
+  },
+  "_diff_of": "lab.json",
+  "_diff_note": "除 base / control_token_file 外，artifacts 与 lab.json 完全一致 —— 差分只应来自被测应用的实现差异，不能来自判据差异。"
+}

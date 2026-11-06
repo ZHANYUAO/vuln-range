@@ -1,0 +1,78 @@
+{
+  "url": "https://api.github.com/repos/jwadhams/json-logic-js/issues/145",
+  "repository_url": "https://api.github.com/repos/jwadhams/json-logic-js",
+  "labels_url": "https://api.github.com/repos/jwadhams/json-logic-js/issues/145/labels{/name}",
+  "comments_url": "https://api.github.com/repos/jwadhams/json-logic-js/issues/145/comments",
+  "events_url": "https://api.github.com/repos/jwadhams/json-logic-js/issues/145/events",
+  "html_url": "https://github.com/jwadhams/json-logic-js/issues/145",
+  "id": 6214622592,
+  "node_id": "I_kwDOApwERs8AAAABcmudgA",
+  "number": 145,
+  "title": "Security: `var` operator still reaches the Function constructor after the GHSA-m9hw-7xfv-wqg7 fix",
+  "user": {
+    "login": "ZHANYUAO",
+    "id": 75553466,
+    "node_id": "MDQ6VXNlcjc1NTUzNDY2",
+    "avatar_url": "https://avatars.githubusercontent.com/u/75553466?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZHANYUAO",
+    "html_url": "https://github.com/ZHANYUAO",
+    "followers_url": "https://api.github.com/users/ZHANYUAO/followers",
+    "following_url": "https://api.github.com/users/ZHANYUAO/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZHANYUAO/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZHANYUAO/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZHANYUAO/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZHANYUAO/orgs",
+    "repos_url": "https://api.github.com/users/ZHANYUAO/repos",
+    "events_url": "https://api.github.com/users/ZHANYUAO/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZHANYUAO/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "labels": [
+
+  ],
+  "state": "open",
+  "locked": false,
+  "assignees": [
+
+  ],
+  "milestone": null,
+  "comments": 0,
+  "created_at": "2026-11-05T01:12:57Z",
+  "updated_at": "2026-11-05T01:12:57Z",
+  "closed_at": null,
+  "assignee": null,
+  "author_association": "NONE",
+  "active_lock_reason": null,
+  "sub_issues_summary": {
+    "total": 0,
+    "completed": 0,
+    "percent_completed": 0
+  },
+  "issue_dependencies_summary": {
+    "blocked_by": 0,
+    "total_blocked_by": 0,
+    "blocking": 0,
+    "total_blocking": 0
+  },
+  "body": "### Summary\n\n**GHSA-m9hw-7xfv-wqg7** (prototype pollution, high) was fixed in **2.0.0** by removing the `method` operator entirely. The same reachability still exists one operator away, through `var`, which walks a dot-separated path with raw property access and no own-property check:\n\n```js\n\"var\": function (a, b) {\n  var sub_props = String(a).split(\".\");\n  for (var i = 0; i < sub_props.length; i++) {\n    // ... no hasOwnProperty check\n    data = data[sub_props[i]];\n  }\n  return data;\n}\n```\n\nBecause `constructor` and `__proto__` are inherited from `Object.prototype`, a rule can walk straight into the engine's own globals - the capability the 2020 fix removed from `method`.\n\n### Reproduce (json-logic-js 2.0.5, Node 22)\n\n```js\nconst jsonLogic = require('json-logic-js');\n\njsonLogic.apply({ var: 'user.role' }, { user: { role: 'user' } });   // \"user\"  (control)\n\n// the historical fix is intact - good:\njsonLogic.apply({ method: [{ var: 'x' }, 'constructor'] }, { x: {} });\n// Error: Unrecognized operation method\n\n// but the same target is still one operator away:\njsonLogic.apply({ var: '__proto__.constructor.constructor' }, {});  // => [Function: Function]\n```\n\n### Why it matters\n\nIn a rule engine the rule itself is untrusted input, so no additional precondition is needed on the data side - the rule is the payload. Note that this is exactly the value the library already decided (in the `method` case) that rules must not be able to name.\n\nBeing precise about the boundary: the library **returns** the `Function` constructor, it does not call it. Escalation to code execution requires the consuming application to invoke the resolved value. I am not claiming an end-to-end RCE and I have not tested any hosted service.\n\n### Suggested fix\n\nTwo layers, both small:\n\n```js\n\"var\": function (a, b) {\n  var sub_props = String(a).split(\".\");\n  for (var i = 0; i < sub_props.length; i++) {\n    var key = sub_props[i];\n    if (key === '__proto__' || key === 'constructor' || key === 'prototype') return undefined;\n    if (data === null || typeof data !== 'object' ||\n        !Object.prototype.hasOwnProperty.call(data, key)) return undefined;\n    data = data[key];\n  }\n  return data;\n}\n```\n\nThe ownership check alone covers the whole class (it also catches `valueOf`, `toString`, `__defineGetter__`, and anything added to `Object.prototype` later); the explicit key checks just make the intent obvious and keep behaviour identical for ordinary documents. `json-e` and `jmespath` in the same ecosystem already use structural checks and resisted every payload I tried.\n\n### Affected range\n\nVerified on **2.0.5** only. The `var` loop has had this shape for many releases - please confirm the range from git history rather than from my claim.\n\n---\n\n### On disclosure\n\nThis repository has private vulnerability reporting **disabled**, so there is no private form available. I am posting the minimal version rather than dropping a full technical report into a public thread unasked.\n\nIf you enable *Settings -> Code security -> Private vulnerability reporting*, or tell me how to reach you privately, I will send the complete report: the runnable harness (`verify_local.js`), the suggested patch as a diff, and the results of re-running the operator test suite against it.\n\nIf you would rather keep it public, say so and I will post the full detail here - your call.",
+  "closed_by": null,
+  "reactions": {
+    "url": "https://api.github.com/repos/jwadhams/json-logic-js/issues/145/reactions",
+    "total_count": 0,
+    "+1": 0,
+    "-1": 0,
+    "laugh": 0,
+    "hooray": 0,
+    "confused": 0,
+    "heart": 0,
+    "rocket": 0,
+    "eyes": 0
+  },
+  "timeline_url": "https://api.github.com/repos/jwadhams/json-logic-js/issues/145/timeline",
+  "performed_via_github_app": null,
+  "state_reason": null,
+  "pinned_comment": null
+}

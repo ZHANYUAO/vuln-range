@@ -1,0 +1,31 @@
+{
+  "name": "juiceshop",
+  "kind": "real-open-source-app",
+  "desc": "OWASP Juice Shop 20.3.0 官方预编译包，Express+Angular+SQLite。代码不是我们写的，真值来自官方 challenges 定义。",
+  "base": "http://127.0.0.1:3001",
+  "oast": "http://127.0.0.1:8897",
+  "reset_endpoint": null,
+  "control_token_file": null,
+  "oast_token_file": "lab/.oast_token",
+  "blind_ua": null,
+  "artifacts": {
+    "self_uid": 25,
+    "other_uid": 26,
+    "self_email": "canary.a.264285@lab.local",
+    "other_email": "canary.b.264285@lab.local",
+    "self_bid": 6,
+    "other_bid": 7,
+    "auth_token": "<REDACTED: 见 juiceshop.secrets.json>",
+    "other_token": "<REDACTED: 见 juiceshop.secrets.json>",
+    "auth_password": "<REDACTED: 见 juiceshop.secrets.json>"
+  },
+  "artifact_notes": {
+    "_": "本 profile 的 artifacts **必须有值**，与旧注释「故意留空」相反（2026-10-29 自检更正）。原因：Juice Shop 是真实应用，没有我们预置的 canary，要靠 identity.py 注册两个真实账号、读出各自的 uid/bid/JWT，否则 BAC/IDOR 类 case 连会话都拿不到。所以这里保留的是**运行时抓到的真值**，不是预置常量。",
+    "_degrade_path": "「缺 artifact → 显式 unknown」这条降级路径**不在本 profile 上验证**（这里不缺值）。它由 asserts.py::_art() 在 profile 缺键时触发，验证方法是把 lab profile 复制一份删掉 idor_owner_uid 再跑那条 case：断言会变成 assert=None → 上层判 unknown 并写明缺失原因。别在报告里写「Juice Shop 验证了降级路径」—— 那是错的。",
+    "_secret_warning": "auth_token/other_token/auth_password 是本机 3001 实例的**真实短时凭据**，重跑 apps/juice/identity.py 会被覆盖。不要把这个文件外发或提交到公开仓库。"
+  },
+  "artifacts_note": "由 apps/juice/identity.py 在 2026-10-29 16:58 运行时生成：注册两个全新账号，各自读自己的购物车得到 uid。不含任何预置常量。",
+  "auth_paths": [
+    "/rest/user/login"
+  ]
+}

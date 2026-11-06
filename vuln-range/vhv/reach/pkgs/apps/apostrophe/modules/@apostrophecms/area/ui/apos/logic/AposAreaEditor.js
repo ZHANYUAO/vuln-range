@@ -1,0 +1,986 @@
+import { createId } from 'apostrophe/lib/beneath.js';
+import { unref } from 'vue';
+import { mapState, mapActions } from 'pinia';
+import AposThemeMixin from 'Modules/@apostrophecms/ui/mixins/AposThemeMixin';
+import newInstance from 'apostrophe/modules/@apostrophecms/schema/lib/newInstance.js';
+import { useModalStore } from 'Modules/@apostrophecms/ui/stores/modal';
+import { useWidgetStore } from 'Modules/@apostrophecms/ui/stores/widget';
+import { useWidgetGraphStore } from 'Modules/@apostrophecms/ui/stores/widgetGraph';
+import cloneWidget from 'Modules/@apostrophecms/area/lib/clone-widget.js';
+import applyPatch from 'Modules/@apostrophecms/area/lib/apply-patch.js';
+import { withoutHistory } from 'Modules/@apostrophecms/admin-bar/lib/history.js';
+import { klona } from 'klona';
+
+export default {
+  mixins: [ AposThemeMixin ],
+  inject: {
+    aposGraphKey: {
+      from: 'aposGraphKey',
+      default: null
+    }
+  },
+  props: {
+    docId: {
+      type: String,
+      default: null
+    },
+    docType: {
+      type: String,
+      default: null
+    },
+    id: {
+      type: String,
+      required: true
+    },
+    field: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
+    fieldId: {
+      type: String,
+      required: true
+    },
+    options: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
+    items: {
+      type: Array,
+      default() {
+        return [];
+      }
+    },
+    meta: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
+    followingValues: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
+    choices: {
+      type: Array,
+      required: true
+    },
+    renderings: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
+    generation: {
+      type: Number,
+      required: false,
+      default() {
+        return null;
+      }
+    }
+  },
+  emits: [ 'changed' ],
+  data() {
+    return {
+      addWidgetEditor: null,
+      addWidgetOptions: null,
+      addWidgetType: null,
+      areaId: createId(),
+      next: this.getValidItems(),
+      hoveredNonForeignWidget: null,
+      contextMenuOptions: {
+        menu: this.choices
+      },
+      edited: {},
+      widgets: {}
+    };
+  },
+  computed: {
+    ...mapState(useWidgetStore, [ 'focusedWidget', 'hoveredWidget', 'focusedArea' ]),
+    isEmptySingleton() {
+      return this.next.length === 0 &&
+        this.options.widgets &&
+        Object.keys(this.options.widgets).length === 1 &&
+        (this.options.max || this.field.max) &&
+        (this.options.max === 1 || this.field.max === 1);
+    },
+    icon() {
+      let icon = null;
+      if (
+        this.isEmptySingleton &&
+        this.contextMenuOptions.menu[0] &&
+        this.contextMenuOptions.menu[0].icon
+      ) {
+        icon = this.contextMenuOptions.menu[0].icon;
+      }
+      return icon;
+    },
+    moduleOptions() {
+      return window.apos.area;
+    },
+    types() {
+      return Object.keys(this.widgets);
+    },
+    maxReached() {
+      const max = this.options.max || this.field.max;
+      return max && this.next.length >= max;
+    },
+    foreign() {
+      // Cast to boolean is necessary to satisfy prop typing
+      return !!(this.docId && (window.apos.adminBar.contextId !== this.docId));
+    },
+    focusedWidgetIndex() {
+      if (!this.focusedWidget) {
+        return -1;
+      }
+
+      return this.next.findIndex(widget => widget._id === this.focusedWidget);
+    },
+    /**
+     * Set of widget _ids (from `next`) that should have a raised z-index
+     * because they are, or contain, the currently focused widget.
+     * Computed once per focusedWidget / graph change; O(depth) ancestor
+     * walk + O(1) per-widget lookup in the template.
+     */
+    raisedWidgets() {
+      const raised = new Set();
+      if (!this.focusedWidget) {
+        return raised;
+      }
+      const graphKey = unref(this.aposGraphKey);
+      if (!graphKey) {
+        // No graph — fall back to exact match only
+        if (this.next.some(w => w._id === this.focusedWidget)) {
+          raised.add(this.focusedWidget);
+        }
+        return raised;
+      }
+      const ancestors = this.storeGetAncestors(graphKey, this.focusedWidget);
+      const chain = new Set([ this.focusedWidget, ...ancestors ]);
+
+      for (const widget of this.next) {
+        if (chain.has(widget._id)) {
+          raised.add(widget._id);
+        }
+      }
+      return raised;
+    }
+  },
+  watch: {
+    // Note: please don't make this a deep watcher as that could cause
+    // issues with live widget preview and also performance, the top level
+    // array will change in situations where a patch API call is actually
+    // needed at this level
+    next() {
+      if (!this.docId) {
+        // For the benefit of AposInputArea which is the
+        // direct parent when we are not editing on-page
+        this.$emit('changed', {
+          items: this.next
+        });
+      }
+      // For the benefit of all other area editors on-page
+      // which may have this one as a sub-area in some way, and
+      // mistakenly think they know its contents have not changed
+      apos.bus.$emit('area-updated', {
+        _id: this.id,
+        items: this.next
+      });
+    },
+    generation() {
+      this.next = this.getValidItems();
+    }
+  },
+  created() {
+    if (this.options.groups) {
+      for (const group of Object.keys(this.options.groups)) {
+        this.widgets = {
+          ...this.options.groups[group].widgets,
+          ...this.widgets
+        };
+      }
+    }
+  },
+  mounted() {
+    this.bindEventListeners();
+  },
+  beforeUnmount() {
+    this.unbindEventListeners();
+  },
+  methods: {
+    ...mapActions(useWidgetStore, [ 'setFocusedArea', 'setFocusedWidget' ]),
+    ...mapActions(useModalStore, [ 'isOnTop' ]),
+    ...mapActions(useWidgetGraphStore, {
+      storeGetAncestors: 'getAncestors'
+    }),
+    bindEventListeners() {
+      apos.bus.$on('area-updated', this.areaUpdatedHandler);
+      apos.bus.$on('field-edited', this.fieldEditedHandler);
+      apos.bus.$on('command-menu-area-copy-widget', this.handleCopy);
+      apos.bus.$on('command-menu-area-cut-widget', this.handleCut);
+      apos.bus.$on('command-menu-area-duplicate-widget', this.handleDuplicate);
+      apos.bus.$on('command-menu-area-paste-widget', this.handlePaste);
+      apos.bus.$on('command-menu-area-remove-widget', this.handleRemove);
+      apos.bus.$on('context-history-apply', this.contextHistoryApplyHandler);
+      window.addEventListener('keydown', this.focusParentEvent);
+    },
+    unbindEventListeners() {
+      apos.bus.$off('area-updated', this.areaUpdatedHandler);
+      apos.bus.$off('field-edited', this.fieldEditedHandler);
+      apos.bus.$off('command-menu-area-copy-widget', this.handleCopy);
+      apos.bus.$off('command-menu-area-cut-widget', this.handleCut);
+      apos.bus.$off('command-menu-area-duplicate-widget', this.handleDuplicate);
+      apos.bus.$off('command-menu-area-paste-widget', this.handlePaste);
+      apos.bus.$off('command-menu-area-remove-widget', this.handleRemove);
+      apos.bus.$off('context-history-apply', this.contextHistoryApplyHandler);
+      window.removeEventListener('keydown', this.focusParentEvent);
+    },
+    isInsideContentEditable() {
+      return document.activeElement.closest('[contenteditable]') !== null;
+    },
+    isInsideFocusedArea() {
+      return this.focusedArea === this.areaId;
+    },
+    resetFocusedArea() {
+      if (this.focusedArea !== this.areaId) {
+        return;
+      }
+
+      this.setFocusedArea(null);
+    },
+    handleCopy() {
+      if (
+        !this.isInsideFocusedArea() ||
+        this.isInsideContentEditable() ||
+        this.focusedWidgetIndex === -1
+      ) {
+        return;
+      }
+
+      this.copy({ index: this.focusedWidgetIndex });
+    },
+    handleCut() {
+      if (
+        !this.isInsideFocusedArea() ||
+        this.isInsideContentEditable() ||
+        this.focusedWidgetIndex === -1
+      ) {
+        return;
+      }
+
+      this.cut({ index: this.focusedWidgetIndex });
+    },
+    handleDuplicate() {
+      if (
+        !this.isInsideFocusedArea() ||
+        this.isInsideContentEditable() ||
+        this.focusedWidgetIndex === -1
+      ) {
+        return;
+      }
+
+      this.clone({ index: this.focusedWidgetIndex });
+    },
+    handlePaste() {
+      if (
+        !this.isInsideFocusedArea() ||
+        this.isInsideContentEditable() ||
+        (this.focusedWidgetIndex === -1 && this.next.length > 0)
+      ) {
+        return;
+      }
+
+      this.paste({ index: Math.max(this.focusedWidgetIndex, 0) });
+    },
+    handleRemove() {
+      if (
+        !this.isInsideFocusedArea() ||
+        this.isInsideContentEditable() ||
+        this.focusedWidgetIndex === -1
+      ) {
+        return;
+      }
+
+      this.remove({ index: this.focusedWidgetIndex });
+    },
+    areaUpdatedHandler(area) {
+      for (const item of this.next) {
+        if (this.patchSubobject(item, area)) {
+          break;
+        }
+      }
+    },
+    // A field edited in place with the `{% field %}` tag does not touch our
+    // copy of the widget it belongs to, and that copy is what copying,
+    // cutting, duplicating and the widget's own editor all work from. Left
+    // alone it would hand back the value the page was rendered with, undoing
+    // what the user just typed.
+    //
+    // In a modal it carries more than that. Nothing is patched on the server
+    // until the user saves, so this copy is the only place the new value is
+    // kept, and it is the one the modal saves from.
+    //
+    // The value is written into the widget rather than the widget being
+    // replaced: a new object would send `AposWidget` off to re-render markup
+    // the user may still have the cursor in, and the browser is already
+    // showing what they typed
+    fieldEditedHandler({
+      docId,
+      patchKey,
+      value
+    }) {
+      // Null on both sides in a modal, where neither the field's markup nor
+      // this editor was given a document: the one being edited is the
+      // modal's, and nothing is patched until the user saves
+      if (docId !== this.docId) {
+        return;
+      }
+      // `@id.name` for a field of a widget, or of an array item or object
+      // nested in one. Anything else is a field of the document itself, which
+      // no widget of ours holds
+      const match = patchKey.match(/^@([^.]+)\.(.+)$/);
+      if (!match) {
+        return;
+      }
+      const [ , id, name ] = match;
+      for (const widget of this.next) {
+        const object = (widget._id === id)
+          ? widget
+          : this.findSubobject(widget, id);
+        if (object) {
+          object[name] = value;
+          return;
+        }
+      }
+    },
+    // The context bar is undoing or redoing an edit, and asks whoever holds
+    // the content it touched to show the result. A widget that changed is
+    // rendered again, the rest of the page is left alone
+    contextHistoryApplyHandler(event) {
+      if (
+        this.foreign ||
+        !this.docId ||
+        (this.docId !== window.apos.adminBar.contextId) ||
+        this.$el.closest?.('[data-apos-modal]')
+      ) {
+        return;
+      }
+      const result = applyPatch(this.id, this.next, event.patch);
+      if (!result) {
+        return;
+      }
+      for (const id of result.changed) {
+        this.edited[id] = true;
+      }
+      // What the change took off the page, so that undoing it again can put
+      // back what was really there. A widget can have gained content since
+      // it was added: a layout fills itself with columns, and they in turn
+      // hold whatever was put in them
+      for (const widget of (result.removed || [])) {
+        event.removed.push(klona(widget));
+      }
+      this.next = result.items;
+      event.claim();
+    },
+    // Report an edit to the context bar, with the patch that takes it back
+    // for its undo history, and what it was done to so that undoing it can
+    // show the user where
+    contextEdited(patch, inverse, target) {
+      apos.bus.$emit('context-edited', {
+        patch,
+        inverse,
+        target
+      });
+    },
+    focusParentEvent(event) {
+      if (!this.isOnTop(this.$el)) {
+        return;
+      }
+
+      if (event.metaKey && event.keyCode === 8) {
+        // meta + backspace
+        apos.bus.$emit('widget-focus-parent', this.focusedWidget);
+      }
+    },
+    async editStyles({ widgetId, index }) {
+      if (this.foreign) {
+        return;
+      }
+      const widget = this.next.find(({ _id }) => _id === widgetId);
+      if (!widget) {
+        return;
+      }
+
+      apos.area.activeEditor = this;
+      apos.bus.$on('apos-refreshing', cancelRefresh);
+      const preview = this.widgetPreview(widget.type, index, false);
+      const stylesEditorComponent = this.widgetStylesEditorComponent(widget.type);
+      const contextualStyles = apos.modules[
+        apos.area.widgetManagers[widget.type]
+      ]?.contextualStyles;
+
+      const result = await apos.modal.execute(stylesEditorComponent, {
+        modelValue: widget,
+        options: this.widgetOptionsByType(widget.type),
+        type: widget.type,
+        docId: this.docId,
+        parentFollowingValues: this.followingValues,
+        areaFieldId: this.fieldId,
+        meta: this.meta[widget._id]?.aposMeta,
+        preview,
+        contextualStyles,
+        defaultTab: 'styles'
+      });
+      apos.area.activeEditor = null;
+      apos.bus.$off('apos-refreshing', cancelRefresh);
+      if (result) {
+        return this.update(result);
+      }
+    },
+    async up({ index }) {
+      if (this.docId === window.apos.adminBar.contextId) {
+        const $item = this.next[index]._id;
+        const neighbor = this.next[index - 1]._id;
+        this.contextEdited(
+          {
+            $move: {
+              [`@${this.id}.items`]: {
+                $item,
+                $before: neighbor
+              }
+            }
+          },
+          {
+            $move: {
+              [`@${this.id}.items`]: {
+                $item,
+                $after: neighbor
+              }
+            }
+          },
+          { widgetId: $item }
+        );
+      }
+      this.next = [
+        ...this.next.slice(0, index - 1),
+        this.next[index],
+        this.next[index - 1],
+        ...this.next.slice(index + 1)
+      ];
+    },
+    async down({ index }) {
+      if (this.docId === window.apos.adminBar.contextId) {
+        const $item = this.next[index]._id;
+        const neighbor = this.next[index + 1]._id;
+        this.contextEdited(
+          {
+            $move: {
+              [`@${this.id}.items`]: {
+                $item,
+                $after: neighbor
+              }
+            }
+          },
+          {
+            $move: {
+              [`@${this.id}.items`]: {
+                $item,
+                $before: neighbor
+              }
+            }
+          },
+          { widgetId: $item }
+        );
+      }
+      this.next = [
+        ...this.next.slice(0, index),
+        this.next[index + 1],
+        this.next[index],
+        ...this.next.slice(index + 2)
+      ];
+    },
+    async remove({ index }, { autosave = true } = {}) {
+      if (autosave && (this.docId === window.apos.adminBar.contextId)) {
+        const widget = this.next[index];
+        // Put it back next to whichever neighbor it had
+        const before = this.next[index + 1]?._id;
+        const after = this.next[index - 1]?._id;
+        const push = {
+          $each: [ klona(widget) ]
+        };
+        if (before) {
+          push.$before = before;
+        } else if (after) {
+          push.$after = after;
+        }
+        this.contextEdited(
+          {
+            $pullAllById: {
+              [`@${this.id}.items`]: [ widget._id ]
+            }
+          },
+          {
+            $push: {
+              [`@${this.id}.items`]: push
+            }
+          },
+          {
+            widgetId: widget._id,
+            anchorId: before || after
+          }
+        );
+      }
+      this.next = [
+        ...this.next.slice(0, index),
+        ...this.next.slice(index + 1)
+      ];
+
+      const focusNext = this.next[index - 1] || this.next[index];
+
+      if (focusNext) {
+        this.setFocusedWidget(focusNext._id, this.areaId, { scrollTo: true });
+      }
+    },
+    async cut({ index }) {
+      apos.area.widgetClipboard.set(this.next[index]);
+      await this.remove({ index });
+      apos.notify('Widget cut to clipboard', {
+        type: 'success',
+        icon: 'content-cut-icon',
+        dismiss: true
+      });
+    },
+    async copy({ index }) {
+      apos.area.widgetClipboard.set(this.next[index]);
+      apos.notify('Widget copied to clipboard', {
+        type: 'success',
+        icon: 'content-copy-icon',
+        dismiss: true
+      });
+    },
+    async edit({ index }) {
+      if (this.foreign) {
+        try {
+          const doc = await apos.http.get(
+            `${window.apos.doc.action}/${this.docId}`,
+            {
+              busy: true
+            }
+          );
+          if (doc._url) {
+            const contextTitle = window.apos.adminBar.context.title;
+            if (await apos.confirm({
+              heading: this.$t('apostrophe:leavePageHeading', {
+                oldTitle: contextTitle,
+                newTitle: doc.title
+              }),
+              description: this.$t('apostrophe:leavePageDescription', {
+                oldTitle: contextTitle
+              }),
+              localize: false
+            })) {
+              location.assign(doc._url);
+            }
+          } else {
+            apos.bus.$emit('admin-menu-click', {
+              itemName: `${doc.type}:editor`,
+              props: {
+                docId: doc._id
+              }
+            });
+          }
+          return;
+        } catch (e) {
+          if (e.status === 404) {
+            apos.notify('apostrophe:notFound', { type: 'error' });
+            return;
+          } else {
+            throw e;
+          }
+        }
+      }
+
+      const widget = this.next[index];
+
+      if (!this.widgetIsContextual(widget.type)) {
+        const componentName = this.widgetEditorComponent(widget.type);
+        apos.area.activeEditor = this;
+        apos.bus.$on('apos-refreshing', cancelRefresh);
+
+        const preview = this.widgetPreview(widget.type, index, false);
+        const result = await apos.modal.execute(componentName, {
+          modelValue: widget,
+          options: this.widgetOptionsByType(widget.type),
+          type: widget.type,
+          docId: this.docId,
+          parentFollowingValues: this.followingValues,
+          areaFieldId: this.fieldId,
+          meta: this.meta[widget._id]?.aposMeta,
+          preview
+        });
+        apos.area.activeEditor = null;
+        apos.bus.$off('apos-refreshing', cancelRefresh);
+        if (result) {
+          return this.update(result);
+        }
+      }
+    },
+    clone({ index }) {
+      const widget = cloneWidget(this.next[index]);
+      this.insert({
+        widget,
+        index: index + 1
+      });
+    },
+    async paste({ index }) {
+      const clipboard = apos.area.widgetClipboard.get();
+      if (clipboard) {
+        const widget = clipboard;
+        const allowed = this.contextMenuOptions.menu.find(
+          option => option.name === widget.type
+        );
+        if (allowed) {
+          this.add({
+            index,
+            clipboard
+          });
+        }
+      }
+    },
+    async update(updated, { autosave = true, reverting = false } = {}) {
+      // Before anything below can change it. A caller that changed the
+      // widget in place rather than handing us a new one has already lost
+      // the state we would need to put back, so no inverse is recorded and
+      // the edit is undone the old way, by replaying the history
+      const prior = this.next.find(widget => widget._id === updated._id);
+      const inverse = (prior && (prior !== updated))
+        ? {
+          [`@${updated._id}`]: klona(prior)
+        }
+        : null;
+      if (!reverting) {
+        updated.aposPlaceholder = false;
+      }
+      if (!updated.metaType) {
+        updated.metaType = 'widget';
+      }
+      if (autosave && (this.docId === window.apos.adminBar.contextId)) {
+        this.contextEdited(
+          {
+            [`@${updated._id}`]: updated
+          },
+          inverse,
+          { widgetId: updated._id }
+        );
+      }
+
+      this.next = this.next.map((widget) => {
+        if (widget._id === updated._id) {
+          return updated;
+        }
+        return widget;
+      });
+      this.edited[updated._id] = true;
+    },
+    // Add a widget into an area. index is required, along
+    // with one and only one of name, widget or clipboard.
+    // If widget is passed it is inserted directly. If
+    // clipboard is passed it is cloned and inserted.
+    async add({
+      index,
+      name,
+      widget,
+      clipboard
+    }) {
+      if (clipboard) {
+        clipboard = cloneWidget(clipboard);
+        return this.insert({
+          widget: clipboard,
+          index
+        });
+      }
+      if (widget) {
+        return this.insert({
+          widget,
+          index
+        });
+      }
+      if (this.widgetIsContextual(name)) {
+        return this.insert({
+          widget: {
+            ...this.newWidget(name),
+            ...this.contextualWidgetDefaultData(name),
+            aposPlaceholder: this.widgetHasPlaceholder(name)
+          },
+          index
+        });
+      }
+      if (!this.widgetHasInitialModal(name)) {
+        const newWidget = this.newWidget(name);
+        return this.insert({
+          widget: {
+            ...newWidget,
+            aposPlaceholder: this.widgetHasPlaceholder(name)
+          },
+          index
+        });
+      }
+
+      const componentName = this.widgetEditorComponent(name);
+      apos.area.activeEditor = this;
+      const preview = this.widgetPreview(name, index, true);
+      const newWidget = await apos.modal.execute(componentName, {
+        modelValue: null,
+        options: this.widgetOptionsByType(name),
+        type: name,
+        docId: this.docId,
+        areaFieldId: this.fieldId,
+        parentFollowingValues: this.followingValues,
+        preview
+      });
+      apos.area.activeEditor = null;
+      if (newWidget) {
+        return this.insert({
+          widget: newWidget,
+          index
+        });
+      }
+    },
+    widgetOptionsByType(name) {
+      if (this.options.widgets) {
+        return this.options.widgets[name];
+      } else if (this.options.expanded) {
+        for (const info of Object.values(this.options.groups || {})) {
+          if (info?.widgets?.[name]) {
+            return info.widgets[name];
+          }
+        }
+      }
+      return null;
+    },
+    contextualWidgetDefaultData(type) {
+      return klona(this.moduleOptions.contextualWidgetDefaultData[type]);
+    },
+    async insert({
+      index, widget, autosave = true
+    } = {}) {
+      if (!widget._id) {
+        widget._id = createId();
+      }
+      if (!widget.metaType) {
+        widget.metaType = 'widget';
+      }
+      if (autosave && (this.docId === window.apos.adminBar.contextId)) {
+        const push = {
+          $each: [ widget ]
+        };
+        if (index < this.next.length) {
+          push.$before = this.next[index]._id;
+        }
+        this.contextEdited(
+          {
+            $push: {
+              [`@${this.id}.items`]: push
+            }
+          },
+          {
+            $pullAllById: {
+              [`@${this.id}.items`]: [ widget._id ]
+            }
+          },
+          {
+            widgetId: widget._id,
+            anchorId: this.next[index]?._id || this.next[index - 1]?._id
+          }
+        );
+      }
+      this.next = [
+        ...this.next.slice(0, index),
+        widget,
+        ...this.next.slice(index)
+      ];
+      if (this.widgetIsContextual(widget.type)) {
+        this.edit({ index });
+      }
+      this.setFocusedWidget(widget._id, this.areaId, { scrollTo: true });
+    },
+    // Insert several widgets as one edit, so that undo takes them all back
+    // together rather than one at a time.
+    //
+    // `history: false` saves them without recording an action to undo, for
+    // content an editor provisions for itself rather than content the user
+    // asked for: `AposAreaLayoutEditor` fills a new layout with columns that
+    // way, so that undo takes back the layout the user added, columns and
+    // all, and redo brings it back whole
+    async insertMany({
+      index, widgets, autosave = true, history = true
+    } = {}) {
+      if (!widgets?.length) {
+        return;
+      }
+      for (const widget of widgets) {
+        if (!widget._id) {
+          widget._id = createId();
+        }
+        if (!widget.metaType) {
+          widget.metaType = 'widget';
+        }
+      }
+      if (autosave && (this.docId === window.apos.adminBar.contextId)) {
+        const push = {
+          $each: widgets
+        };
+        if (index < this.next.length) {
+          push.$before = this.next[index]._id;
+        }
+        const report = () => this.contextEdited(
+          {
+            $push: {
+              [`@${this.id}.items`]: push
+            }
+          },
+          {
+            $pullAllById: {
+              [`@${this.id}.items`]: widgets.map(widget => widget._id)
+            }
+          },
+          {
+            widgetId: widgets[0]._id,
+            anchorId: this.next[index]?._id || this.next[index - 1]?._id
+          }
+        );
+        if (history) {
+          report();
+        } else {
+          withoutHistory(report);
+        }
+      }
+      this.next = [
+        ...this.next.slice(0, index),
+        ...widgets,
+        ...this.next.slice(index)
+      ];
+      // Unlike `insert`, no editor is opened: these are widgets the editor
+      // provisioned rather than widgets the user picked
+      const last = widgets[widgets.length - 1];
+      this.setFocusedWidget(last._id, this.areaId, { scrollTo: true });
+    },
+    widgetIsContextual(type) {
+      return this.moduleOptions.widgetIsContextual[type];
+    },
+    widgetHasPlaceholder(type) {
+      return this.moduleOptions.widgetHasPlaceholder[type];
+    },
+    widgetHasInitialModal(type) {
+      return this.moduleOptions.widgetHasInitialModal[type];
+    },
+    widgetEditorComponent(type) {
+      return this.moduleOptions.components.widgetEditors[type];
+    },
+    widgetStylesEditorComponent(type) {
+      return this.moduleOptions.components.widgetStylesEditors[type];
+    },
+    widgetPreview(type, index, create) {
+      return this.moduleOptions.widgetPreview[type]
+        ? {
+          area: this,
+          index,
+          create
+        }
+        : null;
+    },
+    // Recursively seek `subObject` within `object`, based on whether
+    // its _id matches that of a sub-object of `object`. If found,
+    // replace that sub-object with `subObject` and return `true`.
+    patchSubobject(object, subObject) {
+      let result;
+      for (const [ key, val ] of Object.entries(object)) {
+        if (key.charAt(0) === '_') {
+          // Patch only the thing itself, not a relationship that also contains
+          // a copy
+          continue;
+        }
+        if (val && typeof val === 'object') {
+          if (val._id === subObject._id) {
+            object[key] = subObject;
+            return true;
+          }
+          result = this.patchSubobject(val, subObject);
+          if (result) {
+            return result;
+          }
+        }
+      }
+    },
+    // Recursively seek the object with this `_id` within `object`, exactly as
+    // `patchSubobject` does, and hand it back rather than replacing it
+    findSubobject(object, id) {
+      for (const [ key, val ] of Object.entries(object)) {
+        if (key.charAt(0) === '_') {
+          // Find the thing itself, not a relationship that also contains
+          // a copy
+          continue;
+        }
+        if (val && typeof val === 'object') {
+          if (val._id === id) {
+            return val;
+          }
+          const found = this.findSubobject(val, id);
+          if (found) {
+            return found;
+          }
+        }
+      }
+    },
+    rendering(widget) {
+      if (this.edited[widget._id]) {
+        return null;
+      } else {
+        return this.renderings[widget._id];
+      }
+    },
+
+    getValidItems() {
+      return this.items.filter(item => {
+        if (!window.apos.modules[`${item.type}-widget`]) {
+          // eslint-disable-next-line no-console
+          console.warn(`The widget type ${item.type} exists in the content but is not configured.`);
+        }
+        return window.apos.modules[`${item.type}-widget`];
+      });
+    },
+    // Return a new widget object in which defaults are fully populated,
+    // especially valid sub-area objects, so that nested edits work on the page
+    // Optional schemaOverride array can be provided to override any fields from
+    // the base schema. Useful for e.g. per-instance defaults.
+    newWidget(type, schemaOverride) {
+      const schema = apos.modules[apos.area.widgetManagers[type]].schema;
+      const finalSchema = Array.isArray(schemaOverride)
+        ? schema.map(field => {
+          const _field = schemaOverride.find(f => f.name === field.name);
+          if (_field) {
+            return {
+              ...field,
+              ..._field
+            };
+          }
+          return field;
+        })
+        : schema;
+      const widget = {
+        ...newInstance(finalSchema),
+        type
+      };
+      return widget;
+    }
+  }
+};
+
+function cancelRefresh(refreshOptions) {
+  refreshOptions.refresh = false;
+}

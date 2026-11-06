@@ -1,0 +1,8 @@
+{% import "@apostrophecms/image-widget:fragment.html" as image %}
+{% render image.render(
+  widget = data.widget, 
+  options = data.options,
+  manager = data.manager, 
+  contextOptions = data.contextOptions
+)%}
+

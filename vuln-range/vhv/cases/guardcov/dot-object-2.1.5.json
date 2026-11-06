@@ -1,0 +1,51 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\dot-object\\index.js",
+  "lines": 586,
+  "fn_count": 35,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": true,
+    "form": "array",
+    "keys": [
+      "__proto__",
+      "prototype",
+      "constructor"
+    ]
+  },
+  "guards": [
+    {
+      "name": "blacklistFilter",
+      "line": 49,
+      "kind": "lookup",
+      "shape": "predicate",
+      "test": "blacklist.indexOf(part) === -1",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 0,
+      "refs": 1,
+      "callers": [
+        "parsePath"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 1,
+    "G_ownkey": 0,
+    "bl_call_sites": 1,
+    "S_path": 17,
+    "C_path": 17,
+    "U_path": 0,
+    "S_merge": 3,
+    "C_merge": 3,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "COVERED"
+}

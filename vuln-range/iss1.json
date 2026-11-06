@@ -1,0 +1,78 @@
+{
+  "url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch/issues/342",
+  "repository_url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch",
+  "labels_url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch/issues/342/labels{/name}",
+  "comments_url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch/issues/342/comments",
+  "events_url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch/issues/342/events",
+  "html_url": "https://github.com/Starcounter-Jack/JSON-Patch/issues/342",
+  "id": 6214457272,
+  "node_id": "I_kwDOAIaQuM8AAAABcmkXuA",
+  "number": 342,
+  "title": "Security: CVE-2021-4279 fix (3.1.1) is incomplete - bare `constructor` segment is still reachable",
+  "user": {
+    "login": "ZHANYUAO",
+    "id": 75553466,
+    "node_id": "MDQ6VXNlcjc1NTUzNDY2",
+    "avatar_url": "https://avatars.githubusercontent.com/u/75553466?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/ZHANYUAO",
+    "html_url": "https://github.com/ZHANYUAO",
+    "followers_url": "https://api.github.com/users/ZHANYUAO/followers",
+    "following_url": "https://api.github.com/users/ZHANYUAO/following{/other_user}",
+    "gists_url": "https://api.github.com/users/ZHANYUAO/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/ZHANYUAO/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/ZHANYUAO/subscriptions",
+    "organizations_url": "https://api.github.com/users/ZHANYUAO/orgs",
+    "repos_url": "https://api.github.com/users/ZHANYUAO/repos",
+    "events_url": "https://api.github.com/users/ZHANYUAO/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/ZHANYUAO/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "labels": [
+
+  ],
+  "state": "open",
+  "locked": false,
+  "assignees": [
+
+  ],
+  "milestone": null,
+  "comments": 0,
+  "created_at": "2026-11-05T00:58:48Z",
+  "updated_at": "2026-11-05T00:58:48Z",
+  "closed_at": null,
+  "assignee": null,
+  "author_association": "NONE",
+  "active_lock_reason": null,
+  "sub_issues_summary": {
+    "total": 0,
+    "completed": 0,
+    "percent_completed": 0
+  },
+  "issue_dependencies_summary": {
+    "blocked_by": 0,
+    "total_blocked_by": 0,
+    "blocking": 0,
+    "total_blocking": 0
+  },
+  "body": "### Summary\n\n3.1.1 is the release that fixed **CVE-2021-4279 / GHSA-8gh8-hqwg-xf34** (prototype pollution, CVSS 7.3). The fix, commit `7ad6af41eabb2d799f698740a91284d762c955c9`, widened the guard from one pattern to two:\n\n```diff\n- if (banPrototypeModifications && key == '__proto__') {\n+ if (banPrototypeModifications &&\n+     (key == '__proto__' ||\n+         (key == 'prototype' && t > 0 && keys[t - 1] == 'constructor'))) {\n```\n\nThat still leaves `constructor` itself unblocked, as long as the next segment is not `prototype`. On **3.1.1** the guard can therefore be walked past one segment over, and the documented guarantee of `banPrototypeModifications` (default on) does not hold.\n\n### Reproduce (fast-json-patch 3.1.1, Node 22)\n\n```js\nconst jsonpatch = require('fast-json-patch');\n\n// the guard fires on both shapes the patch enumerates - expected\njsonpatch.applyPatch({ a: {} }, [{ op: 'add', path: '/__proto__/x', value: 1 }]);\n// TypeError: JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned\n\njsonpatch.applyPatch({ a: {} }, [{ op: 'add', path: '/constructor/prototype/x', value: 1 }]);\n// TypeError: same\n\n// but a bare `constructor` is not in the list\njsonpatch.applyPatch({ a: {} }, [{ op: 'add', path: '/a/constructor/x', value: 'INJECTED' }]);\nObject.x;   // => 'INJECTED'   <- own property written on the global Object constructor\n\njsonpatch.applyPatch({ a: {} }, [{ op: 'replace', path: '/a/constructor/constructor', value: 'PWNED' }]);\n// Object.constructor === 'PWNED'\n\n// the read path runs through the same guard, so it has the same gap\njsonpatch.getValueByPointer({}, '/constructor/constructor');   // => [Function: Function]\n```\n\n`getValueByPointer` is not a separate code path: it synthesizes an `_get` operation and re-enters `applyOperation`.\n\n### Why this is the same class as the CVE, not a cosmetic difference\n\nThe patch's own reasoning is that a patch document must not be able to reach built-in objects. `constructor` is exactly such a built-in reach: it is inherited from `Object.prototype`, so `{}['constructor']` is `Object`, and a second `constructor` yields `Function`. The fix enumerates two spellings of the escape instead of closing the door.\n\nA denylist cannot close it: `valueOf`, `toLocaleString`, `__defineGetter__`, `isPrototypeOf`, `propertyIsEnumerable` and anything added to `Object.prototype` in future are reachable the same way.\n\n### Impact, and what I did not demonstrate\n\n* Write side: own properties of `Object` / `Function` can be overwritten from a data-only document - e.g. replacing `Object.assign` or `Object.keys`, giving process-wide integrity loss and denial of service.\n* Read side: the `Function` constructor becomes reachable. Escalation needs the consumer to call the resolved value; **the library itself never calls it**, and I have not demonstrated such a sink.\n\nI did not test any downstream application, and I am not claiming end-to-end RCE.\n\n### Suggested fix\n\nCheck **ownership** at the point the loop descends, instead of matching segments:\n\n```js\nif (!Object.prototype.hasOwnProperty.call(obj, key)) {\n    throw new JsonPatchError('Path not found in document', 'OPERATION_PATH_UNRESOLVED', index, operation, document);\n}\n```\n\nThat closes the whole class structurally and lets the denylist be retired. The `jsonpatch` package does this and resisted all seven payloads I tried.\n\nRelated: #308 proposes backporting this fix to v2. If that backport happens, it is worth fixing the class rather than porting the two-pattern check, otherwise v2 inherits the same gap.\n\n### Affected range\n\nVerified on **3.1.1** only. Given the shape of the check, any release carrying commit `7ad6af4` is affected by the gap - please confirm from history rather than from my claim.\n\n---\n\n### On disclosure\n\nPrivate vulnerability reporting is **disabled** on this repository, so there is no private form to use. I am posting the minimal version rather than dropping a full technical report into a public thread unasked.\n\nEnable *Settings -> Code security -> Private vulnerability reporting*, or point me at a private channel, and I will send the complete report: the full escaping segment set, the runnable harness (`verify_local.js`), and RFC 6902 conformance results for the proposed fix.\n\nIf you would rather keep it public, say so and I will post everything here - your call.",
+  "closed_by": null,
+  "reactions": {
+    "url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch/issues/342/reactions",
+    "total_count": 0,
+    "+1": 0,
+    "-1": 0,
+    "laugh": 0,
+    "hooray": 0,
+    "confused": 0,
+    "heart": 0,
+    "rocket": 0,
+    "eyes": 0
+  },
+  "timeline_url": "https://api.github.com/repos/Starcounter-Jack/JSON-Patch/issues/342/timeline",
+  "performed_via_github_app": null,
+  "state_reason": null,
+  "pinned_comment": null
+}

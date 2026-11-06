@@ -1,0 +1,23 @@
+name	url	http	ms	verdict	snippet
+groq	https://api.groq.com/openai/v1	403	560	ALIVE_AUTH	{"error":{"message":"Forbidden"}}
+cerebras	https://api.cerebras.ai/v1	403	2725	ALIVE_AUTH	error code: 1009
+mistral	https://api.mistral.ai/v1	000	8089	UNREACHABLE	
+cohere	https://api.cohere.ai/compatibility/v1	403	3166	ALIVE_AUTH	<!doctype html><meta charset="utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>
+siliconflow	https://api.siliconflow.cn/v1	401	3284	ALIVE_AUTH	{"code":30014,"data":null,"message":"Token is invalid."}
+modelscope	https://api-inference.modelscope.cn/v1	401	355	ALIVE_AUTH	{"error":{"message":"Authentication failed, please make sure that a valid ModelScope token is supplied.","requ
+gemini	https://generativelanguage.googleapis.com/v1beta/openai	000	8077	UNREACHABLE	
+nvidia	https://integrate.api.nvidia.com/v1	410	1922	HTTP_410	{"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llama-3.1-8b-instruct' has reached
+sambanova	https://api.sambanova.ai/v1	000	4382	UNREACHABLE	
+nebius	https://api.studio.nebius.com/v1	401	3789	ALIVE_AUTH	{"error":{"type":"invalid_request_error","message":"Couldn't authenticate. Reason: token is not present","para
+chutes	https://api.chutes.ai/v1	000	1973	UNREACHABLE	
+xai	https://api.x.ai/v1	000	8075	UNREACHABLE	
+deepseek	https://api.deepseek.com/v1	401	194	ALIVE_AUTH	Authentication Fails (governor)
+zhipu	https://api.z.ai/api/paas/v4	401	1522	ALIVE_AUTH	{"error":{"code":"1001","message":"Authentication parameter not received in Header, unable to authenticate"}}
+vercel_gw	https://ai-gateway.vercel.sh/v1	401	2839	ALIVE_AUTH	{"error":{"message":"Missing Authorization header","type":"authentication_error"}}
+atomgit	https://ai.atomgit.com/serverless-api	302	3201	HTTP_302	https://atomgit.com/serverless-api/chat/completions
+kilo	https://api.kilo.ai/api/gateway	401	4548	ALIVE_AUTH	{"error":{"code":"PAID_MODEL_AUTH_REQUIRED","message":"You need to sign in to use this model."},"error_type":"
+aionlabs	https://api.aionlabs.ai/v1	401	1792	ALIVE_AUTH	{"detail":"Authentication credentials were not provided."}
+agnes	https://apihub.agnes-ai.com/v1	401	3208	ALIVE_AUTH	{"error":{"code":"","message":"Token not provided (request id: 20261103073054799439558mkUPapSk)","type":"Agnes
+llm7	https://api.llm7.io/v1	400	1706	ALIVE_PARAM	{"error":{"message":"Model 'gpt-4o-mini' is currently unavailable.","type":"invalid_request_error","param":nul
+b_ai	https://api.b.ai/v1	000	8086	UNREACHABLE	
+ai21	https://api.ai21.com/studio/v1	400	2968	ALIVE_PARAM	{"detail":"Bad request: bad or missing authentication."}

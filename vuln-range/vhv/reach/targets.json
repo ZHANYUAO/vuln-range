@@ -1,0 +1,326 @@
+{
+ "runtime": [
+  {
+   "name": "@hubspot/api-client",
+   "version": "14.1.3",
+   "runtime": [
+    "lodash.merge"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@hubspot/api-client/-/api-client-14.1.3.tgz",
+   "unpacked_kb": 20064
+  },
+  {
+   "name": "swagger-ui-react",
+   "version": "5.34.1",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/swagger-ui-react/-/swagger-ui-react-5.34.1.tgz",
+   "unpacked_kb": 7540
+  },
+  {
+   "name": "ra-ui-materialui",
+   "version": "5.15.5",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/ra-ui-materialui/-/ra-ui-materialui-5.15.5.tgz",
+   "unpacked_kb": 7258
+  },
+  {
+   "name": "@grafana/data",
+   "version": "13.3.0",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@grafana/data/-/data-13.3.0.tgz",
+   "unpacked_kb": 7143
+  },
+  {
+   "name": "mockttp",
+   "version": "4.6.5",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/mockttp/-/mockttp-4.6.5.tgz",
+   "unpacked_kb": 1942
+  },
+  {
+   "name": "@pollyjs/adapter-node-http",
+   "version": "6.0.6",
+   "runtime": [
+    "lodash-es"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@pollyjs/adapter-node-http/-/adapter-node-http-6.0.6.tgz",
+   "unpacked_kb": 1480
+  },
+  {
+   "name": "@adobe/aio-lib-runtime",
+   "version": "7.5.0",
+   "runtime": [
+    "lodash.clonedeep"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@adobe/aio-lib-runtime/-/aio-lib-runtime-7.5.0.tgz",
+   "unpacked_kb": 674
+  },
+  {
+   "name": "@medusajs/framework",
+   "version": "2.22.2",
+   "runtime": [
+    "lodash.memoize"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@medusajs/framework/-/framework-2.22.2.tgz",
+   "unpacked_kb": 566
+  },
+  {
+   "name": "@node-red/util",
+   "version": "5.0.9",
+   "runtime": [
+    "lodash.clonedeep"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@node-red/util/-/util-5.0.9.tgz",
+   "unpacked_kb": 377
+  },
+  {
+   "name": "@antv/path-util",
+   "version": "3.0.1",
+   "runtime": [
+    "lodash-es"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@antv/path-util/-/path-util-3.0.1.tgz",
+   "unpacked_kb": 352
+  },
+  {
+   "name": "@rudderstack/rudder-sdk-node",
+   "version": "3.0.18",
+   "runtime": [
+    "lodash.clonedeep",
+    "lodash.isstring"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@rudderstack/rudder-sdk-node/-/rudder-sdk-node-3.0.18.tgz",
+   "unpacked_kb": 250
+  },
+  {
+   "name": "api",
+   "version": "7.0.4",
+   "runtime": [
+    "lodash-es"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/api/-/api-7.0.4.tgz",
+   "unpacked_kb": 219
+  },
+  {
+   "name": "@stoplight/prism-http",
+   "version": "5.16.0",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@stoplight/prism-http/-/prism-http-5.16.0.tgz",
+   "unpacked_kb": 185
+  },
+  {
+   "name": "@cloudflare/util-cache",
+   "version": "2.0.6",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@cloudflare/util-cache/-/util-cache-2.0.6.tgz",
+   "unpacked_kb": 142
+  },
+  {
+   "name": "@ionic/cli-framework",
+   "version": "6.0.1",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@ionic/cli-framework/-/cli-framework-6.0.1.tgz",
+   "unpacked_kb": 141
+  },
+  {
+   "name": "@takomo/util",
+   "version": "4.6.0",
+   "runtime": [
+    "lodash.merge"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@takomo/util/-/util-4.6.0.tgz",
+   "unpacked_kb": 88
+  },
+  {
+   "name": "sequelize-cli",
+   "version": "6.6.5",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/sequelize-cli/-/sequelize-cli-6.6.5.tgz",
+   "unpacked_kb": 64
+  },
+  {
+   "name": "global-tunnel-ng",
+   "version": "2.7.1",
+   "runtime": [
+    "lodash"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/global-tunnel-ng/-/global-tunnel-ng-2.7.1.tgz",
+   "unpacked_kb": 39
+  },
+  {
+   "name": "@cloudflare/util-markdown",
+   "version": "1.2.19",
+   "runtime": [
+    "lodash.memoize"
+   ],
+   "dev": [],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@cloudflare/util-markdown/-/util-markdown-1.2.19.tgz",
+   "unpacked_kb": 10
+  }
+ ],
+ "dev_only": [
+  {
+   "name": "@glideapps/glide-data-grid",
+   "version": "6.0.3",
+   "runtime": [],
+   "dev": [],
+   "peer": [
+    "lodash"
+   ],
+   "tarball": "https://registry.npmjs.org/@glideapps/glide-data-grid/-/glide-data-grid-6.0.3.tgz",
+   "unpacked_kb": 3577
+  },
+  {
+   "name": "@grpc/grpc-js",
+   "version": "1.14.7",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.14.7.tgz",
+   "unpacked_kb": 2510
+  },
+  {
+   "name": "@storybook/ui",
+   "version": "6.5.16",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@storybook/ui/-/ui-6.5.16.tgz",
+   "unpacked_kb": 1435
+  },
+  {
+   "name": "await-to-js",
+   "version": "3.0.0",
+   "runtime": [],
+   "dev": [
+    "lodash.camelcase"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/await-to-js/-/await-to-js-3.0.0.tgz",
+   "unpacked_kb": 1131
+  },
+  {
+   "name": "@reportportal/client-javascript",
+   "version": "5.6.0",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@reportportal/client-javascript/-/client-javascript-5.6.0.tgz",
+   "unpacked_kb": 205
+  },
+  {
+   "name": "@swc-node/register",
+   "version": "1.12.1",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/@swc-node/register/-/register-1.12.1.tgz",
+   "unpacked_kb": 177
+  },
+  {
+   "name": "vue-functional-data-merge",
+   "version": "3.1.0",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/vue-functional-data-merge/-/vue-functional-data-merge-3.1.0.tgz",
+   "unpacked_kb": 45
+  },
+  {
+   "name": "pg-pool",
+   "version": "3.14.0",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/pg-pool/-/pg-pool-3.14.0.tgz",
+   "unpacked_kb": 29
+  },
+  {
+   "name": "ansi-html-community",
+   "version": "0.0.8",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz",
+   "unpacked_kb": 20
+  },
+  {
+   "name": "fast-memoize",
+   "version": "2.5.2",
+   "runtime": [],
+   "dev": [
+    "lodash"
+   ],
+   "peer": [],
+   "tarball": "https://registry.npmjs.org/fast-memoize/-/fast-memoize-2.5.2.tgz",
+   "unpacked_kb": 12
+  }
+ ]
+}

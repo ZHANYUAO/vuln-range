@@ -1,0 +1,1 @@
+[2026-11-05 09:46:03] gateway up http://127.0.0.1:8791 -> https://integrate.api.nvidia.com/v1 (model=minimaxai/minimax-m3.1-flash, 并发上限=4, 重试=3, 鉴权=关(仅回环))

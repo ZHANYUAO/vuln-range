@@ -1,0 +1,47 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\set-value\\index.js",
+  "lines": 170,
+  "fn_count": 13,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [
+    {
+      "name": "isUnsafeKey",
+      "line": 18,
+      "kind": "blacklist",
+      "shape": "predicate",
+      "test": "key === '__proto__' || key === 'constructor' || key === 'prototype'",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 1,
+      "refs": 0,
+      "callers": [
+        "validateKey"
+      ],
+      "owner_sites": 0,
+      "type": "helper"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 1,
+    "G_ownkey": 0,
+    "bl_call_sites": 1,
+    "S_path": 6,
+    "C_path": 6,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "COVERED"
+}

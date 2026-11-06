@@ -1,0 +1,35 @@
+{
+  "users": {
+    "a": {
+      "email": "canary.a.194638@lab.local",
+      "password": "Canary#194638",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhbmFyeS5hLjE5NDYzOEBsYWIubG9jYWwiLCJwYXNzd29yZCI6IjNmMjZjZGQ2OTBiOTQ2Mjk3ZjM3YzhkYjk3NTNkMDY2Iiwicm9sZSI6ImN1c3RvbWVyIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IjAuMC4wLjAiLCJwcm9maWxlSW1hZ2UiOiIvYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0LnN2ZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yOCAxMzozNzoxOC43NDggKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yOCAxMzozNzoxOC43NDggKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjo2LCJpYXQiOjE3OTMxOTQ2Mzl9.UdxqgYPJnwmvmuHCnf0SwB-tcOGPEnsnIop1ODF231MZb1ZoslXlC4xqks2WwZzTEhVodKuCEA6668j9Dn9-sRPomx0rzu7TIc3ZKf4Wlx2DzhSdVyi7sGVu09cP69peIY3TPHlu8ZwMHmOmrl4nP1uA2K46_aB1N9IBjBktBj8",
+      "bid": 6,
+      "umail": "canary.a.194638@lab.local",
+      "uid": null
+    },
+    "b": {
+      "email": "canary.b.194638@lab.local",
+      "password": "Canary#194638",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNiwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhbmFyeS5iLjE5NDYzOEBsYWIubG9jYWwiLCJwYXNzd29yZCI6IjNmMjZjZGQ2OTBiOTQ2Mjk3ZjM3YzhkYjk3NTNkMDY2Iiwicm9sZSI6ImN1c3RvbWVyIiwiZGVsdXhlVG9rZW4iOiIiLCJsYXN0TG9naW5JcCI6IjAuMC4wLjAiLCJwcm9maWxlSW1hZ2UiOiIvYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0LnN2ZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNi0xMC0yOCAxMzozNzoxOC44MDggKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyNi0xMC0yOCAxMzozNzoxOC44MDggKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiYmlkIjo3LCJpYXQiOjE3OTMxOTQ2Mzl9.QIMxGoWHpME3bLRQfIqs1hELa8J8jxuWN_JldUbYuQJ26UVBXKwgIZ12ZFhCJS73zwLKByrYrdWWZgUITqKj9nyD4wegzH94xcVHRJhX1HyzbdZaJS2ceJcVuf4XjJ5n4eYdPX6ohUNCoEKa_AcnY8EmEPypMU6PTNtbz6rmkTc",
+      "bid": 7,
+      "umail": "canary.b.194638@lab.local",
+      "uid": null
+    }
+  },
+  "ts": "194638",
+  "canary_email_a": "canary.a.194638@lab.local",
+  "canary_email_b": "canary.b.194638@lab.local",
+  "basket_a": 6,
+  "basket_b": 7,
+  "idor_probe": {
+    "basket_other_status": 200,
+    "contains_b_bid": true,
+    "contains_b_email": false
+  },
+  "solved_baseline": [
+    "errorHandlingChallenge",
+    "basketAccessChallenge",
+    "exposedMetricsChallenge"
+  ]
+}

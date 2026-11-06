@@ -1,0 +1,84 @@
+{
+  "package": "dot-prop",
+  "main_version": "6.0.1",
+  "root": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs",
+  "apis": [
+    "get",
+    "set"
+  ],
+  "generated_at": "2026-11-02T10:35:33.987Z",
+  "counts": {
+    "present": 1,
+    "missing": 8
+  },
+  "version_delta": [],
+  "dists": [
+    {
+      "id": "main",
+      "spec": "dot-prop",
+      "origin": "main-entry",
+      "status": "present",
+      "kind": "cjs",
+      "resolved": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\dot-prop\\index.js",
+      "owner": "dot-prop",
+      "version": "6.0.1",
+      "note": null
+    },
+    {
+      "id": "sibling:dot-prop.get",
+      "spec": "dot-prop.get",
+      "origin": "sibling-pkg",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "sibling:dot-prop.set",
+      "spec": "dot-prop.set",
+      "origin": "sibling-pkg",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "sibling:dot-prop-es",
+      "spec": "dot-prop-es",
+      "origin": "sibling-pkg",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "sibling:dot-prop-fp",
+      "spec": "dot-prop-fp",
+      "origin": "sibling-pkg",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "subpath:get",
+      "spec": "dot-prop/get",
+      "origin": "subpath",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/get",
+      "spec": "dot-prop/fp/get",
+      "origin": "subpath-fp",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "subpath:set",
+      "spec": "dot-prop/set",
+      "origin": "subpath",
+      "status": "missing",
+      "note": null
+    },
+    {
+      "id": "subpath:fp/set",
+      "spec": "dot-prop/fp/set",
+      "origin": "subpath-fp",
+      "status": "missing",
+      "note": null
+    }
+  ]
+}

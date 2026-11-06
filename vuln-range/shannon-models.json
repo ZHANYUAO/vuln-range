@@ -1,0 +1,12 @@
+{
+  "providers": {
+    "artex-gw": {
+      "baseUrl": "http://host.docker.internal:8790/v1",
+      "api": "openai-completions",
+      "apiKey": "YOUR_API_KEY",
+      "models": [
+        { "id": "nvidia/nemotron-3-ultra-550b-a55b" }
+      ]
+    }
+  }
+}

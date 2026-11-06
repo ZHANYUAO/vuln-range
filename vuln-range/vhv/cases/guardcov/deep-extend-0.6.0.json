@@ -1,0 +1,45 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\deep-extend\\lib\\deep-extend.js",
+  "lines": 151,
+  "fn_count": 8,
+  "export_count": 0,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [
+    {
+      "name": "safeGetProperty",
+      "line": 75,
+      "kind": "blacklist-one",
+      "shape": "predicate",
+      "test": "property === '__proto__' ? undefined : object[property]",
+      "keys": [
+        "__proto__"
+      ],
+      "calls": 2,
+      "refs": 0,
+      "callers": [
+        "anon@110"
+      ],
+      "owner_sites": 1,
+      "type": "helper+sink"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 1,
+    "G_ownkey": 0,
+    "bl_call_sites": 2,
+    "S_path": 0,
+    "C_path": 0,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "NO_SINK"
+}

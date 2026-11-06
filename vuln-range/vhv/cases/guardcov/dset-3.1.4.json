@@ -1,0 +1,45 @@
+{
+  "file": "C:\\Users\\yuao\\WorkBuddy\\2026-10-10-17-02-37\\vuln-range\\vhv\\.pkgs\\node_modules\\dset\\dist\\index.js",
+  "lines": 11,
+  "fn_count": 1,
+  "export_count": 1,
+  "file_blacklist": {
+    "exists": false,
+    "form": null,
+    "keys": []
+  },
+  "guards": [
+    {
+      "name": "dset",
+      "line": 1,
+      "kind": "blacklist",
+      "shape": "block",
+      "test": "k === '__proto__' || k === 'constructor' || k === 'prototype'",
+      "keys": [
+        "__proto__",
+        "prototype",
+        "constructor"
+      ],
+      "calls": 0,
+      "refs": 0,
+      "callers": [],
+      "owner_sites": 0,
+      "type": "inline"
+    }
+  ],
+  "counts": {
+    "G_blacklist": 1,
+    "G_ownkey": 0,
+    "bl_call_sites": 0,
+    "S_path": 0,
+    "C_path": 0,
+    "U_path": 0,
+    "S_merge": 0,
+    "C_merge": 0,
+    "U_merge": 0,
+    "partial_keys": 0
+  },
+  "unguarded": [],
+  "partial": [],
+  "signal": "NO_SINK"
+}
