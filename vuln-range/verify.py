@@ -716,6 +716,17 @@ def verify_case(case, repeats=3, expect_control=False, derive=True, mode=None, r
         "inferences": [],
         "unknowns": [],
     }
+    # 只读覆盖度提示（P2 held-out 变体验证的接入点）。
+    # 仅当 case 显式声明 vhv_family 时才出现，因此现有 11 条 GT 的 bundle 逐字节不变；
+    # 且它不进 evidence_id 的哈希核心，不影响证据包 ID 稳定性。绝不参与判分。
+    if case.get("vhv_family"):
+        bundle["variant_coverage"] = {
+            "vhv_family": case["vhv_family"],
+            "used": case.get("vhv_used_variants") or [],
+            "held_out": _asserts.held_out_hints(case),
+            "note": "只读覆盖度提示，不参与判分。VHV 是 npm 库层语料，"
+                    "本 case 的 Web 层断言仍由自身 payload 派生。",
+        }
     results, controls, leaks, blocks = [], [], [], []
     no_control = False
 

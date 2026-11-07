@@ -1,0 +1,3144 @@
+{
+  "schema": "route-extractor/1",
+  "target": "AltoroJ 3.1.1 (OWASP / IBM AppScan demo bank)",
+  "root": "AltoroJ-master/AltoroJ 3.1.1",
+  "root_note": "相对工作区根目录的路径（正式产物不写本机绝对路径）；换机器时用 --root 指定。",
+  "generated_at": "2026-11-07T07:34:58+00:00",
+  "counts": {
+    "routes": 106,
+    "by_source_kind": {
+      "form": 11,
+      "java/getRequestDispatcher": 5,
+      "java/sendRedirect": 9,
+      "jsp:include/forward": 62,
+      "link": 127,
+      "static-file": 73,
+      "web.xml/servlet-mapping": 15
+    },
+    "by_path_class": {
+      "file-backed": 77,
+      "reference-only": 14,
+      "servlet-mapped": 15
+    },
+    "wildcard_patterns": 2,
+    "dynamic_skipped": 26,
+    "servlet_mappings": 15,
+    "base_ambiguous_routes": 14
+  },
+  "coverage_denominator": 106,
+  "denominators": {
+    "all": 106,
+    "verified": 92,
+    "verified_definition": "file-backed + servlet-mapped；剔除只被链接引用、源码里找不到对应文件或 servlet 映射的路径"
+  },
+  "routes": [
+    {
+      "path": "/admin/addAccount",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 205,
+          "bound_to": "AdminServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.AdminServlet"
+        }
+      ]
+    },
+    {
+      "path": "/admin/addUser",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 213,
+          "bound_to": "AdminServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.AdminServlet"
+        }
+      ]
+    },
+    {
+      "path": "/admin/admin.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AdminLoginServlet.java",
+          "line": 52
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/admin/admin.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/admin/changePassword",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 209,
+          "bound_to": "AdminServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.AdminServlet"
+        }
+      ]
+    },
+    {
+      "path": "/admin/doAdminLogin",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "btnSubmit",
+        "password"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 217,
+          "bound_to": "AdminLoginServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.AdminLoginServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/admin/login.jsp",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "/admin/feedbackReview.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/admin/feedbackReview.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/admin/login.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AdminLoginServlet.java",
+          "line": 43
+        },
+        {
+          "kind": "java/getRequestDispatcher",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AdminLoginServlet.java",
+          "line": 47
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/admin/login.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/apply.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/bank/main.jsp",
+          "line": 59
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/apply.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/applysuccess.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/getRequestDispatcher",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/CCApplyServlet.java",
+          "line": 41
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/applysuccess.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/balance.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AccountViewServlet.java",
+          "line": 56
+        },
+        {
+          "kind": "java/getRequestDispatcher",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AccountViewServlet.java",
+          "line": 57
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/balance.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/ccApply",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "Submit",
+        "passwd"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 185,
+          "bound_to": "CCApplyServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.CCApplyServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/bank/apply.jsp",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "path": "/bank/customize.jsp",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "params": [
+        "content",
+        "lang"
+      ],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "form",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": 42
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": 51
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": 52
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/doTransfer",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "fromAccount",
+        "toAccount",
+        "transfer",
+        "transferAmount"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 177,
+          "bound_to": "TransferServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.TransferServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/bank/transfer.jsp",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "path": "/bank/main.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/api/LoginAPI.java",
+          "line": 98
+        },
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/filter/AdminFilter.java",
+          "line": 77
+        },
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AccountViewServlet.java",
+          "line": 53
+        },
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/LoginServlet.java",
+          "line": 96
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/main.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/membertoc.jspf",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/admin.jsp",
+          "line": 26
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/feedbackReview.jsp",
+          "line": 29
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/login.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/apply.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/applysuccess.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/balance.jsp",
+          "line": 29
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/main.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/queryxpath.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/stocks.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/transaction.jsp",
+          "line": 30
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/transfer.jsp",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "path": "/bank/queryxpath.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/queryxpath.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/showAccount",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [
+        "listAccounts"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 173,
+          "bound_to": "AccountViewServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.AccountViewServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/bank/balance.jsp",
+          "line": 68
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/bank/main.jsp",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "path": "/bank/showTransactions",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "endDate",
+        "startDate"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 181,
+          "bound_to": "AccountViewServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.AccountViewServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/bank/transaction.jsp",
+          "line": 122
+        }
+      ]
+    },
+    {
+      "path": "/bank/stocks.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/stocks.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/transaction.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/getRequestDispatcher",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/AccountViewServlet.java",
+          "line": 77
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/transaction.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/bank/transfer.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/bank/transfer.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/cgi.exe",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 74
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 49,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/default.aspx",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 189,
+          "bound_to": "RedirectServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.RedirectServlet"
+        }
+      ]
+    },
+    {
+      "path": "/default.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 16
+        }
+      ]
+    },
+    {
+      "path": "/disclaimer.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/disclaimer.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/doLogin",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "btnSubmit",
+        "passw",
+        "uid"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 165,
+          "bound_to": "LoginServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.LoginServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/login.jsp",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "path": "/doSubscribe",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "btnSubmit",
+        "txtEmail"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 197,
+          "bound_to": "SubscribeServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.SubscribeServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/subscribe.jsp",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "path": "/feedback.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 19
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/feedback.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/feedbacksuccess.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/getRequestDispatcher",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/servlet/FeedbackServlet.java",
+          "line": 67
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/feedbacksuccess.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/footer.jspf",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/feedback.jsp",
+          "line": 89
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/feedbacksuccess.jsp",
+          "line": 96
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/index.jsp",
+          "line": 110
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/login.jsp",
+          "line": 104
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/notfound.jsp",
+          "line": 47
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/search.jsp",
+          "line": 50
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/status_check.jsp",
+          "line": 34
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/subscribe.jsp",
+          "line": 89
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/admin.jsp",
+          "line": 193
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/feedbackReview.jsp",
+          "line": 74
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/login.jsp",
+          "line": 59
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/apply.jsp",
+          "line": 35
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/applysuccess.jsp",
+          "line": 38
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/balance.jsp",
+          "line": 132
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": 60
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/main.jsp",
+          "line": 68
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/queryxpath.jsp",
+          "line": 57
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/stocks.jsp",
+          "line": 45
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/transaction.jsp",
+          "line": 162
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/transfer.jsp",
+          "line": 112
+        }
+      ]
+    },
+    {
+      "path": "/header.jspf",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/feedback.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/feedbacksuccess.jsp",
+          "line": 30
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/index.jsp",
+          "line": 28
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/login.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/notfound.jsp",
+          "line": 25
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/search.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/status_check.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/subscribe.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/admin.jsp",
+          "line": 23
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/feedbackReview.jsp",
+          "line": 26
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/admin/login.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/apply.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/applysuccess.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/balance.jsp",
+          "line": 26
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/customize.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/main.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/queryxpath.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/stocks.jsp",
+          "line": 24
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/transaction.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/bank/transfer.jsp",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "path": "/high_yield_investments.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/index.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "content"
+      ],
+      "path_class": "file-backed",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 19
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 39
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 40
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 41
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 47
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 49
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 50
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 52
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 53
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 54
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 55
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 58
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 60
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 61
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 62
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 63
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 65
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 66
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 69
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 71
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 73
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 75
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 76
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 77
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 90
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/retirement.htm",
+          "line": 20
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/survey_questions.jsp",
+          "line": 24
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 25,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 27,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 28,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 29,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 30,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 31,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 32,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 35,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 37,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 38,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 39,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 40,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 41,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 42,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 45,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 47,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 48,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 50,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 51,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 52,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/index.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/login.jsp",
+      "methods": [
+        "ANY",
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/filter/AdminFilter.java",
+          "line": 74
+        },
+        {
+          "kind": "java/sendRedirect",
+          "source_file": "src/com/ibm/security/appscan/altoromutual/filter/AuthFilter.java",
+          "line": 63
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 19
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 38
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/login.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/logout.jsp",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 169,
+          "bound_to": "LoginServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.LoginServlet"
+        }
+      ]
+    },
+    {
+      "path": "/my%20documents/JohnSmith/Bank%20Site%20Documents/grouplife.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_insurance.htm",
+          "line": 8,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/notfound.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/notfound.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/retirement.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/retirement.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/search.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "query"
+      ],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "form",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 13
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/search.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/security.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/high_yield_investments.htm",
+          "line": 117
+        }
+      ]
+    },
+    {
+      "path": "/sendFeedback",
+      "methods": [
+        "ANY",
+        "POST"
+      ],
+      "params": [
+        "cfile",
+        "comments",
+        "email_addr",
+        "name",
+        "reset",
+        "subject",
+        "submit"
+      ],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 201,
+          "bound_to": "FeedbackServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.FeedbackServlet"
+        },
+        {
+          "kind": "form",
+          "source_file": "WebContent/feedback.jsp",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "path": "/static/Privacypolicy.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "sec",
+        "template"
+      ],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_careers.htm",
+          "line": 19,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/admin/clients.xls",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal_other.htm",
+          "line": 14,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/business.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/business_cards.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business_cards.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/business_deposit.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business_deposit.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/business_insurance.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business_insurance.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/business_lending.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business_lending.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/business_other.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business_other.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/business_retirement.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/business_retirement.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/default.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/default.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/default.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "content"
+      ],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 28,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/disclaimer.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "url"
+      ],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_contact.htm",
+          "line": 36,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_contact.htm",
+          "line": 36,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/doSurvey",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 221,
+          "bound_to": "SurveyServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.SurveyServlet"
+        }
+      ]
+    },
+    {
+      "path": "/static/feedback.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_contact.htm",
+          "line": 9,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/high_yield_investments.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_deposit.htm",
+          "line": 10,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/index.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "content",
+        "job"
+      ],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business.htm",
+          "line": 8,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business.htm",
+          "line": 11,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business.htm",
+          "line": 14,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business.htm",
+          "line": 17,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business.htm",
+          "line": 20,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_cards.htm",
+          "line": 12,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_deposit.htm",
+          "line": 13,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_insurance.htm",
+          "line": 13,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_lending.htm",
+          "line": 14,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/business_other.htm",
+          "line": 15,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 6,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 12,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 18,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 23,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 28,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside.htm",
+          "line": 12,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_about.htm",
+          "line": 10,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_about.htm",
+          "line": 11,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_careers.htm",
+          "line": 14,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_careers.htm",
+          "line": 15,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_careers.htm",
+          "line": 16,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_careers.htm",
+          "line": 17,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_community.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_internships.htm",
+          "line": 10,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_investor.htm",
+          "line": 36,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": 76,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": 81,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": 86,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": 91,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": 96,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": 101,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 12,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 16,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 20,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 24,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 28,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 32,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 36,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": 40,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_trainee.htm",
+          "line": 29,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_volunteering.htm",
+          "line": 22,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal.htm",
+          "line": 8,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal.htm",
+          "line": 11,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal.htm",
+          "line": 14,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal.htm",
+          "line": 17,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal.htm",
+          "line": 20,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal_cards.htm",
+          "line": 17,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal_checking.htm",
+          "line": 14,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal_deposit.htm",
+          "line": 15,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal_investments.htm",
+          "line": 17,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/personal_loans.htm",
+          "line": 16,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/privacy.htm",
+          "line": 44,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/inside.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_about.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_about.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_benefits.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_benefits.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_careers.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_careers.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_community.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_community.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_contact.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_contact.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_executives.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_executives.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_internships.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_internships.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_investor.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_investor.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_jobs.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_jobs.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_locations.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_locations.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_points_of_interest.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/inside_about.htm",
+          "line": 13,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_press.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_press.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_trainee.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_trainee.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/inside_volunteering.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/inside_volunteering.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/jobs/20061019.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/jobs/20061019.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/jobs/20061023.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/jobs/20061023.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/jobs/20061024.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/jobs/20061024.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/jobs/20061025.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/jobs/20061025.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/jobs/20061026.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/jobs/20061026.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/jobs/20061027.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/jobs/20061027.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal_cards.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal_cards.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal_checking.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal_checking.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal_deposit.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal_deposit.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal_investments.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal_investments.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal_loans.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal_loans.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/personal_other.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/personal_other.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20060413.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20060413.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20060518.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20060518.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20060720.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20060720.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20060817.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20060817.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20060921.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20060921.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20060928.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20060928.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20061005.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20061005.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/20061109.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/pr/20061109.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/pr/index.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [
+        "content"
+      ],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20060413.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20060518.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20060720.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20060817.htm",
+          "line": 10,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20060921.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20060928.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20061005.htm",
+          "line": 9,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/pr/20061109.htm",
+          "line": 9,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/static/privacy.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/privacy.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/security.htm",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/static/security.htm",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/static/survey_questions.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "reference-only",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/static/default.htm",
+          "line": 33,
+          "base_ambiguous": true
+        }
+      ]
+    },
+    {
+      "path": "/status_check.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/status_check.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/subscribe.aspx",
+      "methods": [
+        "ANY"
+      ],
+      "params": [],
+      "path_class": "servlet-mapped",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "web.xml/servlet-mapping",
+          "source_file": "WebContent/WEB-INF/web.xml",
+          "line": 193,
+          "bound_to": "RedirectServlet",
+          "servlet_class": "com.ibm.security.appscan.altoromutual.servlet.RedirectServlet"
+        }
+      ]
+    },
+    {
+      "path": "/subscribe.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": true,
+      "sources": [
+        {
+          "kind": "link",
+          "source_file": "WebContent/toc.jspf",
+          "line": 53,
+          "base_ambiguous": true
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/subscribe.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/survey_questions.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/survey_questions.jsp",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/swagger/index.html",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/swagger/index.html",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/swagger/o2c.html",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/swagger/o2c.html",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/toc.jspf",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/feedback.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/feedbacksuccess.jsp",
+          "line": 33
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/index.jsp",
+          "line": 31
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/login.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/notfound.jsp",
+          "line": 28
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/search.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/status_check.jsp",
+          "line": 27
+        },
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/subscribe.jsp",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "path": "/util/serverStatusCheck.html",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "jsp:include/forward",
+          "source_file": "WebContent/status_check.jsp",
+          "line": 29
+        },
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/util/serverStatusCheck.html",
+          "line": null
+        }
+      ]
+    },
+    {
+      "path": "/util/serverStatusCheckService.jsp",
+      "methods": [
+        "GET"
+      ],
+      "params": [],
+      "path_class": "file-backed",
+      "base_ambiguous": false,
+      "sources": [
+        {
+          "kind": "static-file",
+          "source_file": "WebContent/util/serverStatusCheckService.jsp",
+          "line": null
+        }
+      ]
+    }
+  ],
+  "wildcard_patterns": [
+    {
+      "pattern": "*.jspf",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 225,
+      "bound_to": "jsp",
+      "servlet_class": null
+    },
+    {
+      "pattern": "*.jsp",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 225,
+      "bound_to": "jsp",
+      "servlet_class": null
+    }
+  ],
+  "filter_url_patterns": [
+    {
+      "pattern": "/bank/*",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 35,
+      "bound_to": "AuthFilter"
+    },
+    {
+      "pattern": "/admin/*",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 43,
+      "bound_to": "AuthFilter"
+    },
+    {
+      "pattern": "/adimn/*",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 51,
+      "bound_to": "AdminFilter"
+    },
+    {
+      "pattern": "/account.jsp",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 59,
+      "bound_to": "AuthFilter"
+    },
+    {
+      "pattern": "/swagger/*",
+      "source_file": "WebContent/WEB-INF/web.xml",
+      "line": 67,
+      "bound_to": "SwaggerFilter"
+    }
+  ],
+  "dynamic_skipped": [
+    {
+      "source_file": "WebContent/footer.jspf",
+      "line": 27,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp?content=privacy.htm",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/footer.jspf",
+      "line": 29,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp?content=security.htm",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/footer.jspf",
+      "line": 31,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/status_check.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/footer.jspf",
+      "line": 33,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/swagger/index.html",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 38,
+      "kind": "form",
+      "raw": "\"<%=request.getContextPath()%",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 41,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 43,
+      "kind": "link",
+      "raw": "<%=(!loggedIn)?request.getContextPath()+",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 43,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp?content=inside_contact.htm",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 43,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/feedback.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 57,
+      "kind": "link",
+      "raw": "<%=(loggedIn)?request.getContextPath()+",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 58,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp?content=personal.htm",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 59,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp?content=business.htm",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/header.jspf",
+      "line": 60,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/index.jsp?content=inside.htm",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/index.jsp",
+      "line": 101,
+      "kind": "jsp:include/forward",
+      "raw": "<%= content %>",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/admin/admin.jsp",
+      "line": 70,
+      "kind": "form",
+      "raw": "<%=ServletUtil.isAppPropertyTrue(",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/admin/admin.jsp",
+      "line": 106,
+      "kind": "form",
+      "raw": "<%=ServletUtil.getAppProperty(",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/admin/admin.jsp",
+      "line": 142,
+      "kind": "form",
+      "raw": "<%=ServletUtil.getAppProperty(",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 36,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/bank/main.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 37,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/bank/transaction.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 38,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/bank/transfer.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 39,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/bank/stocks.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 41,
+      "kind": "link",
+      "raw": "<%=(specialLink != null && specialLink.length()>0)? specialLink : (request.getContextPath()+",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 42,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/bank/customize.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 49,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/admin/admin.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/membertoc.jspf",
+      "line": 51,
+      "kind": "link",
+      "raw": "<%=request.getContextPath()%>/admin/feedbackReview.jsp",
+      "reason": "JSP 表达式无法静态求值"
+    },
+    {
+      "source_file": "WebContent/bank/queryxpath.jsp",
+      "line": 32,
+      "kind": "form",
+      "raw": "\"<%=request.getRequestURL()%",
+      "reason": "JSP 表达式无法静态求值"
+    }
+  ],
+  "coverage": null,
+  "coverage_note": "未给 --reached：只有分母，没有覆盖率。",
+  "limitations": [
+    "分母是源码里可枚举的具体路径，不等于应用全部可达 URL：运行时生成、REST 参数化、外部配置、容器默认 servlet 都可能漏。",
+    "web.xml 的通配符模式（/* 、*.jsp）单列，不进分母，否则分母虚高。",
+    "JSP 表达式（action=\"<%=...%>\"）无法静态求值，记入 dynamic_skipped，不猜。",
+    "jspf 与 /static/*.htm 里的相对引用基准取决于「最终被请求页面的 URL」，静态分析无法唯一确定；这类来源标了 base_ambiguous，用时按 verified 口径更稳。",
+    "Java 只抽 sendRedirect / getRequestDispatcher / forward 行里以 / 开头的路径字面量；相对跳转与运行时拼接不进分母。",
+    "reference-only 路径是源码里被引用到、但没有对应文件或 servlet 映射的 URL，可能是历史遗留链接或 404；能发请求不等于有效端点。",
+    "分母≠漏洞数，也≠检出率分母（后者见 AltoroJ-ground-truth-v2.md）。"
+  ]
+}

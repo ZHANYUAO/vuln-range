@@ -1,0 +1,430 @@
+{
+  "schema": "vhv-variant-families/1",
+  "generated_from": [
+    "payloads.json",
+    "cases/matrix-invoke.json",
+    "cases/GHSA-F23M-R3PF-42RH_reify.json"
+  ],
+  "semantic_boundary": "本文件是只读族谱，不是断言库、不是知识库、不是判定结论。VHV 的对象是 npm 库（lodash / dot-prop / json-ptr），主线 verify.py 的对象是 Web 应用（lab / Gitea / Juice Shop）。「同族未修变体」在库层成立，不自动在 Web 端点成立。要在 Web 侧复用，必须重新从该端点的 payload 派生断言（asserts.py derive()）。",
+  "contracts": [
+    "载荷契约：expr 是一段 JS 表达式，可用变量 `_`（目标库）与 `M`（每次运行随机的 marker 串）。",
+    "judge 语义统一成字符串包含，避免每个载荷各写一套判定逻辑：",
+    "  expect=marker     ：expr 的返回值里出现 'VHV'+M  → 命中",
+    "  expect=no_marker  ：返回值里不出现 'VHV'+M     → 通过（用于阴性对照与'被拦住'类断言）",
+    "为什么必须一载荷一进程：原型链污染是全局副作用，同进程复用会让后一个载荷吃到前一个的残留。",
+    "origin 字段记录载荷是手工写的还是由 locate.js 的矩阵自动提示的 —— 这是衡量'自动化带来多少增量'的依据。"
+  ],
+  "disclosure_note": "变体 id / api / origin / expect / expr 哈希来自已公开的 payloads.json。cases/matrix-invoke.json 的跨版本判定结论已刻意不写入本文件（verdicts_withheld），因为该源文件属未协调披露研究且被 .gitignore 排除。若该研究后续决定公开，再重跑本脚本并按需放开该字段。",
+  "payload_count": 17,
+  "matrix_rows": 17,
+  "reify_rows": 25,
+  "families": {
+    "control": {
+      "layer": "library(js-expression)",
+      "role": "control",
+      "variant_count": 0,
+      "control_count": 3,
+      "guard_control_count": 0,
+      "variants": [
+        {
+          "id": "ctrl_invoke_normal",
+          "api": "invoke",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "88e65c529cf37b37",
+          "expr_len": 47,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "ctrl_set_get_normal",
+          "api": "set",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "5538e803463a4d15",
+          "expr_len": 81,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "ctrl_no_pollution_normal_path",
+          "api": "invoke",
+          "origin": "manual",
+          "expect": "no_marker",
+          "expr_sha256": "7e975cabd68a33e8",
+          "expr_len": 84,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        }
+      ],
+      "web_layer_reuse": {
+        "allowed": [
+          "变体枚举（用于 held-out 覆盖度提示）",
+          "正负对照成对纪律"
+        ],
+        "forbidden": [
+          "把 expr 直接当 HTTP 请求 payload",
+          "把 expect=marker 当 HTTP 响应断言",
+          "把 cross_version.verdicts 当漏洞判定结论"
+        ],
+        "reason": "npm 库层是 JS 表达式求值 + 进程内 marker；Web 层是 HTTP 请求/响应。证据源不同，判定不可跨层搬运。"
+      }
+    },
+    "guard-control": {
+      "layer": "library(js-expression)",
+      "role": "guard-control",
+      "variant_count": 0,
+      "control_count": 0,
+      "guard_control_count": 2,
+      "variants": [
+        {
+          "id": "unset_same_path_blocked",
+          "api": "unset",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "c95f62b5a58ce4bc",
+          "expr_len": 103,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "set_same_path_blocked",
+          "api": "set",
+          "origin": "manual",
+          "expect": "no_marker",
+          "expr_sha256": "7b6983f89a2516a0",
+          "expr_len": 70,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        }
+      ],
+      "web_layer_reuse": {
+        "allowed": [
+          "变体枚举（用于 held-out 覆盖度提示）",
+          "正负对照成对纪律"
+        ],
+        "forbidden": [
+          "把 expr 直接当 HTTP 请求 payload",
+          "把 expect=marker 当 HTTP 响应断言",
+          "把 cross_version.verdicts 当漏洞判定结论"
+        ],
+        "reason": "npm 库层是 JS 表达式求值 + 进程内 marker；Web 层是 HTTP 请求/响应。证据源不同，判定不可跨层搬运。"
+      }
+    },
+    "pollution": {
+      "layer": "library(js-expression)",
+      "role": "attack",
+      "variant_count": 5,
+      "control_count": 0,
+      "guard_control_count": 0,
+      "variants": [
+        {
+          "id": "invoke_pollution_getter_arr",
+          "api": "invoke",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "444b171c59712a06",
+          "expr_len": 112,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "invoke_pollution_getter_str",
+          "api": "invoke",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "0aeb01f7a9ab3ea4",
+          "expr_len": 108,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "invokeMap_pollution",
+          "api": "invokeMap",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "d657c6ecb7735fb2",
+          "expr_len": 117,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "method_pollution",
+          "api": "method",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "26fdeca721c55820",
+          "expr_len": 112,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "methodOf_pollution",
+          "api": "methodOf",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "c173a4f4d4d63739",
+          "expr_len": 114,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        }
+      ],
+      "web_layer_reuse": {
+        "allowed": [
+          "变体枚举（用于 held-out 覆盖度提示）",
+          "正负对照成对纪律"
+        ],
+        "forbidden": [
+          "把 expr 直接当 HTTP 请求 payload",
+          "把 expect=marker 当 HTTP 响应断言",
+          "把 cross_version.verdicts 当漏洞判定结论"
+        ],
+        "reason": "npm 库层是 JS 表达式求值 + 进程内 marker；Web 层是 HTTP 请求/响应。证据源不同，判定不可跨层搬运。"
+      }
+    },
+    "rce": {
+      "layer": "library(js-expression)",
+      "role": "attack",
+      "variant_count": 7,
+      "control_count": 0,
+      "guard_control_count": 0,
+      "variants": [
+        {
+          "id": "invoke_rce_arr",
+          "api": "invoke",
+          "origin": "locate",
+          "expect": "marker",
+          "expr_sha256": "72c3006d5569672c",
+          "expr_len": 92,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "invoke_rce_str",
+          "api": "invoke",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "7c897ea949ac6e24",
+          "expr_len": 86,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "invokeMap_rce",
+          "api": "invokeMap",
+          "origin": "locate",
+          "expect": "marker",
+          "expr_sha256": "8cf17ca614b48099",
+          "expr_len": 100,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "method_rce",
+          "api": "method",
+          "origin": "locate",
+          "expect": "marker",
+          "expr_sha256": "3a7ab8a75b00f254",
+          "expr_len": 92,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "methodOf_rce",
+          "api": "methodOf",
+          "origin": "locate",
+          "expect": "marker",
+          "expr_sha256": "7f09d5bfeff5c3f5",
+          "expr_len": 94,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "lazy_invokeMap_rce",
+          "api": "invokeMap(lazy)",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "2d4ff8e12b5a2482",
+          "expr_len": 108,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        },
+        {
+          "id": "chain_invokeMap_rce",
+          "api": "invokeMap(chain)",
+          "origin": "manual",
+          "expect": "marker",
+          "expr_sha256": "d728cace34e66c1a",
+          "expr_len": 114,
+          "expr_layer": "javascript-eval",
+          "cross_version": {
+            "observed_only": true,
+            "versions": [
+              "4.17.20",
+              "4.18.0",
+              "4.18.1"
+            ],
+            "verdicts_withheld": true,
+            "withheld_reason": "源文件属未协调披露研究，判定结论不随族谱公开"
+          }
+        }
+      ],
+      "web_layer_reuse": {
+        "allowed": [
+          "变体枚举（用于 held-out 覆盖度提示）",
+          "正负对照成对纪律"
+        ],
+        "forbidden": [
+          "把 expr 直接当 HTTP 请求 payload",
+          "把 expect=marker 当 HTTP 响应断言",
+          "把 cross_version.verdicts 当漏洞判定结论"
+        ],
+        "reason": "npm 库层是 JS 表达式求值 + 进程内 marker；Web 层是 HTTP 请求/响应。证据源不同，判定不可跨层搬运。"
+      }
+    }
+  }
+}

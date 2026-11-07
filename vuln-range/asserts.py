@@ -544,8 +544,70 @@ def apply(case):
     return c
 
 
+# ---------------------------------------------------------------------------
+# VHV 变体族谱：只读引用，不参与任何判定
+# ---------------------------------------------------------------------------
+# 存在的理由：P2 的 held-out 变体验证需要「同一漏洞族还有哪些没测过的打法」这份语料。
+# 但 VHV 打的是 npm 库（JS 表达式 + 进程内 marker），本文件判的是 HTTP 响应。
+# 证据源不同 → 族谱只能用来枚举与提示覆盖度，绝不能用来生成断言或替代 derive()。
+VARIANT_DB = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "vhv", "variant_families.json")
+_VARIANTS = None
+
+
+def _variant_db():
+    """族谱缺失/损坏时返回空，保证主流程（判分）永远不受影响。"""
+    global _VARIANTS
+    if _VARIANTS is None:
+        try:
+            with open(VARIANT_DB, encoding="utf-8") as f:
+                _VARIANTS = json.load(f)
+        except (OSError, ValueError):
+            _VARIANTS = {"families": {}, "semantic_boundary": "(族谱未生成)"}
+    return _VARIANTS
+
+
+def variant_family(name):
+    """只读：返回某族变体清单（id / api / origin / expect / expr_sha256）。
+    不含任何漏洞判定结论；cross_version 里的 verdict 明确是 observed_only。"""
+    return list(_variant_db().get("families", {}).get(name, {}).get("variants", []))
+
+
+def held_out_hints(case, used=None):
+    """只读：仅当 case **显式声明** `vhv_family` 时，返回未参与本次验证的变体 id。
+
+    刻意不做自动映射：库层 `rce` / `pollution` 与 Web 层 `command_injection` /
+    `sql_injection` 名字不同、证据源不同，猜测式映射会让外部语料悄悄进入判分链路，
+    这正是「断言必须由 payload 派生」铁律要防的事。
+    返回值只写进证据包作覆盖度提示，**不参与判分**。
+    """
+    fam = case.get("vhv_family")
+    if not fam:
+        return []
+    used = set(used if used is not None else (case.get("vhv_used_variants") or []))
+    return [v["id"] for v in variant_family(fam)
+            if v.get("id") and v["id"] not in used]
+
+
+def variant_summary():
+    """给人和外部 AI 看的族谱概览。"""
+    db = _variant_db()
+    return {
+        "schema": db.get("schema"),
+        "payload_count": db.get("payload_count"),
+        "semantic_boundary": db.get("semantic_boundary"),
+        "families": {k: {"role": v.get("role"), "variant_count": v.get("variant_count"),
+                         "control_count": v.get("control_count"),
+                         "guard_control_count": v.get("guard_control_count")}
+                     for k, v in db.get("families", {}).items()},
+    }
+
+
 if __name__ == "__main__":
     import sys
+    if "--families" in sys.argv:
+        print(json.dumps(variant_summary(), ensure_ascii=False, indent=2))
+        sys.exit(0)
     gt = json.load(open(sys.argv[1] if len(sys.argv) > 1 else "lab/ground_truth.json",
                        encoding="utf-8"))
     for v in gt["vulns"]:

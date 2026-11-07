@@ -1,0 +1,231 @@
+{
+  "schema": "web-variant-families/1",
+  "created": "2026-11-07",
+  "layer": "web-http",
+  "for": "P2: lab held-out 变体修复闭环",
+  "semantic_boundary": "本文件是 Web 层 HTTP 变体语料，对象是自建 lab 的三个端点。它与 vhv/variant_families.json（npm 库层 JS 表达式族谱）没有映射关系：库层的 expr / verdict 绝不进入本文件的判定链路。每条 case 故意不写 assert —— 攻击断言必须由 asserts.derive() 从该 case 自己的 payload 派生，control_assert 只描述对照状态。",
+  "independence_contract": "train 用于生成补丁；held_out 与 benign 在补丁生成阶段必须不可见。repair_loop.py --self-test 会用哨兵污染验证这一点。verdict 一律走 verify.verify_case()（三值、unknown 优先），不在本文件里写任何预期结论。",
+  "families": {
+    "cmdi_shell_meta": {
+      "endpoint": "/api/diag",
+      "param": "host",
+      "class": "command_injection",
+      "criterion": "command_execution",
+      "note": "同一处「拼接进 ping 命令」的洞，换 shell 分隔符/空白/括号形态。断言由 d_command_injection 从 payload 的 echo 标记派生，钉在 output 字段（cmd 字段是 payload 回显，不算证据）。",
+      "train": [
+        {
+          "id": "CMDI-T1",
+          "class": "command_injection",
+          "criterion": "command_execution",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1 & echo CMDI-T1"}},
+          "control": [{"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CMDI-"}
+        },
+        {
+          "id": "CMDI-T2",
+          "class": "command_injection",
+          "criterion": "command_execution",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1 && echo CMDI-T2"}},
+          "control": [{"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CMDI-"}
+        },
+        {
+          "id": "CMDI-T3",
+          "class": "command_injection",
+          "criterion": "command_execution",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1 & echo CMDI-T3 "}},
+          "control": [{"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CMDI-"}
+        }
+      ],
+      "held_out": [
+        {
+          "id": "CMDI-H1",
+          "class": "command_injection",
+          "criterion": "command_execution",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1 | echo CMDI-H1"}},
+          "control": [{"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CMDI-"}
+        },
+        {
+          "id": "CMDI-H2",
+          "class": "command_injection",
+          "criterion": "command_execution",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1&echo CMDI-H2"}},
+          "control": [{"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CMDI-"}
+        },
+        {
+          "id": "CMDI-H3",
+          "class": "command_injection",
+          "criterion": "command_execution",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1 & (echo CMDI-H3)"}},
+          "control": [{"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CMDI-"}
+        }
+      ],
+      "benign": [
+        {
+          "id": "CMDI-B1",
+          "class": "command_injection",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "127.0.0.1"}}
+        },
+        {
+          "id": "CMDI-B2",
+          "class": "command_injection",
+          "request": {"method": "GET", "path": "/api/diag", "params": {"host": "localhost"}}
+        }
+      ]
+    },
+    "xss_tag": {
+      "endpoint": "/search",
+      "param": "q",
+      "class": "reflected_xss",
+      "criterion": "response_injection",
+      "note": "同一处「未转义反射」的洞，换标签名、属性名、大小写与嵌套形态。断言由 d_reflected_xss 派生为 unescaped（原文出现且无转义形式），benign 对照不含任何标签。",
+      "train": [
+        {
+          "id": "XSS-T1",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<svg/onload=alert(1)>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<svg"}
+        },
+        {
+          "id": "XSS-T2",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<img src=x onerror=alert(2)>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<img"}
+        },
+        {
+          "id": "XSS-T3",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<script>alert(3)</script>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<script"}
+        }
+      ],
+      "held_out": [
+        {
+          "id": "XSS-H1",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<body onload=alert(4)>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<body"}
+        },
+        {
+          "id": "XSS-H2",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<svg><script>alert(5)</script></svg>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<svg"}
+        },
+        {
+          "id": "XSS-H3",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<iframe src=javascript:alert(6)>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<iframe"}
+        },
+        {
+          "id": "XSS-H4",
+          "class": "reflected_xss",
+          "criterion": "response_injection",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "<IMG SRC=x ONERROR=alert(7)>"}},
+          "control": [{"method": "GET", "path": "/search", "params": {"q": "alice"}}],
+          "control_assert": {"type": "body_not_contains", "value": "<IMG"}
+        }
+      ],
+      "benign": [
+        {
+          "id": "XSS-B1",
+          "class": "reflected_xss",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "alice"}}
+        },
+        {
+          "id": "XSS-B2",
+          "class": "reflected_xss",
+          "request": {"method": "GET", "path": "/search", "params": {"q": "bob"}}
+        }
+      ]
+    },
+    "lfi_traversal": {
+      "endpoint": "/download",
+      "param": "file",
+      "class": "path_traversal_read",
+      "criterion": "file_access",
+      "note": "同一处「路径未做 realpath 校验」的洞，换 .. 的写法与中间目录。断言由 d_path_traversal_read 派生为 artifact 级 canary 文件内容（不是路径回显）。所有变体都必须仍被 lab 自己的沙箱钳制。",
+      "train": [
+        {
+          "id": "LFI-T1",
+          "class": "path_traversal_read",
+          "criterion": "file_access",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "../canary.txt"}},
+          "control": [{"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CANARY-TRAVERSAL-OK"}
+        },
+        {
+          "id": "LFI-T2",
+          "class": "path_traversal_read",
+          "criterion": "file_access",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "..\\canary.txt"}},
+          "control": [{"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CANARY-TRAVERSAL-OK"}
+        },
+        {
+          "id": "LFI-T3",
+          "class": "path_traversal_read",
+          "criterion": "file_access",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "./../canary.txt"}},
+          "control": [{"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CANARY-TRAVERSAL-OK"}
+        }
+      ],
+      "held_out": [
+        {
+          "id": "LFI-H1",
+          "class": "path_traversal_read",
+          "criterion": "file_access",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "subdir/../../canary.txt"}},
+          "control": [{"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CANARY-TRAVERSAL-OK"}
+        },
+        {
+          "id": "LFI-H2",
+          "class": "path_traversal_read",
+          "criterion": "file_access",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "..//canary.txt"}},
+          "control": [{"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CANARY-TRAVERSAL-OK"}
+        },
+        {
+          "id": "LFI-H3",
+          "class": "path_traversal_read",
+          "criterion": "file_access",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "../public/../canary.txt"}},
+          "control": [{"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}],
+          "control_assert": {"type": "body_not_contains", "value": "CANARY-TRAVERSAL-OK"}
+        }
+      ],
+      "benign": [
+        {
+          "id": "LFI-B1",
+          "class": "path_traversal_read",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "readme.txt"}}
+        },
+        {
+          "id": "LFI-B2",
+          "class": "path_traversal_read",
+          "request": {"method": "GET", "path": "/download", "params": {"file": "app.js"}}
+        }
+      ]
+    }
+  }
+}

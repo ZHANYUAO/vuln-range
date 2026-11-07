@@ -13,6 +13,12 @@
 3. 同时支持流式（SSE 透传）与非流式（整包返回）。这是关键：某些免密钥 LLM 服务
    只支持流式，而这批工具的 agent 客户端大量依赖非流式 completion。
 4. 上游凭据从环境变量读，不硬编码。
+5. **模型溯源（provenance）**：每条请求分配 rid，把 rid / model / upstream / status /
+   是否发生切换写进 JSONL。没有这个，跑模型对照实验时无法证明「这条 finding 是哪个
+   模型产出的」。
+6. **严格对照模式**：`GATEWAY_COMPARE=1` 时上游 402/429/5xx 立即 fail-fast，
+   不重试、不切换上游。模型对照实验里静默换模型会毁掉整组数据；生产模式才允许
+   显式 failover，且必须留响应头与日志痕迹，绝不静默。
 
 环境变量：
   UPSTREAM_BASE   默认 https://integrate.api.nvidia.com/v1
@@ -22,8 +28,14 @@
   DEFAULT_MODEL   客户端未指定 model 时的兜底模型
   GATEWAY_PROXY   出站代理（如 http://127.0.0.1:7897）；留空=强制直连
   GATEWAY_LOG     日志路径，默认 llm_gateway.log
+  GATEWAY_PROVENANCE   provenance JSONL 路径，默认 gateway_provenance.jsonl
+  GATEWAY_COMPARE  1 = 严格对照模式（禁止重试与切换，失败即 fail-fast）
+  FALLBACK_BASE / FALLBACK_KEY / FALLBACK_MODEL   生产模式的可选备线上游；
+                  仅在非对照模式且主上游返回 402/429/网络错误时启用
+  请求头 X-Task-Id  可选，客户端带上后会写进 provenance，用于把日志与任务关联
 """
 import json
+import itertools
 import os
 import random
 import sys
@@ -84,6 +96,34 @@ GATEWAY_UA = os.environ.get(
     "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
 )
 
+# ---------------------------------------------------------------- 溯源与对照模式
+PROVENANCE_LOG = os.environ.get(
+    "GATEWAY_PROVENANCE",
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "gateway_provenance.jsonl"),
+)
+# 对照模式：换模型会让「同套检查只换模型」的实验彻底失效，因此失败必须显式暴露。
+GATEWAY_COMPARE = os.environ.get("GATEWAY_COMPARE", "").strip().lower() in ("1", "true", "yes")
+# 生产模式的可选备线。不配置 = 与旧版行为一致（单上游 + 原有重试）。
+FALLBACK_BASE = os.environ.get("FALLBACK_BASE", "").strip().rstrip("/")
+FALLBACK_KEY = os.environ.get("FALLBACK_KEY", "").strip()
+FALLBACK_MODEL = os.environ.get("FALLBACK_MODEL", "").strip()
+HAS_FALLBACK = bool(FALLBACK_BASE and FALLBACK_MODEL and not GATEWAY_COMPARE)
+_RID = itertools.count(1)
+
+
+def new_rid():
+    return "%s-%05d" % (time.strftime("%Y%m%d%H%M%S"), next(_RID))
+
+
+def provenance(rec):
+    """写一条结构化溯源记录（JSONL）。失败不影响主流程。"""
+    rec.setdefault("ts", time.strftime("%Y-%m-%d %H:%M:%S"))
+    try:
+        with open(PROVENANCE_LOG, "a", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+
 
 def log(msg):
     line = "[%s] %s" % (time.strftime("%Y-%m-%d %H:%M:%S"), msg)
@@ -125,7 +165,15 @@ class Handler(BaseHTTPRequestHandler):
         if self.path.startswith("/v1/models") or self.path == "/models":
             self._proxy("GET", "/models", None, stream=False)
         elif self.path.startswith("/health"):
-            self._send_json(200, {"ok": True, "upstream": UPSTREAM_BASE, "model": DEFAULT_MODEL})
+            self._send_json(200, {
+                "ok": True,
+                "upstream": UPSTREAM_BASE,
+                "model": DEFAULT_MODEL,
+                "mode": "compare(fail-fast)" if GATEWAY_COMPARE else "production",
+                "fallback_configured": HAS_FALLBACK,
+                "fallback_model": FALLBACK_MODEL if HAS_FALLBACK else None,
+                "provenance_log": os.path.basename(PROVENANCE_LOG),
+            })
         else:
             self._send_json(404, {"error": "not found: " + self.path})
 
@@ -150,29 +198,37 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(400, {"error": "bad json: %s" % e})
             return
 
+        rid = new_rid()
+        task_id = (self.headers.get("X-Task-Id") or "").strip()[:64]
         if not payload.get("model"):
             payload["model"] = DEFAULT_MODEL
         stream = bool(payload.get("stream"))
         body = json.dumps(payload).encode("utf-8")
 
-        log("chat model=%s stream=%s msgs=%d" % (
-            payload.get("model"), stream, len(payload.get("messages", []))))
-        self._proxy("POST", "/chat/completions", body, stream=stream, model=payload.get("model"))
+        # 格式约束：必须以 "chat model=" 开头，task_liveness.py 靠这个抓请求与模型名。
+        log("chat model=%s rid=%s task=%s stream=%s msgs=%d" % (
+            payload.get("model"), rid, task_id or "-", stream,
+            len(payload.get("messages", []))))
+        self._proxy("POST", "/chat/completions", body, stream=stream,
+                    model=payload.get("model"), rid=rid, task_id=task_id,
+                    payload=payload)
 
     # ---------- 转发 ----------
-    def _open_upstream(self, req):
+    def _open_upstream(self, req, retries=None):
         """带指数退避重试的上游请求。
 
         只在**尚未向客户端写出任何字节**时才重试——流式一旦开始就不能回头，
         所以调用方保证重试只发生在建立连接阶段。
+        retries 由调用方传入：严格对照模式下为 0（重试会掩盖失败、污染实验）。
         返回 (resp, err)；err 为 None 表示成功。
         """
+        retries = MAX_RETRIES if retries is None else max(0, retries)
         err = None
-        for attempt in range(MAX_RETRIES + 1):
+        for attempt in range(retries + 1):
             if attempt:
                 delay = RETRY_BASE * (2 ** (attempt - 1)) + random.uniform(0, 0.4)
                 log("上游重试 %d/%d，退避 %.1fs（上次：%s）"
-                    % (attempt, MAX_RETRIES, delay, (err[1] if err else "")))
+                    % (attempt, retries, delay, (err[1] if err else "")))
                 time.sleep(delay)
             try:
                 return _OPENER.open(req, timeout=600), None
@@ -181,6 +237,8 @@ class Handler(BaseHTTPRequestHandler):
                 err = ("http", e.code, detail)
                 if e.code not in RETRY_STATUS:
                     break  # 4xx（非 429）是请求本身有问题，重试无意义
+                if GATEWAY_COMPARE:
+                    break  # 对照模式：429/5xx 也立即失败，不重试
                 ra = e.headers.get("Retry-After") if e.headers else None
                 if ra:
                     try:
@@ -189,21 +247,39 @@ class Handler(BaseHTTPRequestHandler):
                         pass
             except Exception as e:
                 err = ("net", 0, repr(e))
+                if GATEWAY_COMPARE:
+                    break
         return None, err
 
-    def _proxy(self, method, path, body, stream=False, model=None):
-        url = UPSTREAM_BASE + path
+    def _build_request(self, path, body, method, stream, base, key):
+        """按指定上游构造请求。fallback 时 base/key/model 都会变，故需可重建。"""
         headers = {
             "Content-Type": "application/json",
             "Accept": "text/event-stream" if stream else "application/json",
             "User-Agent": GATEWAY_UA,
         }
-        # UPSTREAM_KEY 为空则不发 Authorization 头。
-        # 有些免费网关（如 Kilo 公共网关）只接受"完全不带鉴权头"的匿名请求，
-        # 带任何假 key 反而返回 401 INVALID_TOKEN。
-        if UPSTREAM_KEY:
-            headers["Authorization"] = "Bearer " + UPSTREAM_KEY
-        req = urllib.request.Request(url, data=body, headers=headers, method=method)
+        if key:
+            headers["Authorization"] = "Bearer " + key
+        return urllib.request.Request(base + path, data=body, headers=headers, method=method)
+
+    def _proxy(self, method, path, body, stream=False, model=None,
+               rid=None, task_id="", payload=None):
+        """转发到主上游；仅生产模式且配置了备线时，才在 402/429/5xx/网络错误后切换。
+
+        切换绝不静默：写 GATEWAY_FALLBACK 日志事件 + `X-Gateway-Fallback` 响应头 +
+        provenance 记录。严格对照模式（GATEWAY_COMPARE=1）下既不重试也不切换。
+        """
+        rid = rid or new_rid()
+        task_id = task_id or ""
+        retries = 0 if GATEWAY_COMPARE else MAX_RETRIES
+
+        # UPSTREAM_KEY 为空时不发 Authorization 头（Kilo 等匿名网关要求完全不带鉴权头）。
+        targets = [(UPSTREAM_BASE, UPSTREAM_KEY, model, body, "primary")]
+        if HAS_FALLBACK and payload is not None:
+            fb_payload = dict(payload)
+            fb_payload["model"] = FALLBACK_MODEL
+            targets.append((FALLBACK_BASE, FALLBACK_KEY, FALLBACK_MODEL,
+                            json.dumps(fb_payload).encode("utf-8"), "fallback"))
 
         # 并发闸门：占不到名额就排队，而不是放任并发把上游打爆
         if not _SEM.acquire(blocking=False):
@@ -213,50 +289,104 @@ class Handler(BaseHTTPRequestHandler):
             log("排队 %.1fs 后获得名额" % (time.time() - t_wait))
         t0 = time.time()
         try:
-            resp, err = self._open_upstream(req)
-            if err is not None:
-                kind, code, detail = err
-                if kind == "http":
-                    log("UPSTREAM HTTP %s（已重试 %d 次）: %s" % (code, MAX_RETRIES, detail[:300]))
-                    self._send_json(code, {"error": {"message": detail, "code": code,
-                                                     "gateway_retries": MAX_RETRIES}})
-                else:
-                    log("UPSTREAM ERROR（已重试 %d 次）: %s" % (MAX_RETRIES, detail[:300]))
-                    self._send_json(502, {"error": {"message": "upstream unreachable: %s" % detail,
-                                                    "gateway_retries": MAX_RETRIES}})
-                return
+            for idx, (base, key, mdl, b, tag) in enumerate(targets):
+                req = self._build_request(path, b, method, stream, base, key)
+                resp, err = self._open_upstream(req, retries)
 
-            status = resp.getcode()
-            if stream:
-                self.send_response(status)
-                self.send_header("Content-Type", "text/event-stream; charset=utf-8")
-                self.send_header("Cache-Control", "no-cache")
-                self.send_header("Connection", "keep-alive")
-                self.send_header("Transfer-Encoding", "chunked")
-                self.end_headers()
-                sent = 0
-                try:
-                    while True:
-                        chunk = resp.read(4096)
-                        if not chunk:
-                            break
-                        sent += len(chunk)
-                        self.wfile.write(b"%X\r\n" % len(chunk) + chunk + b"\r\n")
-                        self.wfile.flush()
-                    self.wfile.write(b"0\r\n\r\n")
-                    self.wfile.flush()
-                except (BrokenPipeError, ConnectionResetError):
-                    log("client disconnected early after %d bytes" % sent)
+                if err is not None:
+                    kind, code, detail = err
+                    if kind == "http":
+                        log("UPSTREAM HTTP %s（已重试 %d 次）: %s" % (code, retries, detail[:300]))
+                    else:
+                        log("UPSTREAM ERROR（已重试 %d 次）: %s" % (retries, detail[:300]))
+                    provenance({
+                        "rid": rid, "task_id": task_id, "model": mdl, "upstream": base,
+                        "path": path, "stream": stream, "tag": tag, "ok": False,
+                        "status": code or 0, "elapsed_s": round(time.time() - t0, 3),
+                        "bytes": 0, "fallback": tag == "fallback",
+                        "failfast": False, "compare": GATEWAY_COMPARE,
+                        "error": detail[:200],
+                    })
+                    failfastable = code in (402, 429, 408) or code == 0 or code >= 500
+                    can_fallback = (idx == 0 and len(targets) > 1 and failfastable)
+                    if can_fallback:
+                        log("GATEWAY_FALLBACK rid=%s task=%s 触发切换 %s -> %s（上游 %s）"
+                            % (rid, task_id or "-", model, FALLBACK_MODEL, code or "network"))
+                        continue
+                    if GATEWAY_COMPARE and failfastable:
+                        # 对照模式：让失败显性暴露，绝不用备线把实验数据洗掉。
+                        log("COMPARE_FAILFAST rid=%s task=%s 上游 %s；"
+                            "对照模式禁止重试与切换，任务应判 incomplete"
+                            % (rid, task_id or "-", code or "network"))
+                        self._send_json(
+                            code if code else 502,
+                            {"error": {"message": detail, "code": code or 502,
+                                       "gateway_mode": "compare", "failfast": True}},
+                            extra={"X-Gateway-Failfast": "1"})
+                        return
+                    if kind == "http":
+                        self._send_json(code, {"error": {"message": detail, "code": code,
+                                                         "gateway_retries": retries}})
+                    else:
+                        self._send_json(502, {"error": {"message": "upstream unreachable: %s" % detail,
+                                                        "gateway_retries": retries}})
                     return
-                log("stream done %.1fs %d bytes" % (time.time() - t0, sent))
-            else:
-                data = resp.read()
-                log("non-stream done %.1fs %d bytes" % (time.time() - t0, len(data)))
-                self.send_response(status)
-                self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.send_header("Content-Length", str(len(data)))
-                self.end_headers()
-                self.wfile.write(data)
+
+                # ---- 成功：转发响应 ----
+                status = resp.getcode()
+                extra = {"X-Gateway-Fallback": FALLBACK_MODEL} if tag == "fallback" else {}
+
+                def emit_ok(sent_bytes, chunked=False):
+                    """必须在向客户端写出响应之前落盘。
+                    否则 Content-Length 已满足，客户端一收到 body 就返回，
+                    服务端这边的 provenance 还没写 —— 实测出现过空记录。"""
+                    provenance({
+                        "rid": rid, "task_id": task_id, "model": mdl, "upstream": base,
+                        "path": path, "stream": stream, "tag": tag, "ok": True,
+                        "status": status, "elapsed_s": round(time.time() - t0, 3),
+                        "bytes": sent_bytes, "fallback": tag == "fallback",
+                        "failfast": False, "compare": GATEWAY_COMPARE,
+                        "bytes_note": "chunked; final size in log" if chunked else None,
+                    })
+
+                sent = 0
+                if stream:
+                    emit_ok(0, chunked=True)
+                    self.send_response(status)
+                    self.send_header("Content-Type", "text/event-stream; charset=utf-8")
+                    self.send_header("Cache-Control", "no-cache")
+                    self.send_header("Connection", "keep-alive")
+                    for k, v in extra.items():
+                        self.send_header(k, v)
+                    self.send_header("Transfer-Encoding", "chunked")
+                    self.end_headers()
+                    try:
+                        while True:
+                            chunk = resp.read(4096)
+                            if not chunk:
+                                break
+                            sent += len(chunk)
+                            self.wfile.write(b"%X\r\n" % len(chunk) + chunk + b"\r\n")
+                            self.wfile.flush()
+                        self.wfile.write(b"0\r\n\r\n")
+                        self.wfile.flush()
+                    except (BrokenPipeError, ConnectionResetError):
+                        log("client disconnected early after %d bytes" % sent)
+                        return
+                    log("stream done %.1fs %d bytes" % (time.time() - t0, sent))
+                else:
+                    data = resp.read()
+                    sent = len(data)
+                    log("non-stream done %.1fs %d bytes" % (time.time() - t0, sent))
+                    emit_ok(sent)
+                    self.send_response(status)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.send_header("Content-Length", str(len(data)))
+                    for k, v in extra.items():
+                        self.send_header(k, v)
+                    self.end_headers()
+                    self.wfile.write(data)
+                return
         finally:
             _SEM.release()
 
@@ -267,11 +397,13 @@ class Handler(BaseHTTPRequestHandler):
             return b"{}"
         return self.rfile.read(length)
 
-    def _send_json(self, code, obj):
+    def _send_json(self, code, obj, extra=None):
         data = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
+        for k, v in (extra or {}).items():
+            self.send_header(k, v)
         self.end_headers()
         self.wfile.write(data)
 
@@ -289,6 +421,12 @@ def main():
     log("gateway up http://%s:%d -> %s (model=%s, 并发上限=%d, 重试=%d, 鉴权=%s)"
         % (GATEWAY_HOST, GATEWAY_PORT, UPSTREAM_BASE, DEFAULT_MODEL,
            MAX_CONCURRENCY, MAX_RETRIES, "开" if GATEWAY_TOKEN else "关(仅回环)"))
+    log("模式=%s  备线=%s  provenance=%s"
+        % ("对照(fail-fast，禁止重试/切换)" if GATEWAY_COMPARE else "生产",
+           (FALLBACK_MODEL + " @ " + FALLBACK_BASE) if HAS_FALLBACK else "未配置",
+           PROVENANCE_LOG))
+    if GATEWAY_COMPARE and FALLBACK_BASE:
+        log("注意：对照模式下已配置的 FALLBACK_* 被强制忽略（防止污染模型对照实验）")
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

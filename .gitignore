@@ -54,6 +54,9 @@ __pycache__/
 *.pyc
 *.pyo
 *.log
+vuln-range/gateway_provenance.jsonl
+vuln-range/_tools/_gwtest/
+_tools/rtree.json
 .edgeprof/
 .workbuddy/
 .DS_Store
